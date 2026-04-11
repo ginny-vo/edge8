@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edge8 — Be Tech-Forward | AI Programs & Consulting</title>
+  <meta name="description" content="Edge8 helps organizations become Tech-Forward through AI Programs, Global Talent Staffing, and AI Officer Leadership. Stop overthinking AI — Start implementing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: rgb(16, 16, 20);
+      color: rgb(255, 255, 255);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      position: fixed;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(16, 16, 20, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(230, 230, 230, 0.1);
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgb(208, 209, 219);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .btn-mint {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgb(111, 242, 193);
+      color: rgb(16, 16, 20);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-mint:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(111, 242, 193, 0.2);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgb(208, 209, 219);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: 1px solid rgba(230, 230, 230, 0.15);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(230, 230, 230, 0.3);
+      color: #fff;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 28px;
+      height: 20px;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      position: absolute;
+      left: 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 9px; }
+    .hamburger span:nth-child(3) { top: 18px; }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(16, 16, 20);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu a {
+      font-size: 24px;
+      font-weight: 600;
+      color: rgb(208, 209, 219);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover {
+      color: #fff;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgb(111, 242, 193);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 80px;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: rgb(208, 209, 219);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-video-placeholder {
+      margin: 60px auto 0;
+      max-width: 960px;
+      aspect-ratio: 16/9;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(230, 230, 230, 0.1);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(61, 61, 71);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .hero-video-placeholder svg {
+      width: 64px;
+      height: 64px;
+      opacity: 0.3;
+    }
+
+    /* ===== SECTION DEFAULTS ===== */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgb(111, 242, 193);
+      margin-bottom: 16px;
+    }
+
+    .section-heading {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: rgb(208, 209, 219);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .section-sub.centered {
+      margin: 0 auto;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    /* ===== PROBLEM / FAQ ===== */
+    .problem-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(230, 230, 230, 0.1);
+      border-radius: 20px;
+      padding: 56px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .problem-card h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .problem-card .subtext {
+      font-size: 18px;
+      color: rgb(111, 242, 193);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .problem-card p {
+      font-size: 16px;
+      color: rgb(208, 209, 219);
+      line-height: 1.8;
+    }
+
+    /* ===== TECH-FORWARD DEFINITION ===== */
+    .definition-section {
+      text-align: center;
+    }
+
+    .definition-phonetic {
+      font-size: 18px;
+      color: rgb(208, 209, 219);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .definition-type {
+      font-size: 14px;
+      color: rgb(61, 61, 71);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .definition-body {
+      font-size: 18px;
+      color: rgb(208, 209, 219);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ===== 8 STEPS ===== */
+    .steps-section {
+      text-align: center;
+    }
+
+    .steps-body {
+      font-size: 16px;
+      color: rgb(208, 209, 219);
+      max-width: 700px;
+      margin: 0 auto 20px;
+      line-height: 1.8;
+    }
+
+    .steps-cta-text {
+      font-size: 16px;
+      color: rgb(111, 242, 193);
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+
+    /* ===== CASE STUDIES / RESULTS ===== */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .result-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(230, 230, 230, 0.1);
+      border-radius: 20px;
+      padding: 40px 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .result-card:hover {
+      border-color: rgba(111, 242, 193, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .result-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .result-card p {
+      font-size: 15px;
+      color: rgb(208, 209, 219);
+      line-height: 1.7;
+    }
+
+    .result-card .card-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(111, 242, 193, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: rgb(111, 242, 193);
+    }
+
+    .results-btn {
+      margin-top: 48px;
+      text-align: center;
+    }
+
+    /* ===== SERVICES ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(230, 230, 230, 0.1);
+      border-radius: 20px;
+      padding: 36px 32px;
+      transition: border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      border-color: rgba(111, 242, 193, 0.25);
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      color: rgb(208, 209, 219);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .service-card .card-cta {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgb(111, 242, 193);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .service-card .card-cta:hover {
+      gap: 10px;
+    }
+
+    .service-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .service-card .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== SOLUTIONS 3-CARDS ===== */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .solution-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(230, 230, 230, 0.1);
+      border-radius: 20px;
+      padding: 40px 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .solution-card:hover {
+      border-color: rgba(111, 242, 193, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .solution-card .sol-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgb(111, 242, 193);
+      margin-bottom: 16px;
+    }
+
+    .solution-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .solution-card p {
+      font-size: 15px;
+      color: rgb(208, 209, 219);
+      line-height: 1.7;
+    }
+
+    /* ===== CASE STUDY THUMBNAILS ===== */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .case-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(230, 230, 230, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .case-card:hover {
+      border-color: rgba(111, 242, 193, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .case-card-thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, rgba(111, 242, 193, 0.08), rgba(40, 123, 232, 0.08));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(61, 61, 71);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .case-card-body {
+      padding: 24px;
+    }
+
+    .case-card-body .case-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgb(111, 242, 193);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .case-card-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .case-btn {
+      margin-top: 48px;
+      text-align: center;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 48px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scroll-snap-type: x mandatory;
+      -ms-overflow-style: none;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.1) transparent;
+    }
+
+    .testimonials-row::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .testimonials-row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .testimonials-row::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(230, 230, 230, 0.1);
+      border-radius: 20px;
+      padding: 36px 32px;
+      min-width: 360px;
+      max-width: 400px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-card .quote {
+      font-size: 15px;
+      color: rgb(208, 209, 219);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-card .quote::before {
+      content: "\201C";
+      font-size: 28px;
+      color: rgb(111, 242, 193);
+      line-height: 0;
+      vertical-align: -8px;
+      margin-right: 4px;
+    }
+
+    .testimonial-author {
+      border-top: 1px solid rgba(230, 230, 230, 0.1);
+      padding-top: 16px;
+    }
+
+    .testimonial-author .name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .testimonial-author .title {
+      font-size: 13px;
+      color: rgb(61, 61, 71);
+      margin-top: 2px;
+    }
+
+    /* ===== CONTACT / CTA ===== */
+    .contact-section {
+      text-align: center;
+    }
+
+    .typeform-wrapper {
+      margin: 48px auto 0;
+      max-width: 720px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(230, 230, 230, 0.1);
+    }
+
+    .typeform-wrapper iframe {
+      width: 100%;
+      height: 540px;
+      border: none;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(230, 230, 230, 0.08);
+      padding: 64px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: rgb(61, 61, 71);
+      line-height: 1.7;
+    }
+
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgb(208, 209, 219);
+      margin-bottom: 16px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: rgb(61, 61, 71);
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: rgb(208, 209, 219);
+    }
+
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(230, 230, 230, 0.06);
+      font-size: 13px;
+      color: rgb(61, 61, 71);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .container {
+        padding: 0 24px;
+      }
+
+      .nav-inner {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero {
+        padding: 72px 0 60px;
+      }
+
+      .section-heading {
+        font-size: 32px;
+      }
+
+      .results-grid,
+      .solutions-grid,
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .problem-card {
+        padding: 36px 24px;
+      }
+
+      .problem-card h2 {
+        font-size: 26px;
+      }
+
+      .testimonial-card {
+        min-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .nav-inner {
+        padding: 0 16px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+        letter-spacing: -1px;
+      }
+
+      .hero {
+        padding: 56px 0 48px;
+      }
+
+      .hero-sub {
+        font-size: 15px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .section-heading {
+        font-size: 28px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-card {
+        min-width: 280px;
+        padding: 28px 20px;
+      }
+
+      .problem-card h2 {
+        font-size: 22px;
+      }
+
+      .result-card,
+      .service-card,
+      .solution-card {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Edge8</a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#case-studies">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn-mint">Schedule A Consultation</a>
+      </div>
+      <button class="hamburger" onclick="(function(){var h=document.querySelector('.hamburger'),m=document.querySelector('.mobile-menu'),b=document.body;if(b.classList.contains('menu-open')){var s=parseInt(b.style.top||'0',10);b.classList.remove('menu-open');b.style.top='';window.scrollTo(0,-s);}else{b.style.top=-window.scrollY+'px';b.classList.add('menu-open');}h.classList.toggle('active');m.classList.toggle('open');})()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="#services" onclick="(function(){var h=document.querySelector('.hamburger'),m=document.querySelector('.mobile-menu'),b=document.body;var s=parseInt(b.style.top||'0',10);b.classList.remove('menu-open');b.style.top='';window.scrollTo(0,-s);h.classList.remove('active');m.classList.remove('open');})()">Services</a>
+    <a href="#about" onclick="(function(){var h=document.querySelector('.hamburger'),m=document.querySelector('.mobile-menu'),b=document.body;var s=parseInt(b.style.top||'0',10);b.classList.remove('menu-open');b.style.top='';window.scrollTo(0,-s);h.classList.remove('active');m.classList.remove('open');})()">About</a>
+    <a href="#case-studies" onclick="(function(){var h=document.querySelector('.hamburger'),m=document.querySelector('.mobile-menu'),b=document.body;var s=parseInt(b.style.top||'0',10);b.classList.remove('menu-open');b.style.top='';window.scrollTo(0,-s);h.classList.remove('active');m.classList.remove('open');})()">Blog</a>
+    <a href="#contact" onclick="(function(){var h=document.querySelector('.hamburger'),m=document.querySelector('.mobile-menu'),b=document.body;var s=parseInt(b.style.top||'0',10);b.classList.remove('menu-open');b.style.top='';window.scrollTo(0,-s);h.classList.remove('active');m.classList.remove('open');})()">Contact</a>
+    <a href="#contact" class="btn-mint" onclick="(function(){var h=document.querySelector('.hamburger'),m=document.querySelector('.mobile-menu'),b=document.body;var s=parseInt(b.style.top||'0',10);b.classList.remove('menu-open');b.style.top='';window.scrollTo(0,-s);h.classList.remove('active');m.classList.remove('open');})()">Schedule A Consultation</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">Be Tech-Forward</span>
+      <h1>8x IMPACT</h1>
+      <p class="hero-sub">Stop overthinking AI&mdash;Start implementing your AI Programs</p>
+      <a href="#contact" class="btn-mint">Schedule A Consultation &rarr;</a>
+      <div class="hero-video-placeholder">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2"/>
+          <polygon points="26,20 26,44 46,32" fill="currentColor"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROBLEM / FAQ ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="problem-card">
+        <h2>Why do I need an AI Program?</h2>
+        <div class="subtext">Ad-hoc usage of AI is limiting you to minimal gains</div>
+        <p>Lack of focus traps your business in mediocrity&mdash;keeping you stuck in repetitive tasks, wasted resources, and missed opportunities. Without a structured AI Program, competitors will outpace you, innovation stalls, costs balloon, and growth suffers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TECH-FORWARD DEFINITION ===== -->
+  <section class="section definition-section" id="about">
+    <div class="container">
+      <h2 class="section-heading">What does it mean to be Tech-Forward?</h2>
+      <p class="definition-phonetic">Tech-Forward /&#x2C8;t&#x25B;k &#x2C8;f&#x254;rw&#x259;rd/</p>
+      <p class="definition-type">(adjective)</p>
+      <p class="definition-body">Describing an organization or individual with the capability to strategically orchestrate AI resources to drive measurable value within their department or business.</p>
+    </div>
+  </section>
+
+  <!-- ===== 8 STEPS ===== -->
+  <section class="section steps-section">
+    <div class="container">
+      <h2 class="section-heading">8 Steps to Becoming Tech-Forward</h2>
+      <p class="steps-body">Orchestrate AI Resources for Maximum Impact, and you will unlock new levels of efficiency, automation, and decision-making in your business. Follow these steps to build a truly Tech-Forward organization and achieve 8x efficiency.</p>
+      <p class="steps-cta-text">Book your free consultation today and take the first step toward an AI-driven future</p>
+      <a href="#contact" class="btn-mint">Schedule A Consultation</a>
+    </div>
+  </section>
+
+  <!-- ===== CASE STUDIES / RESULTS ===== -->
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="section-heading">Real Results for Real Businesses</h2>
+      <p class="section-sub centered">Discover how Edge8 helps companies Be Tech-Forward, delivering results through Global Talent Staffing, AI Programs and AI Officer Leadership.</p>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>AI Officer Leadership</h3>
+          <p>Established the leadership needed to effectively run an AI Program within 10+ organizations</p>
+        </div>
+        <div class="result-card">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Global Talent Staffing</h3>
+          <p>Helping a leading healthcare provider build a tech-forward team, doubling productivity while cutting costs dramatically.</p>
+        </div>
+        <div class="result-card">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>AI Programs</h3>
+          <p>Eliminated 100% of data entry tasks, enriched entrepreneur submissions, and enhanced deal flow analysis for a Venture Capital firm.</p>
+        </div>
+      </div>
+      <div class="results-btn">
+        <a href="#case-studies" class="btn-outline">View Our Success Case Studies &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES / AI SOLUTIONS ===== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading">AI Automation Designed to Elevate Your Business</h2>
+        <p class="section-sub centered">Edge8 enables organizations to leverage AI automation and AI integration for enhanced productivity and efficiency.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Personal Branding with AI</h3>
+          <p>Build your brands similar to leaders like Rich Pham, Angi Hurt, and Steve Mueller.</p>
+          <a href="#contact" class="card-cta">Schedule A Consultation &rarr;</a>
+        </div>
+        <div class="service-card">
+          <h3>Private and Public Workshops</h3>
+          <p>Get your team aligned with an interactive session where we break down AI fundamentals, dive into real case studies, and leave you with practical tools you can put to work right away.</p>
+          <a href="#contact" class="card-cta">Join A Workshop &rarr;</a>
+        </div>
+        <div class="service-card">
+          <h3>AI in HR Workflows &amp; Recruitment</h3>
+          <p>Optimize talent acquisition, onboarding, and coaching with intelligent AI Agents.</p>
+          <a href="#contact" class="card-cta">Schedule A Consultation &rarr;</a>
+        </div>
+        <div class="service-card">
+          <h3>Revolutionizing Sales with AI</h3>
+          <p>Transform your sales process with your own chat bot, CRM and nurture campaigns.</p>
+          <a href="#contact" class="card-cta">Schedule A Consultation &rarr;</a>
+        </div>
+        <div class="service-card">
+          <h3>AI for Social Media &amp; Content Publishing</h3>
+          <p>Stay ahead with AI-driven content for improved engagement and visibility.</p>
+          <a href="#contact" class="card-cta">Join A Workshop &rarr;</a>
+        </div>
+        <div class="service-card">
+          <h3>Global Talent Solutions</h3>
+          <p>Find, train, and scale with AI-empowered professionals located in Vietnam.</p>
+          <a href="#contact" class="card-cta">Schedule A Consultation &rarr;</a>
+        </div>
+        <div class="service-card full-width">
+          <h3>Solutions</h3>
+          <p>Empowering Organizations to use AI effectively through clear leadership, thoughtful implementation and strong global talent.</p>
+          <div class="cta-group">
+            <a href="#contact" class="btn-mint">Join A Workshop</a>
+            <a href="#contact" class="btn-outline">Get Your Audit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOLUTIONS (3 CARDS) ===== -->
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="section-heading">Our Solutions</h2>
+      <div class="solutions-grid">
+        <div class="solution-card">
+          <div class="sol-label">AI Programs</div>
+          <h3>From Strategy to Implementation&mdash;We Build not Pitch</h3>
+          <p>We don&rsquo;t just talk AI&mdash;we build with it. From CRM flows to marketing automation, our AI solutions power content creation, sales engagement, and customer journeys. You bring the ideas. We build the systems.</p>
+        </div>
+        <div class="solution-card">
+          <div class="sol-label">Global Talent Network</div>
+          <h3>Scale Smarter with AI-Empowered Teams</h3>
+          <p>Access Vietnam&rsquo;s top AI-trained professionals to accelerate your initiatives&mdash;without compromising on quality or speed. We embed engineers, analysts, and operators directly into your team to turn workflows into intelligent systems.</p>
+        </div>
+        <div class="solution-card">
+          <div class="sol-label">AI Officer Certification &amp; Workshops</div>
+          <h3>Make Your Team AI-Literate and Leadership-Ready</h3>
+          <p>We equip founders and teams to lead with confidence. Through our AI Officer certification and hands-on workshops, your organization will gain the frameworks, tools, and language to scale with AI&mdash;internally and externally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE STUDY THUMBNAILS ===== -->
+  <section class="section" id="case-studies">
+    <div class="container text-center">
+      <h2 class="section-heading">The Path to Tech-Forward</h2>
+      <p class="section-sub centered">A few examples of successful AI-Driven Programs</p>
+      <div class="case-grid">
+        <div class="case-card">
+          <div class="case-card-thumb">Vespa Adventures</div>
+          <div class="case-card-body">
+            <div class="case-tag">AI Program</div>
+            <h3>Vespa Adventures</h3>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-card-thumb">InvestMigrate</div>
+          <div class="case-card-body">
+            <div class="case-tag">AI Program</div>
+            <h3>InvestMigrate</h3>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-card-thumb">PHO24</div>
+          <div class="case-card-body">
+            <div class="case-tag">AI Agents</div>
+            <h3>PHO24</h3>
+          </div>
+        </div>
+      </div>
+      <div class="case-btn">
+        <a href="#" class="btn-outline">Full List of Case Studies &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading">What Our Clients Say</h2>
+      </div>
+      <div class="testimonials-row">
+        <div class="testimonial-card">
+          <div class="quote">Love the new look and branding. The website looks so good. I'm deeply grateful. The brand interview really made me think about our positioning and business in ways I never expected.</div>
+          <div class="testimonial-author">
+            <div class="name">Dao Nguyen</div>
+            <div class="title">Founder, DN Legal</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved. We are looking forward to collaborating with the AI Officer Institute and Edge8 to bring their AI Certification Program to Malaysia and have signed an MOU to broaden the reach of our organization.</div>
+          <div class="testimonial-author">
+            <div class="name">Dato George Lim</div>
+            <div class="title">Founder and CEO, G&amp;A GROUP</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">I am very grateful to Dave Hajdu, who spoke to graduate students in our international business and public policy program during our visit to Vietnam about Negotiations and AI. He was extremely knowledgeable and engaging. Real-world experiences complemented our class discussions perfectly.</div>
+          <div class="testimonial-author">
+            <div class="name">Dr. Brooks Holtom</div>
+            <div class="title">Professor of Management, Georgetown</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">Working with Edge8 has been a pleasure. When I launched Fab Four Academy, I needed support to build a strong brand and digital presence. Dave and the team at Edge8 stepped in and not only helped with the branding and digital presence, but showed us how to leverage AI to streamline our processes.</div>
+          <div class="testimonial-author">
+            <div class="name">Dan Absher</div>
+            <div class="title">CEO, Absher Construction</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications. He was able to greatly expand our general knowledge of AI and demystify the challenges of implementation.</div>
+          <div class="testimonial-author">
+            <div class="name">John VanNewkirk</div>
+            <div class="title">YPO Gold Seattle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / CTA ===== -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <h2 class="section-heading">Let&rsquo;s Be Tech-Forward Together</h2>
+      <p class="section-sub centered">Connect with Edge8&rsquo;s experts to explore AI Programs for your organization</p>
+      <div class="typeform-wrapper">
+        <iframe src="https://ai-officer.typeform.com/letstalk" title="Contact Edge8" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Edge8</div>
+          <p class="footer-tagline">Empowering organizations to become Tech-Forward through AI Programs, Global Talent, and AI Officer Leadership.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">AI Programs</a>
+          <a href="#services">Global Talent</a>
+          <a href="#services">Workshops</a>
+          <a href="#services">AI Branding</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#case-studies">Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="mailto:hello@edge8.ai">hello@edge8.ai</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Edge8. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
