@@ -21,8 +21,8 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: rgb(16, 16, 20);
-      color: rgb(255, 255, 255);
+      background: rgb(255, 255, 255);
+      color: rgb(4, 16, 45);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -48,7 +48,7 @@
     .container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 40px;
+      padding: 0 48px;
     }
 
     /* ===== NAVIGATION ===== */
@@ -56,16 +56,16 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(16, 16, 20, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(230, 230, 230, 0.1);
+      border-bottom: 1px solid rgb(230, 235, 240);
     }
 
     .nav-inner {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 40px;
+      padding: 0 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -76,7 +76,7 @@
       font-size: 24px;
       font-weight: 800;
       letter-spacing: -0.5px;
-      color: #fff;
+      color: rgb(4, 16, 45);
     }
 
     .nav-links {
@@ -88,12 +88,12 @@
     .nav-links a {
       font-size: 15px;
       font-weight: 500;
-      color: rgb(208, 209, 219);
+      color: rgba(76, 79, 86, 0.8);
       transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: #fff;
+      color: rgb(4, 16, 45);
     }
 
     .btn-mint {
@@ -101,10 +101,10 @@
       align-items: center;
       gap: 8px;
       background: rgb(111, 242, 193);
-      color: rgb(16, 16, 20);
+      color: rgb(4, 16, 45);
       font-size: 14px;
       font-weight: 600;
-      padding: 12px 24px;
+      padding: 14px 24px;
       border-radius: 10px;
       border: none;
       cursor: pointer;
@@ -114,7 +114,7 @@
 
     .btn-mint:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 30px rgba(111, 242, 193, 0.2);
+      box-shadow: 0 8px 30px rgba(111, 242, 193, 0.3);
     }
 
     .btn-outline {
@@ -122,20 +122,40 @@
       align-items: center;
       gap: 8px;
       background: transparent;
-      color: rgb(208, 209, 219);
+      color: rgb(4, 16, 45);
       font-size: 14px;
       font-weight: 600;
-      padding: 12px 24px;
+      padding: 14px 24px;
       border-radius: 10px;
-      border: 1px solid rgba(230, 230, 230, 0.15);
+      border: 1px solid rgb(168, 178, 189);
       cursor: pointer;
       transition: border-color 0.2s, color 0.2s;
       text-decoration: none;
     }
 
     .btn-outline:hover {
-      border-color: rgba(230, 230, 230, 0.3);
-      color: #fff;
+      border-color: rgb(4, 16, 45);
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgb(255, 255, 255);
+      color: rgb(4, 16, 45);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
     }
 
     /* Hamburger */
@@ -154,7 +174,7 @@
       display: block;
       width: 100%;
       height: 2px;
-      background: #fff;
+      background: rgb(4, 16, 45);
       border-radius: 2px;
       position: absolute;
       left: 0;
@@ -182,7 +202,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgb(16, 16, 20);
+      background: rgb(255, 255, 255);
       z-index: 999;
       flex-direction: column;
       align-items: center;
@@ -201,70 +221,68 @@
     .mobile-menu a {
       font-size: 24px;
       font-weight: 600;
-      color: rgb(208, 209, 219);
+      color: rgb(4, 16, 45);
       transition: color 0.2s;
     }
 
     .mobile-menu a:hover {
-      color: #fff;
+      color: rgb(40, 123, 232);
     }
 
     /* ===== HERO ===== */
     .hero {
       padding: 100px 0 80px;
       text-align: center;
+      background: rgb(255, 255, 255);
     }
 
     .hero-eyebrow {
       display: inline-block;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgb(111, 242, 193);
+      font-size: 24px;
+      font-weight: 500;
+      color: rgba(76, 79, 86, 0.8);
       margin-bottom: 24px;
     }
 
     .hero h1 {
       font-size: 80px;
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 20px;
+      font-weight: 500;
+      line-height: 1em;
+      letter-spacing: 0;
+      margin-bottom: 24px;
+      color: rgb(4, 16, 45);
     }
 
     .hero-sub {
-      font-size: 16px;
-      color: rgb(208, 209, 219);
+      font-size: 18px;
+      color: rgba(76, 79, 86, 0.8);
       max-width: 520px;
       margin: 0 auto 40px;
-      line-height: 1.7;
+      line-height: 1.4em;
     }
 
-    .hero-video-placeholder {
-      margin: 60px auto 0;
-      max-width: 960px;
-      aspect-ratio: 16/9;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(230, 230, 230, 0.1);
-      border-radius: 20px;
+    .hero-video {
+      margin: 64px auto 0;
       display: flex;
-      align-items: center;
       justify-content: center;
-      color: rgb(61, 61, 71);
-      font-size: 14px;
-      font-weight: 500;
     }
 
-    .hero-video-placeholder svg {
-      width: 64px;
-      height: 64px;
-      opacity: 0.3;
+    .hero-video video {
+      width: 100%;
+      max-width: 1600px;
+      height: 600px;
+      object-fit: cover;
+      border-radius: 20px;
     }
 
     /* ===== SECTION DEFAULTS ===== */
     .section {
-      padding: 100px 0;
+      padding: 100px 48px;
+    }
+
+    .section-inner {
+      max-width: 1280px;
+      margin: 0 auto;
     }
 
     .section-label {
@@ -272,23 +290,23 @@
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: rgb(111, 242, 193);
+      color: rgb(40, 123, 232);
       margin-bottom: 16px;
     }
 
     .section-heading {
-      font-size: 44px;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 1.2em;
+      margin-bottom: 24px;
+      color: rgb(4, 16, 45);
     }
 
     .section-sub {
-      font-size: 16px;
-      color: rgb(208, 209, 219);
+      font-size: 18px;
+      color: rgba(76, 79, 86, 0.8);
       max-width: 640px;
-      line-height: 1.7;
+      line-height: 1.4em;
     }
 
     .section-sub.centered {
@@ -299,34 +317,131 @@
       text-align: center;
     }
 
+    /* ===== GREY BACKGROUND SECTIONS ===== */
+    .section-grey {
+      background: rgb(234, 238, 242);
+    }
+
+    /* ===== BLUE CTA SECTION ===== */
+    .section-blue {
+      background: rgb(40, 123, 232);
+      color: rgb(255, 255, 255);
+    }
+
+    .section-blue .section-heading {
+      color: rgb(255, 255, 255);
+    }
+
+    .section-blue .section-sub {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
     /* ===== PROBLEM / FAQ ===== */
     .problem-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(230, 230, 230, 0.1);
+      background: rgb(255, 255, 255);
+      border: 1px solid rgb(230, 235, 240);
       border-radius: 20px;
       padding: 56px;
       max-width: 900px;
       margin: 0 auto;
     }
 
+    .section-grey .problem-card {
+      background: rgb(255, 255, 255);
+    }
+
     .problem-card h2 {
       font-size: 32px;
-      font-weight: 700;
+      font-weight: 500;
       margin-bottom: 12px;
-      line-height: 1.3;
+      line-height: 1.2em;
+      color: rgb(4, 16, 45);
     }
 
     .problem-card .subtext {
       font-size: 18px;
-      color: rgb(111, 242, 193);
+      color: rgb(40, 123, 232);
       font-weight: 600;
       margin-bottom: 24px;
     }
 
     .problem-card p {
       font-size: 16px;
-      color: rgb(208, 209, 219);
-      line-height: 1.8;
+      color: rgba(76, 79, 86, 0.8);
+      line-height: 1.5em;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 48px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scroll-snap-type: x mandatory;
+      -ms-overflow-style: none;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(4, 16, 45, 0.1) transparent;
+    }
+
+    .testimonials-row::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .testimonials-row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .testimonials-row::-webkit-scrollbar-thumb {
+      background: rgba(4, 16, 45, 0.1);
+      border-radius: 2px;
+    }
+
+    .testimonial-card {
+      background: rgb(255, 255, 255);
+      border: 1px solid rgb(230, 235, 240);
+      border-radius: 20px;
+      padding: 36px 32px;
+      min-width: 360px;
+      max-width: 400px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-card .quote {
+      font-size: 15px;
+      color: rgba(76, 79, 86, 0.8);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-card .quote::before {
+      content: "\201C";
+      font-size: 28px;
+      color: rgb(40, 123, 232);
+      line-height: 0;
+      vertical-align: -8px;
+      margin-right: 4px;
+    }
+
+    .testimonial-author {
+      border-top: 1px solid rgb(230, 235, 240);
+      padding-top: 16px;
+    }
+
+    .testimonial-author .name {
+      font-size: 15px;
+      font-weight: 700;
+      color: rgb(4, 16, 45);
+    }
+
+    .testimonial-author .title {
+      font-size: 13px;
+      color: rgba(76, 79, 86, 0.6);
+      margin-top: 2px;
     }
 
     /* ===== TECH-FORWARD DEFINITION ===== */
@@ -336,24 +451,24 @@
 
     .definition-phonetic {
       font-size: 18px;
-      color: rgb(208, 209, 219);
+      color: rgba(76, 79, 86, 0.8);
       font-style: italic;
       margin-bottom: 8px;
     }
 
     .definition-type {
       font-size: 14px;
-      color: rgb(61, 61, 71);
+      color: rgba(76, 79, 86, 0.6);
       margin-bottom: 24px;
       font-style: italic;
     }
 
     .definition-body {
       font-size: 18px;
-      color: rgb(208, 209, 219);
+      color: rgba(76, 79, 86, 0.8);
       max-width: 700px;
       margin: 0 auto;
-      line-height: 1.8;
+      line-height: 1.4em;
     }
 
     /* ===== 8 STEPS ===== */
@@ -363,15 +478,15 @@
 
     .steps-body {
       font-size: 16px;
-      color: rgb(208, 209, 219);
+      color: rgba(76, 79, 86, 0.8);
       max-width: 700px;
-      margin: 0 auto 20px;
-      line-height: 1.8;
+      margin: 0 auto 24px;
+      line-height: 1.5em;
     }
 
     .steps-cta-text {
       font-size: 16px;
-      color: rgb(111, 242, 193);
+      color: rgb(40, 123, 232);
       font-weight: 600;
       margin-bottom: 28px;
     }
@@ -385,41 +500,41 @@
     }
 
     .result-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(230, 230, 230, 0.1);
+      background: rgb(255, 255, 255);
+      border: 1px solid rgb(230, 235, 240);
       border-radius: 20px;
       padding: 40px 32px;
       transition: border-color 0.3s, transform 0.3s;
     }
 
     .result-card:hover {
-      border-color: rgba(111, 242, 193, 0.3);
+      border-color: rgb(40, 123, 232);
       transform: translateY(-4px);
     }
 
     .result-card h3 {
       font-size: 20px;
-      font-weight: 700;
+      font-weight: 500;
       margin-bottom: 16px;
-      color: #fff;
+      color: rgb(4, 16, 45);
     }
 
     .result-card p {
       font-size: 15px;
-      color: rgb(208, 209, 219);
-      line-height: 1.7;
+      color: rgba(76, 79, 86, 0.8);
+      line-height: 1.5em;
     }
 
     .result-card .card-icon {
       width: 48px;
       height: 48px;
-      background: rgba(111, 242, 193, 0.1);
+      background: rgba(40, 123, 232, 0.08);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 24px;
-      color: rgb(111, 242, 193);
+      color: rgb(40, 123, 232);
     }
 
     .results-btn {
@@ -436,8 +551,8 @@
     }
 
     .service-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(230, 230, 230, 0.1);
+      background: rgb(255, 255, 255);
+      border: 1px solid rgb(230, 235, 240);
       border-radius: 20px;
       padding: 36px 32px;
       transition: border-color 0.3s;
@@ -446,19 +561,20 @@
     }
 
     .service-card:hover {
-      border-color: rgba(111, 242, 193, 0.25);
+      border-color: rgb(40, 123, 232);
     }
 
     .service-card h3 {
       font-size: 20px;
-      font-weight: 700;
+      font-weight: 500;
       margin-bottom: 12px;
+      color: rgb(4, 16, 45);
     }
 
     .service-card p {
       font-size: 15px;
-      color: rgb(208, 209, 219);
-      line-height: 1.7;
+      color: rgba(76, 79, 86, 0.8);
+      line-height: 1.5em;
       margin-bottom: 24px;
       flex: 1;
     }
@@ -466,7 +582,7 @@
     .service-card .card-cta {
       font-size: 14px;
       font-weight: 600;
-      color: rgb(111, 242, 193);
+      color: rgb(40, 123, 232);
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -496,15 +612,15 @@
     }
 
     .solution-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(230, 230, 230, 0.1);
+      background: rgb(255, 255, 255);
+      border: 1px solid rgb(230, 235, 240);
       border-radius: 20px;
       padding: 40px 32px;
       transition: border-color 0.3s, transform 0.3s;
     }
 
     .solution-card:hover {
-      border-color: rgba(111, 242, 193, 0.3);
+      border-color: rgb(40, 123, 232);
       transform: translateY(-4px);
     }
 
@@ -513,21 +629,22 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgb(111, 242, 193);
+      color: rgb(40, 123, 232);
       margin-bottom: 16px;
     }
 
     .solution-card h3 {
       font-size: 22px;
-      font-weight: 700;
-      line-height: 1.3;
+      font-weight: 500;
+      line-height: 1.2em;
       margin-bottom: 16px;
+      color: rgb(4, 16, 45);
     }
 
     .solution-card p {
       font-size: 15px;
-      color: rgb(208, 209, 219);
-      line-height: 1.7;
+      color: rgba(76, 79, 86, 0.8);
+      line-height: 1.5em;
     }
 
     /* ===== CASE STUDY THUMBNAILS ===== */
@@ -539,26 +656,26 @@
     }
 
     .case-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(230, 230, 230, 0.1);
+      background: rgb(255, 255, 255);
+      border: 1px solid rgb(230, 235, 240);
       border-radius: 20px;
       overflow: hidden;
       transition: border-color 0.3s, transform 0.3s;
     }
 
     .case-card:hover {
-      border-color: rgba(111, 242, 193, 0.3);
+      border-color: rgb(40, 123, 232);
       transform: translateY(-4px);
     }
 
     .case-card-thumb {
       width: 100%;
       aspect-ratio: 16/10;
-      background: linear-gradient(135deg, rgba(111, 242, 193, 0.08), rgba(40, 123, 232, 0.08));
+      background: linear-gradient(135deg, rgba(111, 242, 193, 0.15), rgba(40, 123, 232, 0.15));
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgb(61, 61, 71);
+      color: rgba(76, 79, 86, 0.5);
       font-size: 14px;
       font-weight: 500;
     }
@@ -570,7 +687,7 @@
     .case-card-body .case-tag {
       font-size: 12px;
       font-weight: 600;
-      color: rgb(111, 242, 193);
+      color: rgb(40, 123, 232);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 8px;
@@ -578,7 +695,8 @@
 
     .case-card-body h3 {
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 500;
+      color: rgb(4, 16, 45);
     }
 
     .case-btn {
@@ -586,80 +704,51 @@
       text-align: center;
     }
 
-    /* ===== TESTIMONIALS ===== */
-    .testimonials-row {
-      display: flex;
+    /* ===== BLOG ===== */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 48px;
-      overflow-x: auto;
-      padding-bottom: 16px;
-      scroll-snap-type: x mandatory;
-      -ms-overflow-style: none;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.1) transparent;
     }
 
-    .testimonials-row::-webkit-scrollbar {
-      height: 4px;
-    }
-
-    .testimonials-row::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .testimonials-row::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.1);
-      border-radius: 2px;
-    }
-
-    .testimonial-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(230, 230, 230, 0.1);
+    .blog-card {
+      background: rgb(255, 255, 255);
+      border: 1px solid rgb(230, 235, 240);
       border-radius: 20px;
-      padding: 36px 32px;
-      min-width: 360px;
-      max-width: 400px;
-      flex-shrink: 0;
-      scroll-snap-align: start;
-      display: flex;
-      flex-direction: column;
+      padding: 32px;
+      transition: border-color 0.3s, transform 0.3s;
     }
 
-    .testimonial-card .quote {
-      font-size: 15px;
-      color: rgb(208, 209, 219);
-      line-height: 1.75;
-      flex: 1;
-      margin-bottom: 24px;
+    .blog-card:hover {
+      border-color: rgb(40, 123, 232);
+      transform: translateY(-4px);
     }
 
-    .testimonial-card .quote::before {
-      content: "\201C";
-      font-size: 28px;
-      color: rgb(111, 242, 193);
-      line-height: 0;
-      vertical-align: -8px;
-      margin-right: 4px;
+    .blog-card .blog-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgb(209, 69, 139);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
     }
 
-    .testimonial-author {
-      border-top: 1px solid rgba(230, 230, 230, 0.1);
-      padding-top: 16px;
+    .blog-card h3 {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: rgb(4, 16, 45);
+      margin-bottom: 12px;
     }
 
-    .testimonial-author .name {
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
+    .blog-card p {
+      font-size: 14px;
+      color: rgba(76, 79, 86, 0.8);
+      line-height: 1.5em;
     }
 
-    .testimonial-author .title {
-      font-size: 13px;
-      color: rgb(61, 61, 71);
-      margin-top: 2px;
-    }
-
-    /* ===== CONTACT / CTA ===== */
+    /* ===== CONTACT ===== */
     .contact-section {
       text-align: center;
     }
@@ -669,8 +758,8 @@
       max-width: 720px;
       border-radius: 20px;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(230, 230, 230, 0.1);
+      background: rgb(255, 255, 255);
+      border: 1px solid rgb(230, 235, 240);
     }
 
     .typeform-wrapper iframe {
@@ -681,8 +770,8 @@
 
     /* ===== FOOTER ===== */
     .footer {
-      background: rgba(255, 255, 255, 0.02);
-      border-top: 1px solid rgba(230, 230, 230, 0.08);
+      background: rgb(4, 16, 45);
+      color: rgb(255, 255, 255);
       padding: 64px 0 40px;
     }
 
@@ -696,11 +785,12 @@
       font-size: 24px;
       font-weight: 800;
       margin-bottom: 12px;
+      color: rgb(255, 255, 255);
     }
 
     .footer-tagline {
       font-size: 14px;
-      color: rgb(61, 61, 71);
+      color: rgba(255, 255, 255, 0.5);
       line-height: 1.7;
     }
 
@@ -709,28 +799,28 @@
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: rgb(208, 209, 219);
+      color: rgba(255, 255, 255, 0.8);
       margin-bottom: 16px;
     }
 
     .footer-col a {
       display: block;
       font-size: 14px;
-      color: rgb(61, 61, 71);
+      color: rgba(255, 255, 255, 0.5);
       margin-bottom: 10px;
       transition: color 0.2s;
     }
 
     .footer-col a:hover {
-      color: rgb(208, 209, 219);
+      color: rgb(255, 255, 255);
     }
 
     .footer-bottom {
       margin-top: 48px;
       padding-top: 24px;
-      border-top: 1px solid rgba(230, 230, 230, 0.06);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       font-size: 13px;
-      color: rgb(61, 61, 71);
+      color: rgba(255, 255, 255, 0.4);
     }
 
     /* ===== RESPONSIVE ===== */
@@ -763,13 +853,22 @@
         padding: 72px 0 60px;
       }
 
+      .hero-video video {
+        height: 400px;
+      }
+
+      .section {
+        padding: 80px 24px;
+      }
+
       .section-heading {
-        font-size: 32px;
+        font-size: 36px;
       }
 
       .results-grid,
       .solutions-grid,
-      .case-grid {
+      .case-grid,
+      .blog-grid {
         grid-template-columns: 1fr;
       }
 
@@ -806,7 +905,10 @@
 
       .hero h1 {
         font-size: 40px;
-        letter-spacing: -1px;
+      }
+
+      .hero-eyebrow {
+        font-size: 18px;
       }
 
       .hero {
@@ -814,11 +916,15 @@
       }
 
       .hero-sub {
-        font-size: 15px;
+        font-size: 16px;
+      }
+
+      .hero-video video {
+        height: 280px;
       }
 
       .section {
-        padding: 72px 0;
+        padding: 64px 16px;
       }
 
       .section-heading {
@@ -840,7 +946,8 @@
 
       .result-card,
       .service-card,
-      .solution-card {
+      .solution-card,
+      .blog-card {
         padding: 28px 20px;
       }
     }
@@ -874,25 +981,24 @@
     <a href="#contact" class="btn-mint" onclick="(function(){var h=document.querySelector('.hamburger'),m=document.querySelector('.mobile-menu'),b=document.body;var s=parseInt(b.style.top||'0',10);b.classList.remove('menu-open');b.style.top='';window.scrollTo(0,-s);h.classList.remove('active');m.classList.remove('open');})()">Schedule A Consultation</a>
   </div>
 
-  <!-- ===== HERO ===== -->
+  <!-- ===== 1. HERO ===== -->
   <section class="hero">
     <div class="container">
       <span class="hero-eyebrow">Be Tech-Forward</span>
       <h1>8x IMPACT</h1>
       <p class="hero-sub">Stop overthinking AI&mdash;Start implementing your AI Programs</p>
       <a href="#contact" class="btn-mint">Schedule A Consultation &rarr;</a>
-      <div class="hero-video-placeholder">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2"/>
-          <polygon points="26,20 26,44 46,32" fill="currentColor"/>
-        </svg>
+      <div class="hero-video">
+        <video autoplay muted loop playsinline>
+          <source src="https://framerusercontent.com/assets/MLWPbW1dUQawJLhhun3dBwpgJak.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </section>
 
-  <!-- ===== PROBLEM / FAQ ===== -->
-  <section class="section">
-    <div class="container">
+  <!-- ===== 2. ABOUT / PROBLEM ===== -->
+  <section class="section section-grey" id="about">
+    <div class="section-inner">
       <div class="problem-card">
         <h2>Why do I need an AI Program?</h2>
         <div class="subtext">Ad-hoc usage of AI is limiting you to minimal gains</div>
@@ -901,9 +1007,55 @@
     </div>
   </section>
 
-  <!-- ===== TECH-FORWARD DEFINITION ===== -->
-  <section class="section definition-section" id="about">
-    <div class="container">
+  <!-- ===== 3. TESTIMONIALS ===== -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center">
+        <h2 class="section-heading">What Our Clients Say</h2>
+      </div>
+      <div class="testimonials-row">
+        <div class="testimonial-card">
+          <div class="quote">Love the new look and branding. The website looks so good. I'm deeply grateful. The brand interview really made me think about our positioning and business in ways I never expected.</div>
+          <div class="testimonial-author">
+            <div class="name">Dao Nguyen</div>
+            <div class="title">Founder, DN Legal</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved. We are looking forward to collaborating with the AI Officer Institute and Edge8 to bring their AI Certification Program to Malaysia and have signed an MOU to broaden the reach of our organization.</div>
+          <div class="testimonial-author">
+            <div class="name">Dato George Lim</div>
+            <div class="title">Founder and CEO, G&amp;A GROUP</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">I am very grateful to Dave Hajdu, who spoke to graduate students in our international business and public policy program during our visit to Vietnam about Negotiations and AI. He was extremely knowledgeable and engaging. Real-world experiences complemented our class discussions perfectly.</div>
+          <div class="testimonial-author">
+            <div class="name">Dr. Brooks Holtom</div>
+            <div class="title">Professor of Management, Georgetown</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">Working with Edge8 has been a pleasure. When I launched Fab Four Academy, I needed support to build a strong brand and digital presence. Dave and the team at Edge8 stepped in and not only helped with the branding and digital presence, but showed us how to leverage AI to streamline our processes.</div>
+          <div class="testimonial-author">
+            <div class="name">Dan Absher</div>
+            <div class="title">CEO, Absher Construction</div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications. He was able to greatly expand our general knowledge of AI and demystify the challenges of implementation.</div>
+          <div class="testimonial-author">
+            <div class="name">John VanNewkirk</div>
+            <div class="title">YPO Gold Seattle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. TECH-FORWARD DEFINITION ===== -->
+  <section class="section section-grey definition-section">
+    <div class="section-inner">
       <h2 class="section-heading">What does it mean to be Tech-Forward?</h2>
       <p class="definition-phonetic">Tech-Forward /&#x2C8;t&#x25B;k &#x2C8;f&#x254;rw&#x259;rd/</p>
       <p class="definition-type">(adjective)</p>
@@ -911,9 +1063,9 @@
     </div>
   </section>
 
-  <!-- ===== 8 STEPS ===== -->
+  <!-- ===== 5. 8 STEPS ===== -->
   <section class="section steps-section">
-    <div class="container">
+    <div class="section-inner">
       <h2 class="section-heading">8 Steps to Becoming Tech-Forward</h2>
       <p class="steps-body">Orchestrate AI Resources for Maximum Impact, and you will unlock new levels of efficiency, automation, and decision-making in your business. Follow these steps to build a truly Tech-Forward organization and achieve 8x efficiency.</p>
       <p class="steps-cta-text">Book your free consultation today and take the first step toward an AI-driven future</p>
@@ -921,9 +1073,20 @@
     </div>
   </section>
 
-  <!-- ===== CASE STUDIES / RESULTS ===== -->
+  <!-- ===== 6. CTA — BLUE SECTION ===== -->
+  <section class="section section-blue text-center">
+    <div class="section-inner">
+      <h2 class="section-heading">Book Your Free Consultation</h2>
+      <p class="section-sub centered" style="color: rgba(255,255,255,0.85);">Take the first step toward becoming Tech-Forward. Our experts will help you identify the right AI Programs for your organization and map a clear path to 8x impact.</p>
+      <div style="margin-top: 40px;">
+        <a href="#contact" class="btn-mint">Schedule A Consultation &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. CASE STUDIES / RESULTS ===== -->
   <section class="section">
-    <div class="container text-center">
+    <div class="section-inner text-center">
       <h2 class="section-heading">Real Results for Real Businesses</h2>
       <p class="section-sub centered">Discover how Edge8 helps companies Be Tech-Forward, delivering results through Global Talent Staffing, AI Programs and AI Officer Leadership.</p>
       <div class="results-grid">
@@ -955,9 +1118,9 @@
     </div>
   </section>
 
-  <!-- ===== SERVICES / AI SOLUTIONS ===== -->
-  <section class="section" id="services">
-    <div class="container">
+  <!-- ===== 8. SERVICES / AI AUTOMATION ===== -->
+  <section class="section section-grey" id="services">
+    <div class="section-inner">
       <div class="text-center">
         <h2 class="section-heading">AI Automation Designed to Elevate Your Business</h2>
         <p class="section-sub centered">Edge8 enables organizations to leverage AI automation and AI integration for enhanced productivity and efficiency.</p>
@@ -1005,9 +1168,9 @@
     </div>
   </section>
 
-  <!-- ===== SOLUTIONS (3 CARDS) ===== -->
+  <!-- ===== 9. SOLUTIONS (3 CARDS) ===== -->
   <section class="section">
-    <div class="container text-center">
+    <div class="section-inner text-center">
       <h2 class="section-heading">Our Solutions</h2>
       <div class="solutions-grid">
         <div class="solution-card">
@@ -1029,9 +1192,9 @@
     </div>
   </section>
 
-  <!-- ===== CASE STUDY THUMBNAILS ===== -->
-  <section class="section" id="case-studies">
-    <div class="container text-center">
+  <!-- ===== 10. CASE STUDY THUMBNAILS ===== -->
+  <section class="section section-grey" id="case-studies">
+    <div class="section-inner text-center">
       <h2 class="section-heading">The Path to Tech-Forward</h2>
       <p class="section-sub centered">A few examples of successful AI-Driven Programs</p>
       <div class="case-grid">
@@ -1063,55 +1226,34 @@
     </div>
   </section>
 
-  <!-- ===== TESTIMONIALS ===== -->
+  <!-- ===== 11. BLOG ===== -->
   <section class="section">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="section-heading">What Our Clients Say</h2>
-      </div>
-      <div class="testimonials-row">
-        <div class="testimonial-card">
-          <div class="quote">Love the new look and branding. The website looks so good. I'm deeply grateful. The brand interview really made me think about our positioning and business in ways I never expected.</div>
-          <div class="testimonial-author">
-            <div class="name">Dao Nguyen</div>
-            <div class="title">Founder, DN Legal</div>
-          </div>
+    <div class="section-inner text-center">
+      <h2 class="section-heading">Discover the Latest Insights</h2>
+      <p class="section-sub centered">Stay up to date with the latest in AI Programs, Tech-Forward leadership, and digital transformation.</p>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-tag">AI Programs</div>
+          <h3>Why Every Business Needs an AI Program in 2025</h3>
+          <p>Learn how structured AI Programs are replacing ad-hoc AI usage and delivering measurable ROI across industries.</p>
         </div>
-        <div class="testimonial-card">
-          <div class="quote">I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved. We are looking forward to collaborating with the AI Officer Institute and Edge8 to bring their AI Certification Program to Malaysia and have signed an MOU to broaden the reach of our organization.</div>
-          <div class="testimonial-author">
-            <div class="name">Dato George Lim</div>
-            <div class="title">Founder and CEO, G&amp;A GROUP</div>
-          </div>
+        <div class="blog-card">
+          <div class="blog-tag">Leadership</div>
+          <h3>The Rise of the AI Officer</h3>
+          <p>How forward-thinking organizations are appointing AI Officers to lead their digital transformation initiatives.</p>
         </div>
-        <div class="testimonial-card">
-          <div class="quote">I am very grateful to Dave Hajdu, who spoke to graduate students in our international business and public policy program during our visit to Vietnam about Negotiations and AI. He was extremely knowledgeable and engaging. Real-world experiences complemented our class discussions perfectly.</div>
-          <div class="testimonial-author">
-            <div class="name">Dr. Brooks Holtom</div>
-            <div class="title">Professor of Management, Georgetown</div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="quote">Working with Edge8 has been a pleasure. When I launched Fab Four Academy, I needed support to build a strong brand and digital presence. Dave and the team at Edge8 stepped in and not only helped with the branding and digital presence, but showed us how to leverage AI to streamline our processes.</div>
-          <div class="testimonial-author">
-            <div class="name">Dan Absher</div>
-            <div class="title">CEO, Absher Construction</div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="quote">We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications. He was able to greatly expand our general knowledge of AI and demystify the challenges of implementation.</div>
-          <div class="testimonial-author">
-            <div class="name">John VanNewkirk</div>
-            <div class="title">YPO Gold Seattle</div>
-          </div>
+        <div class="blog-card">
+          <div class="blog-tag">Case Study</div>
+          <h3>From Manual to Automated: A VC Firm's AI Journey</h3>
+          <p>How we eliminated 100% of data entry tasks and enhanced deal flow analysis for a leading Venture Capital firm.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTACT / CTA ===== -->
-  <section class="section contact-section" id="contact">
-    <div class="container">
+  <!-- ===== 12. CONTACT ===== -->
+  <section class="section section-grey contact-section" id="contact">
+    <div class="section-inner">
       <h2 class="section-heading">Let&rsquo;s Be Tech-Forward Together</h2>
       <p class="section-sub centered">Connect with Edge8&rsquo;s experts to explore AI Programs for your organization</p>
       <div class="typeform-wrapper">
@@ -1120,7 +1262,7 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ===== 13. FOOTER ===== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
