@@ -1,0 +1,74 @@
+'use client';
+
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
+
+export default function Nav() {
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  function toggleMenu() {
+    const h = hamburgerRef.current;
+    const m = mobileMenuRef.current;
+    const b = document.body;
+    if (!h || !m) return;
+
+    if (b.classList.contains('menu-open')) {
+      const scrollY = parseInt(b.style.top || '0', 10);
+      b.classList.remove('menu-open');
+      b.style.top = '';
+      window.scrollTo(0, -scrollY);
+    } else {
+      b.style.top = `-${window.scrollY}px`;
+      b.classList.add('menu-open');
+    }
+    h.classList.toggle('active');
+    m.classList.toggle('open');
+  }
+
+  function closeMenu() {
+    const h = hamburgerRef.current;
+    const m = mobileMenuRef.current;
+    const b = document.body;
+    if (!h || !m) return;
+    const scrollY = parseInt(b.style.top || '0', 10);
+    b.classList.remove('menu-open');
+    b.style.top = '';
+    window.scrollTo(0, -scrollY);
+    h.classList.remove('active');
+    m.classList.remove('open');
+  }
+
+  // Close menu on route change
+  useEffect(() => {
+    return () => closeMenu();
+  }, []);
+
+  return (
+    <>
+      <nav className="nav">
+        <div className="nav-inner">
+          <Link href="/" className="nav-logo">Edge8</Link>
+          <div className="nav-links">
+            <Link href="/#services">Services</Link>
+            <Link href="/#about">About</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/#contact">Contact</Link>
+            <Link href="/#contact" className="btn-mint">Schedule A Consultation</Link>
+          </div>
+          <button ref={hamburgerRef} className="hamburger" onClick={toggleMenu} aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+
+      <div ref={mobileMenuRef} className="mobile-menu">
+        <Link href="/#services" onClick={closeMenu}>Services</Link>
+        <Link href="/#about" onClick={closeMenu}>About</Link>
+        <Link href="/blog" onClick={closeMenu}>Blog</Link>
+        <Link href="/#contact" onClick={closeMenu}>Contact</Link>
+        <Link href="/#contact" className="btn-mint" onClick={closeMenu}>Schedule A Consultation</Link>
+      </div>
+    </>
+  );
+}
