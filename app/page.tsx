@@ -4,6 +4,8 @@ import Image from 'next/image';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import ScrollReveal from '@/components/ScrollReveal';
 import Steps8 from '@/components/Steps8';
+import StickyCTA from '@/components/StickyCTA';
+import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Edge8 — Be Tech-Forward | AI Programs & Consulting',
@@ -37,28 +39,42 @@ const caseStudies = [
   {
     name: 'PHO24',
     tag: 'AI Agents',
+    industry: 'F&B / Franchise',
     image: '/images/case-studies/pho24.jpg',
     result: 'Deployed AI agents across 20+ franchise locations for operations management',
+    metric: '20+ locations automated',
   },
   {
     name: 'InvestMigrate',
     tag: 'AI Program',
+    industry: 'Investment / FinTech',
     image: '/images/case-studies/investmigrate.avif',
     result: 'Eliminated manual data entry and accelerated investor onboarding by 3×',
+    metric: '3× faster onboarding',
   },
   {
     name: 'Vespa Adventures',
     tag: 'AI Program',
+    industry: 'Travel & Hospitality',
     image: '/images/case-studies/vespa.jpg',
     result: 'Automated 80% of customer communications and itinerary workflows',
+    metric: '80% comms automated',
   },
 ];
 
 export default function HomePage() {
   return (
     <>
+      <StickyCTA />
       {/* 1. HERO */}
       <section className="hero">
+        {/* Full-bleed video background */}
+        <div className="hero-video-bg" aria-hidden="true">
+          <video autoPlay muted loop playsInline>
+            <source src="/images/edge8-hero.mp4" type="video/mp4" />
+          </video>
+          <div className="hero-video-overlay" />
+        </div>
         <div className="hero-bg-orb orb-1" aria-hidden="true" />
         <div className="hero-bg-orb orb-2" aria-hidden="true" />
         <div className="container">
@@ -69,21 +85,22 @@ export default function HomePage() {
               <p className="hero-sub">Stop overthinking AI&mdash;Start implementing your AI Programs</p>
               <div className="hero-ctas">
                 <Link href="#contact" className="btn-mint">Schedule A Consultation &rarr;</Link>
-                <Link href="#services" className="btn-outline">Our Solutions</Link>
+                <Link href="#services" className="btn-outline-white">Our Solutions</Link>
               </div>
             </ScrollReveal>
-            <div className="hero-video-wrap">
-              <video autoPlay muted loop playsInline className="hero-video">
-                <source src="/images/edge8-hero.mp4" type="video/mp4" />
-              </video>
-              <div className="hero-video-badge">
-                <span className="badge-num">8x</span>
-                <span className="badge-text">Efficiency Gain</span>
-              </div>
-            </div>
           </div>
         </div>
+        <div className="hero-video-badge">
+          <span className="badge-num">8x</span>
+          <span className="badge-text">Efficiency Gain</span>
+        </div>
       </section>
+      {/* Divider: hero dark → logo strip light */}
+      <div style={{ background: 'rgb(4,16,45)', lineHeight: 0, fontSize: 0 }} aria-hidden="true">
+        <svg viewBox="0 0 1440 52" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: '52px' }}>
+          <polygon points="1440,0 0,52 1440,52" fill="rgb(248,250,252)" />
+        </svg>
+      </div>
 
       {/* 2. LOGO STRIP */}
       <section className="logo-strip-section">
@@ -100,17 +117,51 @@ export default function HomePage() {
       </section>
 
       {/* 3. PROBLEM */}
-      <section className="section section-grey" id="about">
+      <section className="section section-navy" id="about">
         <div className="section-inner">
-          <ScrollReveal direction="up">
-            <div className="problem-card">
-              <h2>Why do I need an AI Program?</h2>
-              <div className="subtext">Ad-hoc usage of AI is limiting you to minimal gains</div>
-              <p>Lack of focus traps your business in mediocrity&mdash;keeping you stuck in repetitive tasks, wasted resources, and missed opportunities. Without a structured AI Program, competitors will outpace you, innovation stalls, costs balloon, and growth suffers.</p>
-            </div>
-          </ScrollReveal>
+          <div className="problem-2col">
+            <ScrollReveal direction="left">
+              <div>
+                <div className="problem-label">Why AI Program?</div>
+                <h2>Why do I need an AI Program?</h2>
+                <p className="problem-subtext">Ad-hoc AI is keeping you stuck at minimal gains</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="right">
+              <div>
+                <p className="problem-body-text">Lack of focus traps your business in mediocrity&mdash;keeping you stuck in repetitive tasks, wasted resources, and missed opportunities.</p>
+                <ul className="problem-bullets">
+                  <li>
+                    <span className="problem-bullet-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    Competitors outpace you while you overthink AI
+                  </li>
+                  <li>
+                    <span className="problem-bullet-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    Innovation stalls without a structured program
+                  </li>
+                  <li>
+                    <span className="problem-bullet-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    Costs balloon and growth suffers from missed AI opportunities
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
+
+      {/* Divider: problem dark → testimonials white */}
+      <div style={{ background: 'rgb(4,16,45)', lineHeight: 0, fontSize: 0 }} aria-hidden="true">
+        <svg viewBox="0 0 1440 52" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: '52px' }}>
+          <polygon points="0,0 1440,52 0,52" fill="rgb(255,255,255)" />
+        </svg>
+      </div>
 
       {/* 4. TESTIMONIALS */}
       <section className="section testimonials-section">
@@ -119,6 +170,20 @@ export default function HomePage() {
             <div className="text-center" style={{ marginBottom: '48px' }}>
               <div className="section-label">Client Stories</div>
               <h2 className="section-heading">What Our Clients Say</h2>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal direction="up">
+            <div className="tc-featured">
+              <div className="tc-quote">&ldquo;Working with Edge8 has been a pleasure. When I launched Fab Four Academy, I needed support to build a strong brand and digital presence. Dave and the team at Edge8 stepped in and not only helped with the branding and digital presence, but showed us how to leverage AI to streamline our processes. With the help of Edge8 we have scaled from single posts to a full content engine while keeping true to our vision and voice. I am thrilled with the help they have provided.&rdquo;</div>
+              <div className="tc-author">
+                <div className="tc-avatar">
+                  <Image src="/images/testimonials/dan-absher.jpg" alt="Dan Absher" width={56} height={56} className="tc-avatar-img" />
+                </div>
+                <div>
+                  <div className="tc-name">Dan Absher</div>
+                  <div className="tc-title">CEO, Absher Construction Company</div>
+                </div>
+              </div>
             </div>
           </ScrollReveal>
           <TestimonialsCarousel />
@@ -138,69 +203,71 @@ export default function HomePage() {
       </section>
 
       {/* 6. 8 STEPS */}
-      <section className="section steps-section" id="steps">
-        <div className="section-inner">
-          <ScrollReveal direction="up">
-            <div className="text-center">
-              <div className="section-label">The Roadmap</div>
-              <h2 className="section-heading">8 Steps to Becoming Tech-Forward</h2>
-              <p className="steps-body">Orchestrate AI Resources for Maximum Impact, and you will unlock new levels of efficiency, automation, and decision-making in your business. Follow these steps to build a truly Tech-Forward organization and achieve 8x efficiency.</p>
-            </div>
-          </ScrollReveal>
-
-          <Steps8 />
+      <section className="steps-section-wrapper" id="steps">
+        {/* Sticky header stays pinned at top while container scrolls */}
+        <div className="steps-section-header">
+          <div className="section-label">The Roadmap</div>
+          <h2 className="section-heading">8 Steps to Becoming Tech-Forward</h2>
+          <p className="steps-body">Orchestrate AI Resources for Maximum Impact, and you will unlock new levels of efficiency, automation, and decision-making in your business.</p>
         </div>
+        <Steps8 />
+      </section>
+
+      {/* MID CTA - After Steps */}
+      <section className="mid-cta-banner">
+        <ScrollReveal direction="up">
+          <h3>Ready to start your AI journey?</h3>
+          <p>Book a free strategy call and get your personalized AI roadmap in 30 minutes.</p>
+          <Link href="#contact" className="btn-white">Book Free Strategy Call &rarr;</Link>
+        </ScrollReveal>
       </section>
 
       {/* 7. RESULTS */}
-      <section className="section">
-        <div className="section-inner text-center">
-          <ScrollReveal direction="up">
-            <div className="section-label">Proven Results</div>
-            <h2 className="section-heading">Real Results for Real Businesses</h2>
-            <p className="section-sub centered">Discover how Edge8 helps companies Be Tech-Forward, delivering results through Global Talent Staffing, AI Programs and AI Officer Leadership.</p>
-          </ScrollReveal>
-          <div className="results-grid">
-            {[
-              {
-                icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
-                stat: 'x2',
-                title: 'AI Officer Leadership',
-                desc: 'Established the leadership needed to effectively run an AI Program within 10+ organizations',
-              },
-              {
-                icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
-                stat: 'x5',
-                title: 'Global Talent Staffing',
-                desc: 'Helping a leading healthcare provider build a tech-forward team, doubling productivity while cutting costs dramatically.',
-              },
-              {
-                icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
-                stat: 'x8',
-                title: 'AI Programs',
-                desc: 'Eliminated 100% of data entry tasks, enriched entrepreneur submissions, and enhanced deal flow analysis for a Venture Capital firm.',
-              },
-            ].map((r, i) => (
-              <ScrollReveal key={r.title} direction="up" delay={i * 80}>
-                <div className="result-card">
-                  <div className="result-stat">{r.stat}</div>
-                  <div className="card-icon">{r.icon}</div>
-                  <h3>{r.title}</h3>
-                  <p>{r.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal direction="up" delay={200}>
-            <div className="results-btn">
-              <Link href="#case-studies" className="btn-outline">View Our Success Case Studies &rarr;</Link>
+      <section className="section section-navy">
+        <div className="section-inner">
+          <div className="results-2col">
+            {/* Left: info */}
+            <ScrollReveal direction="left">
+              <div className="results-left">
+                <div className="section-label">Proven Results</div>
+                <h2 className="section-heading">Real Results for Real Businesses</h2>
+                <p className="section-sub" style={{ marginBottom: '36px' }}>
+                  Discover how Edge8 helps companies Be Tech-Forward, delivering results through Global Talent Staffing, AI Programs and AI Officer Leadership.
+                </p>
+                <Link href="#case-studies" className="btn-mint">View Case Studies &rarr;</Link>
+              </div>
+            </ScrollReveal>
+            {/* Right: vertical stat cards */}
+            <div className="results-right">
+              {[
+                { stat: 'x2', color: 'result-blue', microcopy: 'for 10+ organizations',       title: 'AI Officer Leadership',  desc: 'Established the leadership needed to effectively run an AI Program within 10+ organizations' },
+                { stat: 'x5', color: 'result-rose', microcopy: 'productivity gain in 90 days', title: 'Global Talent Staffing', desc: 'Helping a leading healthcare provider build a tech-forward team, doubling productivity while cutting costs dramatically.' },
+                { stat: 'x8', color: 'result-mint', microcopy: 'efficiency for SME clients',   title: 'AI Programs',           desc: 'Eliminated 100% of data entry tasks, enriched entrepreneur submissions, and enhanced deal flow analysis for a Venture Capital firm.' },
+              ].map((r, i) => (
+                <ScrollReveal key={r.title} direction="right" delay={i * 100}>
+                  <div className={`result-card-row ${r.color}`}>
+                    <div className="result-stat-col">
+                      <div className="result-stat">{r.stat}</div>
+                      <span className="result-microcopy">{r.microcopy}</span>
+                    </div>
+                    <div className="result-card-row-body">
+                      <h3>{r.title}</h3>
+                      <p>{r.desc}</p>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
       {/* 8. AI-POWERED SOLUTIONS (6-card) */}
       <section className="section ai-solutions-section" id="services">
+        <div className="ai-solutions-img-bg" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/ai-workplace.jpg" alt="" />
+        </div>
         <div className="section-inner text-center">
           <ScrollReveal direction="up">
             <div className="section-label">What We Do</div>
@@ -230,7 +297,7 @@ export default function HomePage() {
       </section>
 
       {/* 9. SOLUTIONS (3-column) */}
-      <section className="section section-grey">
+      <section className="section solutions-section-dark">
         <div className="section-inner text-center">
           <ScrollReveal direction="up">
             <h2 className="section-heading">Solutions</h2>
@@ -242,19 +309,28 @@ export default function HomePage() {
                 label: 'AI Programs',
                 title: 'From Strategy to Implementation—We Build not Pitch',
                 desc: "We don't just talk AI—we build with it. From CRM flows to marketing automation, our AI solutions power content creation, sales engagement, and customer journeys. You bring the ideas. We build the systems.",
+                forWho: 'Business owners, operations leaders, and growth teams',
+                outcome: 'End-to-end AI program running in 90 days',
                 image: '/images/solutions/ai-programs.jpg',
+                href: '/services/your-first-ai-hire',
               },
               {
                 label: 'Global Talent Network',
                 title: 'Scale Smarter with AI-Empowered Teams',
                 desc: "Access Vietnam's top AI-trained professionals to accelerate your initiatives—without compromising on quality or speed. We embed engineers, analysts, and operators directly into your team to turn workflows into intelligent systems.",
+                forWho: 'Companies ready to scale without inflating local headcount',
+                outcome: 'Qualified AI-empowered talent placed within 30 days',
                 image: '/images/solutions/global-talent.jpg',
+                href: '/services/global-staffing',
               },
               {
                 label: 'AI Officer Certification & Workshops',
                 title: 'Make Your Team AI-Literate and Leadership-Ready',
                 desc: 'We equip founders and teams to lead with confidence. Through our AI Officer certification and hands-on workshops, your organization will gain the frameworks, tools, and language to scale with AI—internally and externally.',
+                forWho: 'Founders, department heads, and leadership teams',
+                outcome: 'Certified AI Officer leading your program internally',
                 image: '/images/solutions/ai-certification.jpg',
+                href: '/services/training-certification',
               },
             ].map((s, i) => (
               <ScrollReveal key={s.label} direction="up" delay={i * 80}>
@@ -265,13 +341,30 @@ export default function HomePage() {
                   <div className="sol-label">{s.label}</div>
                   <h3>{s.title}</h3>
                   <p>{s.desc}</p>
+                  <div className="sol-meta">
+                    <div className="sol-meta-row">
+                      <span className="sol-meta-label">Who it&rsquo;s for</span>
+                      <span className="sol-meta-value">{s.forWho}</span>
+                    </div>
+                    <div className="sol-outcome-row">{s.outcome}</div>
+                  </div>
+                  <div className="sol-actions">
+                    <Link href="#contact" className="btn-mint" style={{ fontSize: '13px', padding: '10px 18px' }}>Schedule a Consultation</Link>
+                    <Link href={s.href} className="btn-outline" style={{ fontSize: '13px', padding: '10px 18px' }}>Learn More</Link>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
           </div>
-          <ScrollReveal direction="up" delay={200}>
-            <div className="results-btn">
-              <Link href="/services" className="btn-outline">Explore All Services &rarr;</Link>
+          <ScrollReveal direction="up" delay={220}>
+            <div style={{ textAlign: 'center', marginTop: '56px' }}>
+              <div className="solutions-bottom-cta" style={{ marginBottom: 0 }}>
+                <Link href="https://www.ai-officer.com/ai-in-business-events" target="_blank" className="btn-mint">Join a Workshop &rarr;</Link>
+                <Link href="/services/ai-capabilities-audit" className="btn-outline-white">Get Your Audit &rarr;</Link>
+              </div>
+              <Link href="/services" className="solutions-explore-link">
+                Explore All Services &rarr;
+              </Link>
             </div>
           </ScrollReveal>
         </div>
@@ -301,9 +394,13 @@ export default function HomePage() {
                     <div className="case-card-overlay" />
                   </div>
                   <div className="case-card-body">
-                    <div className="case-tag">{c.tag}</div>
+                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '8px' }}>
+                      <div className="case-tag">{c.tag}</div>
+                      <div className="case-industry">{c.industry}</div>
+                    </div>
                     <h3>{c.name}</h3>
                     <p className="case-result">{c.result}</p>
+                    <div className="case-metric">{c.metric}</div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -325,38 +422,47 @@ export default function HomePage() {
             <h2 className="section-heading">AI Is Driving Rapid Change Across The World</h2>
             <p className="section-sub centered">Discover the latest insights on Global Talent, Artificial Intelligence Trends, and AI Agents</p>
           </ScrollReveal>
-          <div className="blog-grid">
-            {[
-              { tag: 'AI in Business', slug: 'your-next-ai-hire', image: '/images/blog-ai-hire.jpg', title: "Your Next AI Hire Isn't a Person", desc: "Most companies don't fail at AI because of the tech. They fail because no one owns it. AI agents need managers, engineers, and real teams, just like people." },
-              { tag: 'AI in Business', slug: '2026-ai-trends', image: '/images/blog-ai-trends.jpg', title: '2026 AI Trends: 5 Game-Changing Shifts That Will Define Business Success', desc: 'Explore the five 2026 AI trends transforming business—from AI leadership to data discipline—and see why the winners will be defined by their data, not tools.' },
-              { tag: 'Technology', slug: null, image: '/images/blog-posts/meta-ray-ban.png', title: 'Why Smart Founders Are Already Planning for Meta Ray-Ban Glasses (Even When Demos Fail)', desc: 'Meta Ray-Ban glasses demos fail constantly, but smart founders plan ahead anyway. Technology always catches up—the question is whether you\'re truly ready when it does.' },
-            ].map((b, i) => (
-              <ScrollReveal key={b.title} direction="up" delay={i * 80}>
-                {b.slug ? (
-                  <Link href={`/blog/${b.slug}`} className="blog-card blog-card-linked">
-                    <div className="blog-card-img-wrap">
-                      <Image src={b.image} alt={b.title} width={400} height={220} className="blog-card-top-img" />
-                    </div>
-                    <div className="blog-card-inner">
-                      <div className="blog-tag">{b.tag}</div>
-                      <h3>{b.title}</h3>
-                      <p>{b.desc}</p>
-                    </div>
-                  </Link>
-                ) : (
-                  <div className="blog-card">
-                    <div className="blog-card-img-wrap">
-                      <Image src={b.image} alt={b.title} width={400} height={220} className="blog-card-top-img" />
-                    </div>
-                    <div className="blog-card-inner">
-                      <div className="blog-tag">{b.tag}</div>
-                      <h3>{b.title}</h3>
-                      <p>{b.desc}</p>
-                    </div>
+          <div className="blog-grid-hero">
+            {/* Featured post */}
+            <ScrollReveal direction="left">
+              <Link href="/blog/your-next-ai-hire" className="blog-featured">
+                <div className="blog-featured-img-wrap">
+                  <Image src="/images/blog-ai-hire.jpg" alt="Your Next AI Hire Isn't a Person" width={600} height={450} className="blog-featured-img" />
+                </div>
+                <div className="blog-featured-body">
+                  <div className="blog-tag">AI in Business</div>
+                  <h3>Your Next AI Hire Isn&apos;t a Person</h3>
+                  <p>Most companies don&apos;t fail at AI because of the tech. They fail because no one owns it. AI agents need managers, engineers, and real teams, just like people.</p>
+                </div>
+              </Link>
+            </ScrollReveal>
+            {/* Stacked posts */}
+            <div className="blog-stack">
+              <ScrollReveal direction="right" delay={80}>
+                <Link href="/blog/2026-ai-trends" className="blog-stack-card">
+                  <div className="blog-stack-img-wrap">
+                    <Image src="/images/blog-ai-trends.jpg" alt="2026 AI Trends" width={130} height={130} className="blog-stack-img" />
                   </div>
-                )}
+                  <div className="blog-stack-body">
+                    <div className="blog-tag">AI in Business</div>
+                    <h3>2026 AI Trends: 5 Game-Changing Shifts That Will Define Business Success</h3>
+                    <p>Explore the five 2026 AI trends transforming business—from AI leadership to data discipline.</p>
+                  </div>
+                </Link>
               </ScrollReveal>
-            ))}
+              <ScrollReveal direction="right" delay={160}>
+                <div className="blog-stack-card">
+                  <div className="blog-stack-img-wrap">
+                    <Image src="/images/blog-posts/meta-ray-ban.png" alt="Meta Ray-Ban Glasses" width={130} height={130} className="blog-stack-img" />
+                  </div>
+                  <div className="blog-stack-body">
+                    <div className="blog-tag">Technology</div>
+                    <h3>Why Smart Founders Are Already Planning for Meta Ray-Ban Glasses</h3>
+                    <p>Technology always catches up—the question is whether you&apos;re ready when it does.</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
           <ScrollReveal direction="up" delay={200}>
             <div style={{ marginTop: '48px' }}>
@@ -368,24 +474,29 @@ export default function HomePage() {
 
       {/* 12. AI AUTOMATION REVIEW CTA */}
       <section className="ai-review-section">
-        <ScrollReveal direction="up">
-          <h2>Ready to transform your business with AI automation?</h2>
-          <p className="ai-review-sub">Schedule a Free AI Automation Review</p>
-          <p>Schedule a free, no-obligation process review with our AI experts. We&rsquo;ll analyze your current AI-powered workflows, showcase AI agents&rsquo; capabilities, and show you how our solutions can enhance efficiency, optimize operations, and drive business growth.</p>
-          <Link href="/services/ai-capabilities-audit" className="btn-mint">Book Your AI Capabilities Audit &rarr;</Link>
-        </ScrollReveal>
+        <div className="ai-review-2col">
+          <div className="ai-review-content">
+            <ScrollReveal direction="left">
+              <h2>Ready to transform your business with AI automation?</h2>
+              <p className="ai-review-sub">Schedule a Free AI Automation Review</p>
+              <p>Schedule a free, no-obligation process review with our AI experts. We&rsquo;ll analyze your current AI-powered workflows, showcase AI agents&rsquo; capabilities, and show you how our solutions can enhance efficiency, optimize operations, and drive business growth.</p>
+              <Link href="/services/ai-capabilities-audit" className="btn-mint">Book Your AI Capabilities Audit &rarr;</Link>
+            </ScrollReveal>
+          </div>
+          <div className="ai-review-image">
+            <Image src="/images/ai-workplace.jpg" alt="AI in the workplace" width={800} height={500} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+        </div>
       </section>
 
       {/* 13. CONTACT */}
-      <section className="section contact-section" id="contact">
-        <div className="section-inner">
+      <section className="section contact-section section-navy" id="contact">
+        <div className="section-inner" style={{ textAlign: 'center' }}>
           <ScrollReveal direction="up">
             <h2 className="section-heading">Let&rsquo;s Be Tech-Forward Together</h2>
             <p className="section-sub centered">Connect with Edge8&rsquo;s experts to explore AI Programs for your organization</p>
-            <div className="typeform-wrapper">
-              <iframe src="https://ai-officer.typeform.com/letstalk" title="Contact Edge8" loading="lazy" />
-            </div>
           </ScrollReveal>
+          <ContactForm />
         </div>
       </section>
     </>

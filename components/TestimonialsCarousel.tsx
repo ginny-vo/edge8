@@ -23,12 +23,6 @@ const testimonials = [
     photo: "/images/testimonials/brooks-holtom.jpg",
   },
   {
-    quote: "Working with Edge8 has been a pleasure. When I launched Fab Four Academy, I needed support to build a strong brand and digital presence. Dave and the team at Edge8 stepped in and showed us how to leverage AI to streamline our processes.",
-    name: "Dan Absher",
-    title: "CEO, Absher Construction",
-    photo: "/images/testimonials/dan-absher.jpg",
-  },
-  {
     quote: "We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications. He was able to greatly expand our general knowledge of AI and demystify the challenges of implementation.",
     name: "John VanNewkirk",
     title: "YPO Gold Seattle, Forum 6",
