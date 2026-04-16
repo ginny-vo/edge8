@@ -128,26 +128,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Partners Bar */}
-      <section className="partners" style={{ padding: '40px 0', borderBottom: '1px solid #E6EBF0' }}>
-        <div className="container text-center">
-          <p style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '2px', color: 'rgba(4,16,45,0.5)', marginBottom: '24px' }}>TRUSTED BY LEADING ORGANIZATIONS</p>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '48px', flexWrap: 'wrap' }}>
-            {[
-              { src: '/images/clients/pho24.png', alt: 'PHO24' },
-              { src: '/images/clients/veracity.png', alt: 'Veracity' },
-              { src: '/images/clients/vespa.png', alt: 'Vespa Adventures' },
-              { src: '/images/clients/eo.png', alt: 'EO' },
-              { src: '/images/clients/unlock-venture.png', alt: 'Unlock Venture Partners' },
-              { src: '/images/clients/investmigrate.png', alt: 'InvestMigrate' },
-              { src: '/images/clients/abound-health.png', alt: 'Abound Health Group' },
-            ].map((partner, i) => (
-              <Image key={i} src={partner.src} alt={partner.alt} width={100} height={40} style={{ opacity: 0.6, filter: 'grayscale(100%)' }} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 3. PROBLEM */}
       <section className="section section-grey" id="about">
         <div className="section-inner">
@@ -265,25 +245,30 @@ export default function HomePage() {
       </section>
 
       {/* 8. SOLUTIONS */}
-      <section className="section" id="services">
-        <div className="section-inner text-center">
-          <h2 className="section-heading">Our Solutions</h2>
+      <section className="section" id="solutions">
+        <div className="section-inner">
+          <div className="text-center" style={{ marginBottom: '48px' }}>
+            <span className="section-label">Core Solutions</span>
+            <h2 className="section-heading">AI-Powered Solutions for a Tech-Forward Future</h2>
+            <p className="section-sub centered">Empowering organizations to use AI effectively through clear leadership, thoughtful implementation and strong global talent.</p>
+          </div>
           <div className="solutions-grid">
-            <Link href="/services/ai-capabilities-audit" className="solution-card">
-              <div className="sol-label">AI Programs</div>
-              <h3>From Strategy to Implementation&mdash;We Build not Pitch</h3>
-              <p>We don&rsquo;t just talk AI&mdash;we build with it. From CRM flows to marketing automation, our AI solutions power content creation, sales engagement, and customer journeys. You bring the ideas. We build the systems.</p>
-            </Link>
-            <Link href="/services/global-staffing" className="solution-card">
-              <div className="sol-label">Global Talent Network</div>
-              <h3>Scale Smarter with AI-Empowered Teams</h3>
-              <p>Access Vietnam&rsquo;s top AI-trained professionals to accelerate your initiatives&mdash;without compromising on quality or speed. We embed engineers, analysts, and operators directly into your team to turn workflows into intelligent systems.</p>
-            </Link>
-            <Link href="/services/training-certification" className="solution-card">
-              <div className="sol-label">AI Officer Certification &amp; Workshops</div>
-              <h3>Make Your Team AI-Literate and Leadership-Ready</h3>
-              <p>We equip founders and teams to lead with confidence. Through our AI Officer certification and hands-on workshops, your organization will gain the frameworks, tools, and language to scale with AI&mdash;internally and externally.</p>
-            </Link>
+            {[
+              { href: '/services/ai-capabilities-audit', img: '/images/solutions/ai-programs.jpg', label: 'AI Programs', title: 'From Strategy to Implementation—We Build not Pitch', desc: "We don't just talk AI—we build with it. From CRM flows to marketing automation, our AI solutions power content creation, sales engagement, and customer journeys." },
+              { href: '/services/global-staffing', img: '/images/solutions/global-talent.jpg', label: 'Global Talent Network', title: 'Scale Smarter with AI-Empowered Teams', desc: "Access Vietnam's top AI-trained professionals to accelerate your initiatives—without compromising on quality or speed." },
+              { href: '/services/training-and-certification', img: '/images/solutions/ai-certification.jpg', label: 'AI Officer Certification & Workshops', title: 'Make Your Team AI-Literate and Leadership-Ready', desc: 'We equip founders and teams to lead with confidence through our AI Officer certification and hands-on workshops.' },
+            ].map((s) => (
+              <Link key={s.title} href={s.href} className="solution-card-img">
+                <div className="solution-img-wrap">
+                  <Image src={s.img} alt={s.label} width={600} height={380} className="solution-img" />
+                </div>
+                <div className="solution-body">
+                  <div className="sol-label">{s.label}</div>
+                  <h3 className="solution-title">{s.title}</h3>
+                  <p className="solution-desc">{s.desc}</p>
+                </div>
+              </Link>
+            ))}
           </div>
           <div className="results-btn">
             <Link href="/services" className="btn-outline">Explore All Services &rarr;</Link>
@@ -324,23 +309,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. BLOG SNIPPET */}
-      <section className="section">
-        <div className="section-inner text-center">
-          <h2 className="section-heading">Discover the Latest Insights</h2>
-          <p className="section-sub centered">Stay up to date with the latest in AI Programs, Tech-Forward leadership, and digital transformation.</p>
-          <div className="blog-grid">
-            {[
-              { tag: 'AI Programs', title: 'Why Every Business Needs an AI Program in 2025', desc: 'Learn how structured AI Programs are replacing ad-hoc AI usage and delivering measurable ROI across industries.' },
-              { tag: 'Leadership', title: 'The Rise of the AI Officer', desc: 'How forward-thinking organizations are appointing AI Officers to lead their digital transformation initiatives.' },
-              { tag: 'Case Study', title: "From Manual to Automated: A VC Firm's AI Journey", desc: 'How we eliminated 100% of data entry tasks and enhanced deal flow analysis for a leading Venture Capital firm.' },
-            ].map((b) => (
-              <div key={b.title} className="blog-card">
-                <div className="blog-tag">{b.tag}</div>
-                <h3>{b.title}</h3>
-                <p>{b.desc}</p>
+      {/* 10. BLOG */}
+      <section className="section" id="blog">
+        <div className="section-inner">
+          <div className="blog-home-header">
+            <div>
+              <span className="section-label">Insights</span>
+              <h2 className="section-heading">AI Is Driving Rapid Change</h2>
+            </div>
+            <Link href="/blog" className="btn-outline">View All Posts &rarr;</Link>
+          </div>
+          <div className="blog-layout">
+            {/* Featured post */}
+            <Link href="/blog/your-next-ai-hire" className="blog-featured">
+              <div className="blog-featured-visual">
+                <Image src="/images/blog-ai-hire.jpg" alt="Your Next AI Hire Isn't a Person" width={800} height={500} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-            ))}
+              <div className="blog-featured-body">
+                <h3 className="blog-featured-title">Your Next AI Hire Isn&apos;t a Person</h3>
+                <p className="blog-excerpt">Most companies don&apos;t fail at AI because of the tech. They fail because no one owns it. AI agents need managers, engineers, and real teams, just like people.</p>
+                <span className="blog-more">Read Article &rarr;</span>
+              </div>
+            </Link>
+            {/* 3 stacked posts */}
+            <div className="blog-stack">
+              {[
+                { href: '/blog/2026-ai-trends', img: '/images/blog-ai-trends.jpg', title: '2026 AI Trends: 5 Game-Changing Shifts', excerpt: 'Explore the five 2026 AI trends transforming business—from AI leadership to data discipline.' },
+                { href: 'https://www.edge8.ai/post/why-smart-founders-are-already-planning-for-meta-ray-ban-glasses-even-when-demos-fail', img: '/images/blog-posts/meta-ray-ban.png', title: 'Why Smart Founders Are Already Planning for Meta Ray-Ban Glasses', excerpt: "Technology always catches up—the question is whether you're truly ready when it does." },
+                { href: 'https://www.edge8.ai/post/ai-in-data-migration-why-your-ai-program-is-really-a-data-problem', img: '/images/blog-posts/ai-data-migration.png', title: 'AI in Data Migration: Why Your AI Program Is Really a Data Problem', excerpt: "AI in Data Migration isn't a technology problem—it's a data strategy challenge." },
+              ].map((b) => (
+                <Link key={b.title} href={b.href} className="blog-item">
+                  <Image src={b.img} alt={b.title} width={96} height={72} className="blog-item-thumb" />
+                  <div className="blog-item-body">
+                    <h4 className="blog-item-title">{b.title}</h4>
+                    <p className="blog-item-excerpt">{b.excerpt}</p>
+                  </div>
+                  <span className="blog-item-arrow">&rarr;</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
