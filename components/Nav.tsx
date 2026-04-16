@@ -7,6 +7,7 @@ export default function Nav() {
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [caseStudiesOpen, setCaseStudiesOpen] = useState(false);
 
   function toggleMenu() {
     const h = hamburgerRef.current;
@@ -101,10 +102,10 @@ export default function Nav() {
           )}
         </div>
         <div className="mobile-menu-section">
-          <button className="mobile-menu-toggle" onClick={() => setServicesOpen(!servicesOpen)}>
-            Case Studies <span>{servicesOpen ? '−' : '+'}</span>
+          <button className="mobile-menu-toggle" onClick={() => setCaseStudiesOpen(!caseStudiesOpen)}>
+            Case Studies <span>{caseStudiesOpen ? '−' : '+'}</span>
           </button>
-          {servicesOpen && (
+          {caseStudiesOpen && (
             <div className="mobile-menu-sub">
               <Link href="/case-studies">All Case Studies</Link>
               <Link href="/case-studies/personal-brands">Personal Brands</Link>

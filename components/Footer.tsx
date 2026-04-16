@@ -16,7 +16,7 @@ export default function Footer() {
             <Link href="/services/ai-capabilities-audit">AI Capabilities Audit</Link>
             <Link href="/services/caio-leadership">CAIO Leadership</Link>
             <Link href="/services/global-staffing">Global Staffing</Link>
-            <Link href="/services/training-certification">Training & Certification</Link>
+            <Link href="/services/training-and-certification">Training & Certification</Link>
           </div>
           <div className="footer-col">
             <h4>Case Studies</h4>
