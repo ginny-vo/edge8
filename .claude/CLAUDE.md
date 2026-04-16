@@ -92,6 +92,7 @@ npm run lint      # ESLint check
 ```
 
 ## Conventions
+- **Git workflow:** Before starting any new task, run `git pull origin main` (or equivalent) to sync the branch with latest `main`
 - **Components:** PascalCase filenames (`HeroSection.tsx`, `BlogCard.tsx`)
 - **CSS classes:** Tailwind utilities; avoid custom CSS unless necessary
 - **Images:** Use `next/image` for all images (auto-optimization)
