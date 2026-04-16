@@ -16,7 +16,8 @@ const testimonials = [
     body: "I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage.",
     img: 'https://randomuser.me/api/portraits/men/51.jpg',
   },
-  {    name: 'Dr. Brooks Holtom',
+  {
+    name: 'Dr. Brooks Holtom',
     title: 'Professor of Management, Georgetown',
     body: "He was extremely knowledgeable and engaging. Real-world experiences complemented our class perfectly.",
     img: 'https://randomuser.me/api/portraits/men/68.jpg',
@@ -32,6 +33,12 @@ const testimonials = [
     title: 'CEO, Absher Construction',
     body: "Working with Edge8 has been a pleasure. They showed us how to leverage AI to streamline processes.",
     img: 'https://randomuser.me/api/portraits/men/85.jpg',
+  },
+  {
+    name: 'Tuan Anh Le',
+    title: 'Managing Partner, DN Legal',
+    body: "We're finally presenting ourselves the way we've always wanted.",
+    img: 'https://randomuser.me/api/portraits/women/44.jpg',
   },
 ];
 
@@ -60,17 +67,34 @@ function TestimonialCard({ img, name, title, body }: typeof testimonials[number]
 }
 
 export default function TestimonialsMarquee() {
+  const firstRow = testimonials.slice(0, 3);
+  const secondRow = testimonials.slice(3);
+  
   return (
-    <div className="relative flex h-72 w-full flex-row items-center justify-center overflow-hidden bg-white">
+    <div className="relative flex h-[420px] w-full flex-col items-center justify-center overflow-hidden bg-white py-8">
       {/* Gradient overlays */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-white to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent" />
       
-      <Marquee pauseOnHover reverse className="[--duration:30s]">
-        {testimonials.map((review) => (
-          <TestimonialCard key={review.name} {...review} />
-        ))}
-      </Marquee>
+      {/* Row 1 - scrolls right */}
+      <div className="mb-6">
+        <Marquee pauseOnHover className="[--duration:50s]">
+          {firstRow.map((review) => (
+            <TestimonialCard key={review.name} {...review} />
+          ))}
+        </Marquee>
+      </div>
+      
+      {/* Row 2 - scrolls left (reverse) */}
+      <div>
+        <Marquee pauseOnHover reverse className="[--duration:50s]">
+          {secondRow.map((review) => (
+            <TestimonialCard key={review.name} {...review} />
+          ))}
+        </Marquee>
+      </div>
     </div>
   );
 }
