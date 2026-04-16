@@ -17,86 +17,243 @@ edge8/
 │   ├── CLAUDE.md         # This file
 │   └── settings.json     # Claude Code settings
 ├── public/               # Static assets (served by Next.js & Vercel)
-│   ├── images/           # Media: hero video, OG image, blog images
-│   └── post/             # Legacy static HTML posts (kept for reference)
-├── data/                 # Internal data assets (not served, not yet wired up)
-│   ├── contacts.csv      # 107 contacts (name, email, phone, company, source)
-│   └── case-studies.csv  # 631 case study entries (title, tags, SEO, challenge)
-├── content/              # Page & post content as Markdown files (source of truth)
-│   ├── home/             # Homepage sections: 01-hero.md … 11-contact.md
-│   └── blog/             # Blog content: index.md, 2026-ai-trends.md, your-next-ai-hire.md
-├── resources/            # Brand docs & planning
-│   └── README.md
-├── app/                  # Next.js App Router pages & layouts
-│   ├── layout.tsx        # Root layout (nav, footer, fonts)
-│   ├── globals.css       # Global styles + custom component classes
-│   ├── page.tsx          # Homepage (11 sections, hardcoded)
+│   └── images/           # Media: hero, services, case studies
+├── docs/                 # Content documentation (source of truth)
+│   ├── edge8-website-content.md
+│   └── pages/           # Individual page content docs
+├── app/                  # Next.js App Router pages
+│   ├── page.tsx          # Homepage
+│   ├── about/
+│   ├── services/         # Service pages
+│   ├── case-studies/
 │   └── blog/
-│       ├── page.tsx      # Blog listing grid
-│       └── [slug]/
-│           └── page.tsx  # Dynamic blog post renderer
-├── lib/
-│   └── posts.ts          # Blog post metadata (slugs, OG data, dates)
-└── ...                   # Next.js config files
+├── components/          # Reusable components
+└── app/globals.css      # Global styles + component classes
 ```
 
 ## Content Management
-Page and post content lives in `content/` as plain Markdown files — **not** wired to pages yet, but the source of truth for all copy, structure, and assets.
+All page content is documented in `docs/pages/*.md` as the **source of truth**.
 
-**Format:** YAML frontmatter for structured data (type, variant, images, CTAs, card items) + Markdown body for prose.
+## Brand & Design System (Tailwind v4)
 
+Add colors to `@theme` in `globals.css`:
+
+```css
+@theme {
+  /* Colors */
+  --color-mint: rgb(111, 242, 193);
+  --color-mint-light: rgba(111, 242, 193, 0.1);
+  --color-navy: rgb(4, 16, 45);
+  --color-navy-light: rgba(4, 16, 45, 0.7);
+  --color-blue: rgb(40, 123, 232);
+  --color-blue-light: rgba(40, 123, 232, 0.1);
+  --color-rose: rgb(209, 69, 139);
+  --color-gold: rgb(198, 142, 38);
+  --color-border: rgb(230, 235, 240);
+}
 ```
-content/home/       # One .md file per section, numbered for order
-content/blog/       # index.md for listing; one .md per post (full article)
+
+Then use in templates: `bg-mint`, `text-navy`, `border-blue`, etc.
+
+| Token | Value | Tailwind Class |
+|---|---|---|
+| Mint | `rgb(111, 242, 193)` | `bg-mint` or `bg-[rgb(111,242,193)]` |
+| Navy | `rgb(4, 16, 45)` | `bg-navy` or `text-navy` |
+| Blue | `rgb(40, 123, 232)` | `text-blue` or `bg-blue` |
+| Rose | `rgb(209, 69, 139)` | `text-rose` |
+| Font | Inter | (already loaded in layout) |
+
+---
+
+# Page Building Guide
+
+## Required Sections for Every Page
+
+Every Edge8 page MUST have these elements in order:
+
+### 1. Metadata
+```tsx
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Page Title | Edge8',
+  description: 'Meta description for SEO',
+};
 ```
 
-- To edit copy or add a section, edit the relevant `.md` file
-- Blog post files contain the full article as readable Markdown
-- Image paths in frontmatter use `/images/...` (relative to `public/`)
-- Commented-out `# image:` lines mark sections where assets are pending
+### 2. Nav + Footer
+Use components `<Nav />` and `<Footer />` from `components/`.
 
-## Built Pages
-| Route | File | Status |
-|---|---|---|
-| `/` | `app/page.tsx` | Live — 11 sections, hero video |
-| `/blog` | `app/blog/page.tsx` | Live — 2-column card grid |
-| `/blog/2026-ai-trends` | `app/blog/[slug]/page.tsx` | Live |
-| `/blog/your-next-ai-hire` | `app/blog/[slug]/page.tsx` | Live |
+### 3. Hero Section
+```tsx
+<section className="section" style={{ padding: '120px 48px 80px' }}>
+  <div className="container">
+    <span style={{ color: 'rgb(40, 123, 232)', fontWeight: 700, letterSpacing: '2px' }}>
+      EYEBROW TEXT
+    </span>
+    <h1 style={{ fontSize: '72px', fontWeight: 700, marginBottom: '20px' }}>
+      Headline
+    </h1>
+    <p style={{ fontSize: '20px', color: 'rgba(4, 16, 45, 0.7)', maxWidth: '640px' }}>
+      Subtitle description
+    </p>
+    <div style={{ display: 'flex', gap: '16px', marginTop: '32px' }}>
+      <Link href="/..." className="btn-mint">CTA</Link>
+      <Link href="/..." className="btn-outline">Secondary</Link>
+    </div>
+  </div>
+</section>
+```
 
-## Brand & Design System
-| Token | Value | Usage |
-|---|---|---|
-| Mint / Primary | `rgb(111, 242, 193)` | CTA buttons, highlights |
-| Navy / Text | `rgb(4, 16, 45)` | Body text, headings |
-| Blue / Secondary | `rgb(40, 123, 232)` | Links, accents |
-| Rose / Accent | `rgb(209, 69, 139)` | Badges, tags |
-| Font | Inter (Google Fonts) | All text, weights 400–800 |
+### 4. Problem/Benefit Sections
+Use `.problem-card` class or custom styling:
+```tsx
+<div className="problem-card">
+  <h2>Section Heading</h2>
+  <p className="subtext" style={{ color: 'rgb(40, 123, 232)', fontWeight: 600 }}>
+    Eyebrow
+  </p>
+  <p>Body description...</p>
+</div>
+```
 
-## Key Reusable Patterns
-- **Hero section** — video/image background, eyebrow + headline + subtitle + CTA buttons
-- **Card grids** — case studies, blog posts, testimonials (`.case-card`, `.blog-card`)
-- **Problem / Solution / Result** — 3-column B2B consulting pattern
-- **Frosted glass nav** — sticky header with `backdrop-filter: blur`
-- **Section variants** — white / blue / grey alternating backgrounds
-- **Mobile menu** — hamburger toggle with animated drawer
+### 5. Feature/Content Sections
+Use grid layouts:
+```tsx
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+  {/* 3-column grid */}
+</div>
+```
 
-## Data Sources (not yet wired to pages)
-- `data/contacts.csv` — CRM contacts (107 rows)
-- `data/case-studies.csv` — Case study content (631 rows, includes SEO fields)
+### 6. Testimonial Cards
+```tsx
+<article className="testimonial-card">
+  <div className="testimonial-quote">"{quote}"</div>
+  <div className="testimonial-card-bottom">
+    <div className="testimonial-avatar">
+      <span>{initials}</span>
+    </div>
+    <div className="testimonial-info">
+      <div className="testimonial-name">{name}</div>
+      <div className="testimonial-title">{title}</div>
+    </div>
+  </div>
+</article>
+```
 
-## Development Commands
+### 7. Pricing/Process Cards
+```tsx
+<div className="service-pricing-card">
+  <div className="service-pricing-tier">Tier Name</div>
+  <div className="service-pricing-amount">$X,XXX</div>
+  <div className="service-pricing-desc">Description</div>
+</div>
+```
+
+### 8. CTA Section (Before Footer)
+```tsx
+<div className="service-cta-panel">
+  <div>
+    <h2>Heading</h2>
+    <p>Description</p>
+  </div>
+  <div>
+    <Link href="/#contact" className="btn-mint">CTA Button</Link>
+  </div>
+</div>
+```
+
+---
+
+# Key Reusable CSS Classes
+
+| Class | Usage |
+|-------|-------|
+| `.section` | Main section wrapper, padding 100px 48px |
+| `.container` | Max-width 1280px, centered |
+| `.btn-mint` | Primary CTA button (mint background, navy text) |
+| `.btn-outline` | Secondary CTA button (transparent, navy border) |
+| `.problem-card` | White card with border, 20px radius |
+| `.testimonial-card` | Testimonial grid card |
+| `.service-pricing-card` | Pricing tier card |
+| `.service-cta-panel` | CTA banner with split layout |
+| `.service-bullet-list` | Bullet list with mint dots |
+| `.service-proof-card` | Feature card with number index |
+| `.fade-rise` | Entry animation |
+
+---
+
+# Service Page Template
+
+When building a service page, follow this structure:
+
+```tsx
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'Service Name | Edge8',
+  description: 'Description',
+};
+
+// 1. Hero Section
+// 2. Problem Section  
+// 3. Solution/Process Section
+// 4. Pricing Section
+// 5. Who It's For Section
+// 6. Why Edge8 / Track Record Section
+// 7. Testimonials Section
+// 8. CTA Section
+
+export default function ServicePage() {
+  return (
+    <main className="service-page">
+      {/* Hero */}
+      <section className="service-hero">...</section>
+      
+      {/* Problem */}
+      <section className="service-section">...</section>
+      
+      {/* Solution */}
+      <section className="service-section service-section-alt">...</section>
+      
+      {/* Pricing */}
+      <section className="service-section">...</section>
+      
+      {/* CTA */}
+      <section className="service-section">
+        <div className="service-cta-panel">...</div>
+      </section>
+    </main>
+  );
+}
+```
+
+---
+
+# Development Commands
 ```bash
 npm run dev       # Start dev server (localhost:3000)
-npm run build     # Production build
-npm run lint      # ESLint check
+npm run build    # Production build
+npm run lint     # ESLint check
 ```
 
 ## Conventions
-- **Git workflow:** Before starting any new task, run `git pull origin main` (or equivalent) to sync the branch with latest `main`
-- **Components:** PascalCase filenames (`HeroSection.tsx`, `BlogCard.tsx`)
-- **CSS classes:** Tailwind utilities; avoid custom CSS unless necessary
-- **Images:** Use `next/image` for all images (auto-optimization)
-- **Links:** Use `next/link` for all internal navigation
-- **Routing:** App Router (`app/` directory), not Pages Router
-- **Data fetching:** Server components by default; use `"use client"` only when needed
-- **Content edits:** Update `content/` files first, then sync to page code if needed
+- **Git workflow:** Run `git pull origin main` before starting any new task
+- **Components:** PascalCase filenames (`HeroSection.tsx`)
+- **CSS classes:** Use existing `.class-name` patterns from `globals.css`
+- **Images:** Use `next/image` for all images
+- **Links:** Use `next/link` for internal navigation
+- **Routing:** App Router (`app/` directory)
+
+---
+
+# Content Source
+Always reference `docs/pages/*.md` for page content. These markdown files contain the complete content structure including:
+- Headlines and subheadlines
+- Section content
+- Testimonials with quotes and names
+- Pricing information
+- Process steps
+- CTA buttons

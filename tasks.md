@@ -21,9 +21,31 @@
 
 - [x] Services index page with grid of 6 service cards
 - [x] Individual service pages (6 routes)
-- [ ] Review each service page for copy accuracy against live edge8.ai
+- [~] **Rebuild all service pages to match live edge8.ai content and design**
 - [ ] Add `/services` to main nav
-- [ ] Remove internal routing map and image debug sections from `/services` index
+
+### Service Pages to Rebuild (Match Live edge8.ai)
+
+- [ ] `/services/your-first-ai-hire` - Full content (problem, solution, 90-day process, pricing, testimonials)
+- [ ] `/services/ai-capabilities-audit` - Full content (tiers, process, form)
+- [ ] `/services/caio-leadership` - Full content (patterns, comparison, roadmap)
+- [ ] `/services/global-staffing` - Full content (roles, why Edge8)
+- [ ] `/services/training-and-certification` - Full content (program series, outcomes)
+- [ ] `/services/ai-in-business-workshop` - Full content
+
+### Rebuild Requirements for All Service Pages
+
+- [ ] Add rich section headings (##, ###) with proper hierarchy
+- [ ] Add problem/solution narrative sections
+- [ ] Add testimonial cards with quotes, names, titles
+- [ ] Add image sections with descriptions
+- [ ] Add pricing tiers with amounts
+- [ ] Add process/timeline visualizations
+- [ ] Add CTA buttons
+- [ ] Add company profile "Who this is for" sections
+- [ ] Add "Why Edge8" sections with track record
+- [ ] Match live site's visual hierarchy and spacing
+- [ ] Use proper image placeholders from Image Inventory
 
 ### About Us `/about`
 
@@ -37,6 +59,7 @@
 - [ ] Create Case Studies main page (/case-study)
 - [ ] Add 3 category sections: Personal Brands, Business Websites, AI Programs
 - [ ] Add Case Studies to nav
+- [ ] Add case study images and thumbnails
 
 ### Individual Case Study Pages
 
@@ -89,6 +112,24 @@
 - [ ] Section spacing — standardize padding
 - [ ] Mobile — full mobile pass
 - [ ] Animations — confirm they work
+
+---
+
+## Design System Tasks
+
+- [x] Add Tailwind v4 theme in globals.css (@theme with brand colors)
+- [ ] Create reusable components (Button, Card, Section, etc.)
+- [ ] Replace inline styles with tailwind classes
+- [ ] Audit all pages for hardcoded rgb() values
+
+### Brand Colors to Use
+| Token | RGB | Usage |
+|---|---|---|
+| mint | rgb(111, 242, 193) | CTAs, highlights |
+| navy | rgb(4, 16, 45) | Text, headings |
+| blue | rgb(40, 123, 232) | Links, accents |
+| rose | rgb(209, 69, 139) | Tags, badges |
+| gold | rgb(198, 142, 38) | Premium accents |
 
 ---
 
