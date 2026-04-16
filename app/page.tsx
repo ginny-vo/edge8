@@ -186,8 +186,40 @@ export default function HomePage() {
       <section className="section steps-section">
         <div className="section-inner">
           <h2 className="section-heading">8 Steps to Becoming Tech-Forward</h2>
-          <p className="steps-body">Orchestrate AI Resources for Maximum Impact, and you will unlock new levels of efficiency, automation, and decision-making in your business. Follow these steps to build a truly Tech-Forward organization and achieve 8x efficiency.</p>
-          <p className="steps-cta-text">Book your free consultation today and take the first step toward an AI-driven future</p>
+          <p className="steps-body">Follow these steps to build a truly Tech-Forward organization and achieve 8x efficiency.</p>
+          
+          {/* Steps Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginTop: '48px' }}>
+            {[
+              { num: '01', title: '10% - Get Started', desc: 'Join a community to learn how peers and experts use AI' },
+              { num: '02', title: '20% - Company Alignment', desc: 'Ensure leadership aligned on AI strategic potential' },
+              { num: '03', title: '30% - Organize Your Data', desc: 'Create company database for first program' },
+              { num: '04', title: '40% - Build AI Agents', desc: 'Develop intelligent AI agents for tasks' },
+              { num: '05', title: '50% - Hire AI-Driven Talent', desc: 'Leverage local and global AI-empowered talent' },
+              { num: '06', title: '60% - Scale AI-Orchestration', desc: 'Implement AI Programs across organization' },
+              { num: '07', title: '80% - Full System Integration', desc: 'Replace antiquated systems with AI-Driven approach' },
+              { num: '08', title: '100% - Tech-Forward', desc: 'Reclaim time, focus on growth with 8x efficiency' },
+            ].map((step) => (
+              <div key={step.num} style={{ 
+                padding: '24px', 
+                borderRadius: '16px', 
+                border: '1px solid #E6EBF0',
+                textAlign: 'left'
+              }}>
+                <div style={{ fontSize: '12px', fontWeight: 700, color: '#287BE8', marginBottom: '8px' }}>
+                  {step.num}
+                </div>
+                <div style={{ fontSize: '16px', fontWeight: 600, color: '#04102D', marginBottom: '8px' }}>
+                  {step.title}
+                </div>
+                <div style={{ fontSize: '14px', color: 'rgba(4, 16, 45, 0.7)' }}>
+                  {step.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <p className="steps-cta-text" style={{ marginTop: '48px' }}>Book your free consultation today and take the first step toward an AI-driven future</p>
           <Link href="#contact" className="btn-mint">Schedule A Consultation</Link>
         </div>
       </section>
