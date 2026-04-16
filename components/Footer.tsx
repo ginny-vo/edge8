@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -6,7 +7,9 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div>
-            <div className="footer-logo">Edge8</div>
+            <div className="footer-logo">
+              <Image src="/images/edge8-logo-white.png" alt="Edge8" width={100} height={32} />
+            </div>
             <p className="footer-tagline">Empowering organizations to become Tech-Forward through AI Programs, Global Talent, and AI Officer Leadership.</p>
           </div>
           <div className="footer-col">

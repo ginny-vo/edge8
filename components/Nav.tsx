@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Nav() {
@@ -49,7 +50,9 @@ export default function Nav() {
     <>
       <nav className="nav">
         <div className="nav-inner">
-          <Link href="/" className="nav-logo">Edge8</Link>
+          <Link href="/" className="nav-logo">
+            <Image src="/images/edge8-logo.png" alt="Edge8" width={100} height={32} />
+          </Link>
           <div className="nav-links">
             <div className="nav-dropdown">
               <Link href="/services" className="nav-dropdown-trigger">
