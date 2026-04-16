@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import Preloader from '@/components/Preloader';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'] });
@@ -21,6 +22,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Preloader />
+        <div className="body-lines">
+          <div className="body-line left"></div>
+          <div className="body-line left-middle"></div>
+          <div className="body-line center"></div>
+          <div className="body-line right-middle"></div>
+          <div className="body-line right"></div>
+        </div>
         <Nav />
         {children}
         <Footer />

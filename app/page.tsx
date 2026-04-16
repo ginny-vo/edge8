@@ -1,6 +1,36 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { GradientText } from '@/components/ui/gradient-text';
+import Image from 'next/image';
+
+const clientLogos = [
+  { src: '/images/clients/vespa.png', alt: 'Vespa Adventures' },
+  { src: '/images/clients/investmigrate.png', alt: 'InvestMigrate' },
+  { src: '/images/clients/eo.png', alt: 'Entrepreneurs Organization' },
+  { src: '/images/clients/veracity.png', alt: 'Veracity' },
+  { src: '/images/clients/abound-health.png', alt: 'Abound Health Group' },
+  { src: '/images/clients/unlock-venture.png', alt: 'Unlock Venture Partners' },
+];
+
+const caseStudies = [
+  {
+    name: 'Vespa Adventures',
+    tag: 'AI Program',
+    image: '/images/case-studies/vespa.jpg',
+    result: 'Automated 80% of customer communications and itinerary workflows',
+  },
+  {
+    name: 'InvestMigrate',
+    tag: 'AI Program',
+    image: '/images/case-studies/investmigrate.avif',
+    result: 'Eliminated manual data entry and accelerated investor onboarding by 3×',
+  },
+  {
+    name: 'PHO24',
+    tag: 'AI Agents',
+    image: '/images/case-studies/pho24.jpg',
+    result: 'Deployed AI agents across 20+ franchise locations for operations management',
+  },
+];
 
 export const metadata: Metadata = {
   title: 'Edge8 — Be Tech-Forward | AI Programs & Consulting',
@@ -22,27 +52,82 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* 1. HERO */}
+{/* 1. HERO - ChainGPT Labs Style */}
       <section className="hero">
-        <div className="container">
-          <span className="hero-eyebrow">Be Tech-Forward</span>
-          <h1>
-            8x <GradientText>IMPACT</GradientText>
-          </h1>
-          <p className="hero-sub">Stop overthinking AI&mdash;Start implementing your AI Programs</p>
-          <div className="hero-ctas">
-            <Link href="#contact" className="btn-mint">Schedule A Consultation &rarr;</Link>
-            <Link href="#services" className="btn-outline">Our Solutions</Link>
+        <div className="hero-overlap">
+          <div className="hero-top">
+            <div className="hero-backing">
+              <span className="hero-backing-item">BE TECH-FORWARD</span>
+              <span className="hero-backing-item">BE TECH-FORWARD</span>
+            </div>
+            <div className="hero-marquee-wrapper">
+              <div className="hero-marquee">
+                <h1>BE TECH-FORWARD</h1>
+                <h1>BE TECH-FORWARD</h1>
+              </div>
+              <div className="hero-marquee" aria-hidden="true">
+                <h1>BE TECH-FORWARD</h1>
+                <h1>BE TECH-FORWARD</h1>
+              </div>
+            </div>
+            <div className="hero-top-content">
+              <div className="graphic-block hero-graphic-small">
+                <div className="graphic-block-decor graphic-block-decor-top-left"></div>
+                <div className="graphic-block-decor graphic-block-decor-top-right"></div>
+                <div className="graphic-block-decor graphic-block-decor-bottom-right"></div>
+                <div className="graphic-block-decor graphic-block-decor-bottom-left"></div>
+              </div>
+            </div>
+            <div className="graphic-block hero-graphic-block">
+              <div className="graphic-block-decor graphic-block-decor-top-left"></div>
+              <div className="graphic-block-decor graphic-block-decor-top-right"></div>
+              <div className="graphic-block-decor graphic-block-decor-bottom-right"></div>
+              <div className="graphic-block-decor graphic-block-decor-bottom-left"></div>
+            </div>
+            <img src="https://cdn.prod.website-files.com/664753c2515af09bef5b9826/6654a5c3113a6f95af59c707_star.webp" loading="lazy" alt="" className="hero-decor hero-decor-1" />
+            <img src="https://cdn.prod.website-files.com/664753c2515af09bef5b9826/6653486a5dbcbf9da5b393b4_graphic.svg" loading="lazy" alt="" className="hero-decor hero-decor-2" />
           </div>
-          <div className="hero-video">
-            <video autoPlay muted loop playsInline>
-              <source src="/images/edge8-hero.mp4" type="video/mp4" />
-            </video>
+
+          <div className="hero-main">
+            <div className="hero-info">
+              <h1 className="hero-heading">
+                8x <span className="hero-gradient-text">IMPACT</span>
+              </h1>
+              <p className="hero-description">Stop overthinking AI — Start implementing your AI Programs</p>
+              <div className="hero-ctas">
+                <a href="#contact" className="button-primary">
+                  <div className="button-primary-border">
+                    <span className="button-primary-text">Schedule A Consultation</span>
+                  </div>
+                </a>
+                <a href="#services" className="btn-outline">Our Solutions</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="hero-video">
+          <video autoPlay muted loop playsInline>
+            <source src="/images/edge8-hero.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+
+      {/* 2. LOGO STRIP */}
+      <section className="logo-strip-section">
+        <div className="container">
+          <p className="logo-strip-label">Trusted by leaders across industries</p>
+          <div className="logo-strip">
+            {[...clientLogos, ...clientLogos].map((logo, i) => (
+              <div key={i} className="logo-strip-item">
+                <Image src={logo.src} alt={logo.alt} width={120} height={48} className="logo-strip-img" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 2. PROBLEM */}
+      {/* 3. PROBLEM */}
       <section className="section section-grey" id="about">
         <div className="section-inner">
           <div className="problem-card">
@@ -53,25 +138,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. TESTIMONIALS */}
+      {/* 3. TESTIMONIALS - Grid Style */}
       <section className="section">
         <div className="section-inner">
           <div className="text-center">
             <h2 className="section-heading">What Our Clients Say</h2>
           </div>
-          <div className="testimonials-row">
+          <div className="testimonials-grid">
             {[
               { quote: "Love the new look and branding. The website looks so good. I'm deeply grateful. The brand interview really made me think about our positioning and business in ways I never expected.", name: "Dao Nguyen", title: "Founder, DN Legal" },
-              { quote: "I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved. We are looking forward to collaborating with the AI Officer Institute and Edge8 to bring their AI Certification Program to Malaysia and have signed an MOU to broaden the reach of our organization.", name: "Dato George Lim", title: "Founder and CEO, G&A GROUP" },
-              { quote: "I am very grateful to Dave Hajdu, who spoke to graduate students in our international business and public policy program during our visit to Vietnam about Negotiations and AI. He was extremely knowledgeable and engaging. Real-world experiences complemented our class discussions perfectly.", name: "Dr. Brooks Holtom", title: "Professor of Management, Georgetown" },
-              { quote: "Working with Edge8 has been a pleasure. When I launched Fab Four Academy, I needed support to build a strong brand and digital presence. Dave and the team at Edge8 stepped in and not only helped with the branding and digital presence, but showed us how to leverage AI to streamline our processes.", name: "Dan Absher", title: "CEO, Absher Construction" },
-              { quote: "We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications. He was able to greatly expand our general knowledge of AI and demystify the challenges of implementation.", name: "John VanNewkirk", title: "YPO Gold Seattle" },
-            ].map((t) => (
-              <div key={t.name} className="testimonial-card">
-                <div className="quote">{t.quote}</div>
-                <div className="testimonial-author">
-                  <div className="name">{t.name}</div>
-                  <div className="title">{t.title}</div>
+              { quote: "I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved. We are looking forward to collaborating with the AI Officer Institute and Edge8 to bring their AI Certification Program to Malaysia.", name: "Dato George Lim", title: "Founder and CEO, G&A GROUP" },
+              { quote: "I am very grateful to Dave Hajdu, who spoke to graduate students in our international business and public policy program about Negotiations and AI. He was extremely knowledgeable and engaging.", name: "Dr. Brooks Holtom", title: "Professor of Management, Georgetown" },
+              { quote: "Working with Edge8 has been a pleasure. When I launched Fab Four Academy, I needed support to build a strong brand and digital presence. Dave and the team showed us how to leverage AI to streamline our processes.", name: "Dan Absher", title: "CEO, Absher Construction" },
+              { quote: "We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications. He was able to greatly expand our general knowledge of AI.", name: "John VanNewkirk", title: "YPO Gold Seattle" },
+            ].map((t, i) => (
+              <div key={i} className="testimonial-card">
+                <div className="testimonial-card-top">
+                  <div className="testimonial-quote-icon">"</div>
+                  <p className="testimonial-quote">{t.quote}</p>
+                </div>
+                <div className="testimonial-card-bottom">
+                  <div className="testimonial-avatar">
+                    <span>{t.name.split(' ').map(n => n[0]).join('')}</span>
+                  </div>
+                  <div className="testimonial-info">
+                    <div className="testimonial-name">{t.name}</div>
+                    <div className="testimonial-title">{t.title}</div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -177,16 +270,23 @@ export default function HomePage() {
           <h2 className="section-heading">The Path to Tech-Forward</h2>
           <p className="section-sub centered">A few examples of successful AI-Driven Programs</p>
           <div className="case-grid">
-            {[
-              { name: 'Vespa Adventures', tag: 'AI Program' },
-              { name: 'InvestMigrate', tag: 'AI Program' },
-              { name: 'PHO24', tag: 'AI Agents' },
-            ].map((c) => (
+            {caseStudies.map((c) => (
               <div key={c.name} className="case-card">
-                <div className="case-card-thumb">{c.name}</div>
+                <div className="case-card-image-wrap">
+                  <Image
+                    src={c.image}
+                    alt={c.name}
+                    width={520}
+                    height={300}
+                    className="case-card-img"
+                    unoptimized={c.image.endsWith('.avif')}
+                  />
+                  <div className="case-card-overlay" />
+                </div>
                 <div className="case-card-body">
                   <div className="case-tag">{c.tag}</div>
                   <h3>{c.name}</h3>
+                  <p className="case-result">{c.result}</p>
                 </div>
               </div>
             ))}

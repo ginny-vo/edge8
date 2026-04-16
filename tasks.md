@@ -1,4 +1,4 @@
-# Edge8 Website — Task List
+# Edge8 Website — Setup Tasks
 
 ## Status legend
 
@@ -8,95 +8,101 @@
 
 ---
 
-## Home Page `/`
+## Pages to Setup
 
-- [x] Hero section (video, eyebrow, headline, CTA)
-- [x] Problem section
-- [x] Testimonials (5 quotes)
-- [x] Tech-Forward definition block
-- [x] 8 Steps section
-- [x] Mid-page CTA
-- [x] Results (3 outcomes)
-- [x] Solutions (3 cards)
-- [x] Case studies preview
-- [x] Blog preview (3 cards)
-- [x] Contact section (Typeform embed)
-- [ ] Wire homepage content from `content/home.md` instead of hardcoded JSX
-- [ ] Review mobile layout — stack testimonials vertically, CTA tap targets
-- [ ] Confirm hero video loads correctly on mobile (autoPlay + muted + playsInline)
+### Homepage `/`
 
----
+- [ ] Setup Homepage (/) with hero, services, 8 steps, testimonials
+- [ ] Wire homepage content from docs/edge8-website-content.md
+- [ ] Review mobile layout — stack testimonials vertically
+- [ ] Confirm hero video loads correctly on mobile
 
-## Services `/services`
+### Services `/services`
 
 - [x] Services index page with grid of 6 service cards
 - [x] Individual service pages (6 routes)
-  - [x] `/services/ai-capabilities-audit`
-  - [x] `/services/ai-in-business-workshop`
-  - [x] `/services/caio-leadership`
-  - [x] `/services/global-staffing`
-  - [x] `/services/training-certification`
-  - [x] `/services/your-first-ai-hire`
-- [ ] Remove internal routing map and image debug sections from `/services` index (dev artifacts)
-- [ ] Add `/services` to main nav
 - [ ] Review each service page for copy accuracy against live edge8.ai
-- [ ] Confirm all service hero images load (`/images/services/*.jpg`)
+- [ ] Add `/services` to main nav
+- [ ] Remove internal routing map and image debug sections from `/services` index
 
----
+### About Us `/about`
 
-## About Us `/about`
-
-- [ ] Create `app/about/page.tsx`
-- [ ] Write content for: team intro, mission, Edge8 story, Dave Hajdu bio
+- [ ] Create About page
+- [ ] Write content: team intro, mission, Edge8 story, Dave Hajdu bio
 - [ ] Add About section to nav
-- [ ] Design: headshot + bio layout, brand statement, possibly a timeline
-- [ ] Add `content/about.md` as content source
+- [ ] Design: headshot + bio layout, brand statement
 
----
+### Case Studies `/case-studies`
 
-## Case Studies `/case-studies`
-
-- [ ] Create `app/case-studies/page.tsx` — listing grid
-- [ ] Wire to `data/case-studies.csv` (631 entries) or curate a featured subset
-- [ ] Design: card grid with company name, tag, outcome snippet
-- [ ] Create `app/case-studies/[slug]/page.tsx` — individual case study page
+- [ ] Create Case Studies main page (/case-study)
+- [ ] Add 3 category sections: Personal Brands, Business Websites, AI Programs
 - [ ] Add Case Studies to nav
-- [ ] Feature 3 case studies on homepage (Vespa Adventures, InvestMigrate, PHO24)
 
----
+### Individual Case Study Pages
 
-## Blog `/blog`
+- [ ] Personal Brand Case Studies page (4 examples)
+  - Rich Pham
+  - Angi Hurt
+  - David Jackson
+  - Steve Muller
+
+- [ ] Business Website Case Studies page (7 examples)
+  - Vespa Adventures
+  - PHO24
+  - InvestMigrate
+  - Grady Golf
+  - Nhau Vodka
+  - AI Officer Institute
+  - Fab Four Academy
+
+- [ ] AI Program Case Studies page (5 examples)
+  - Kyungbang
+  - Veracity
+  - Wink Hotels (Travel Buddy)
+  - OnTarget (Abound Health)
+  - EO APAC Region
+
+### Blog `/blog`
 
 - [x] Blog listing page
-- [x] Dynamic `[slug]` page renderer
-- [x] Post: `2026-ai-trends`
-- [x] Post: `your-next-ai-hire`
-- [ ] Blogs: add blogs data
-- [ ] Add a third blog post (e.g. "From Manual to Automated: A VC Firm's AI Journey")
-- [ ] Wire blog listing from `content/blog/` files instead of hardcoded `lib/posts.ts`
+- [x] Dynamic post page renderer
+- [ ] Add more blog posts content
 - [ ] Add Open Graph image per post
-- [ ] Blog card images — add `/images/blog/` assets for each post
+- [ ] Add blog images
+
+---
+
+## Asset Tasks
+
+- [ ] Download all images from Image Inventory (100+ images)
+- [ ] Setup navigation — add Services and About links
+- [ ] Setup footer — add links, contact info, newsletter signup
+- [ ] Wire contact forms from docs content
 
 ---
 
 ## UI Refinement
 
-- [ ] **Nav** — add Services and About links; confirm active state on current route
-- [ ] **Footer** — add links to Services, About, Case Studies; verify copyright year
-- [ ] **Typography** — audit heading sizes and weights for consistency across pages
-- [ ] **Buttons** — ensure `btn-mint` and `btn-outline` render consistently on all pages
-- [ ] **Cards** — align card padding, shadow, and border style across blog, case study, and testimonial cards
-- [ ] **Section spacing** — standardize `section` top/bottom padding site-wide
-- [ ] **Mobile** — full mobile pass: nav drawer, hero, cards, footer
-- [ ] **Animations** — `fade-rise` and `delay-*` classes: confirm they work and don't block content on slow connections
-- [ ] **SEO** — add `metadata` export to every page (`/about`, `/case-studies`, service pages)
-- [ ] **OG images** — verify `/images/og-default.jpg` renders correctly in social previews
+- [ ] Typography — audit heading sizes and weights
+- [ ] Buttons — ensure consistent rendering
+- [ ] Cards — align padding, shadow, border style
+- [ ] Section spacing — standardize padding
+- [ ] Mobile — full mobile pass
+- [ ] Animations — confirm they work
 
 ---
 
-## Infrastructure / Misc
+## SEO & Meta
 
-- [ ] Confirm Vercel deployment picks up new routes (`/services/*`, `/about`, `/case-studies`)
-- [ ] Set canonical URLs in metadata for all pages
-- [ ] 404 page — create `app/not-found.tsx` with on-brand design and home link
-- [ ] Redirect legacy URLs if any existed on old static HTML site
+- [ ] Add metadata export to every page
+- [ ] Set canonical URLs
+- [ ] Verify OG images in social previews
+- [ ] 404 page with brand design
+
+---
+
+## Verification
+
+- [ ] Verify pages match edge8-website-content.md docs
+- [ ] Verify internal navigation links work
+- [ ] Confirm Vercel deployment picks up new routes
