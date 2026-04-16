@@ -3,7 +3,11 @@
     "allow": [
       "Bash(rm content/types.ts content/home.ts content/blog/index.ts content/blog/2026-ai-trends.ts content/blog/your-next-ai-hire.ts)",
       "Bash(mkdir -p content/home)",
-      "mcp__plugin_context-mode_context-mode__ctx_fetch_and_index"
+      "mcp__plugin_context-mode_context-mode__ctx_fetch_and_index",
+      "Skill(update-config)",
+      "WebFetch(domain:21st.dev)",
+      "WebSearch",
+      "WebFetch(domain:www.edge8.ai)"
     ]
   }
 }
