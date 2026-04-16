@@ -1,5 +1,39 @@
 @import "tailwindcss";
 
+/* ===== GRADIENT TEXT — brand color variables & keyframes ===== */
+:root {
+  /* Edge8 brand palette as HSL for GradientText blobs */
+  --color-1: 158 85% 69%;   /* mint   rgb(111,242,193) */
+  --color-2: 215 80% 53%;   /* blue   rgb(40,123,232)  */
+  --color-3: 260 68% 62%;   /* violet (bridge mint→rose) */
+  --color-4: 325 58% 55%;   /* rose   rgb(209,69,139)  */
+}
+
+@keyframes gradient-border {
+  0%, 100% { border-radius: 40% 60% 65% 35% / 60% 30% 70% 40%; }
+  50%       { border-radius: 60% 40% 35% 65% / 40% 70% 30% 60%; }
+}
+@keyframes gradient-1 {
+  0%   { transform: translate(0, 0)   scale(1);    }
+  50%  { transform: translate(12%, 18%) scale(1.1); }
+  100% { transform: translate(0, 0)   scale(1);    }
+}
+@keyframes gradient-2 {
+  0%   { transform: translate(0, 0)    scale(1);    }
+  50%  { transform: translate(-14%, 10%) scale(1.08);}
+  100% { transform: translate(0, 0)    scale(1);    }
+}
+@keyframes gradient-3 {
+  0%   { transform: translate(0, 0)   scale(1);    }
+  50%  { transform: translate(10%, -14%) scale(1.06);}
+  100% { transform: translate(0, 0)   scale(1);    }
+}
+@keyframes gradient-4 {
+  0%   { transform: translate(0, 0)     scale(1);    }
+  50%  { transform: translate(-10%, -16%) scale(1.09);}
+  100% { transform: translate(0, 0)     scale(1);    }
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -291,6 +325,25 @@ img { max-width: 100%; display: block; }
   max-width: 520px;
   margin: 0 auto 40px;
   line-height: 1.4em;
+}
+
+.hero-gradient-text {
+  /* inherit the heading size/weight so the GradientText wrapper matches inline */
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: rgb(4, 16, 45);
+  /* ensure the white bg clips correctly on any background */
+  border-radius: 4px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0;
 }
 
 .hero-video {
