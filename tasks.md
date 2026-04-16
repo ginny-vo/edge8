@@ -12,10 +12,10 @@
 
 ### Homepage `/`
 
-- [ ] Setup Homepage (/) with hero, services, 8 steps, testimonials
-- [ ] Wire homepage content from docs/edge8-website-content.md
-- [ ] Review mobile layout — stack testimonials vertically
-- [ ] Confirm hero video loads correctly on mobile
+- [x] Setup Homepage (/) with hero, services, 8 steps, testimonials
+- [x] Wire homepage content from docs/edge8-website-content.md
+- [x] Review mobile layout — stack testimonials vertically
+- [x] Confirm hero video loads correctly on mobile
 
 ### Services `/services`
 

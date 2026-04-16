@@ -1878,7 +1878,7 @@ img { max-width: 100%; display: block; }
   .section { padding: 80px 24px; }
   .section-heading { font-size: 36px; }
 
-  .results-grid, .solutions-grid, .case-grid, .blog-grid, .services-grid { grid-template-columns: 1fr; }
+  .results-grid, .solutions-grid, .case-grid, .blog-grid, .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 
   .problem-card { padding: 36px 24px; }
