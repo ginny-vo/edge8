@@ -31,7 +31,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="body-line right"></div>
         </div>
         <Nav />
-        {children}
+        <div id="layout-content" style={{ paddingTop: '72px' }}>
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
