@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { GradientText } from '@/components/ui/gradient-text';
 
 export const metadata: Metadata = {
   title: 'Edge8 — Be Tech-Forward | AI Programs & Consulting',
@@ -25,7 +26,9 @@ export default function HomePage() {
       <section className="hero">
         <div className="container">
           <span className="hero-eyebrow">Be Tech-Forward</span>
-          <h1>8x IMPACT</h1>
+          <h1>
+            8x <GradientText>IMPACT</GradientText>
+          </h1>
           <p className="hero-sub">Stop overthinking AI&mdash;Start implementing your AI Programs</p>
           <div className="hero-ctas">
             <Link href="#contact" className="btn-mint">Schedule A Consultation &rarr;</Link>

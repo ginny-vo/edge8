@@ -1,37 +1,40 @@
 @import "tailwindcss";
 
-/* ===== GRADIENT TEXT — brand color variables & keyframes ===== */
+/* ===== GRADIENT TEXT — CSS variables & keyframes (spec-exact) ===== */
 :root {
-  /* Edge8 brand palette as HSL for GradientText blobs */
-  --color-1: 158 85% 69%;   /* mint   rgb(111,242,193) */
-  --color-2: 215 80% 53%;   /* blue   rgb(40,123,232)  */
-  --color-3: 260 68% 62%;   /* violet (bridge mint→rose) */
-  --color-4: 325 58% 55%;   /* rose   rgb(209,69,139)  */
+  --color-1: 330 100% 40%; /* Dark Neon Pink */
+  --color-2: 140 100% 55%; /* Bright Electric Green */
+  --color-3: 210 100% 30%; /* Deep Neon Blue */
+  --color-4: 60 100% 70%;  /* Light Neon Yellow */
+  --color-5: 295 100% 45%; /* Dark Neon Purple */
+  --brand: 50 100% 50%;    /* Bright yellow */
 }
 
 @keyframes gradient-border {
-  0%, 100% { border-radius: 40% 60% 65% 35% / 60% 30% 70% 40%; }
-  50%       { border-radius: 60% 40% 35% 65% / 40% 70% 30% 60%; }
+  0%, 100% { border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%; }
+  25%       { border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%; }
+  50%       { border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%; }
+  75%       { border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%; }
 }
 @keyframes gradient-1 {
-  0%   { transform: translate(0, 0)   scale(1);    }
-  50%  { transform: translate(12%, 18%) scale(1.1); }
-  100% { transform: translate(0, 0)   scale(1);    }
+  0%, 100% { top: 0; right: 0; }
+  50%       { top: 50%; right: 25%; }
+  75%       { top: 25%; right: 50%; }
 }
 @keyframes gradient-2 {
-  0%   { transform: translate(0, 0)    scale(1);    }
-  50%  { transform: translate(-14%, 10%) scale(1.08);}
-  100% { transform: translate(0, 0)    scale(1);    }
+  0%, 100% { top: 0; left: 0; }
+  60%       { top: 75%; left: 25%; }
+  85%       { top: 50%; left: 50%; }
 }
 @keyframes gradient-3 {
-  0%   { transform: translate(0, 0)   scale(1);    }
-  50%  { transform: translate(10%, -14%) scale(1.06);}
-  100% { transform: translate(0, 0)   scale(1);    }
+  0%, 100% { bottom: 0; left: 0; }
+  40%       { bottom: 50%; left: 25%; }
+  65%       { bottom: 25%; left: 50%; }
 }
 @keyframes gradient-4 {
-  0%   { transform: translate(0, 0)     scale(1);    }
-  50%  { transform: translate(-10%, -16%) scale(1.09);}
-  100% { transform: translate(0, 0)     scale(1);    }
+  0%, 100% { bottom: 0; right: 0; }
+  50%       { bottom: 25%; right: 40%; }
+  90%       { bottom: 50%; right: 25%; }
 }
 
 *, *::before, *::after {
