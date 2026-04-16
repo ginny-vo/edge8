@@ -104,6 +104,44 @@
 
 ---
 
+## Homepage Design Improvements (`feature/homepage-rebuild`)
+
+### Hero
+- [ ] Dark background with full-width video behind text (not side-by-side)
+- [ ] Strong headline hierarchy — `8x IMPACT` must dominate the screen
+- [ ] Differentiate primary vs secondary CTA visually (weight, style)
+- [ ] Add eyebrow label with proper styling
+
+### Problem Section
+- [ ] Rebuild as 2-column split layout (label+title left / body text right)
+- [ ] Remove single centered card — feels like a placeholder
+
+### Solutions
+- [ ] Replace emoji icons (⚡🌏🎓) with real photos
+- [ ] Add image per solution card (already downloaded to `/images/solutions/`)
+- [ ] Wire links to service pages
+
+### Results / Metrics
+- [ ] Make stat numbers (`2x`, `5x`, `8x`) the dominant visual element
+- [ ] Reduce clutter — stat + label + one-liner only, no icon
+- [ ] Match original design: large number, area label, short description
+
+### 8 Steps
+- [ ] Replace static 8-card grid with interactive timeline (progress bar + detail panel)
+- [ ] Use `Steps8.tsx` component already built
+
+### Blog Section
+- [ ] Add featured post (large, left half) with thumbnail image
+- [ ] Add 3 stacked posts (right half) each with thumbnail
+- [ ] Use real blog images from `/images/blog-posts/`
+
+### General
+- [ ] Break monotony — vary section layouts (not all centered text)
+- [ ] Improve section-to-section contrast (current grey/white too subtle)
+- [ ] Add visual anchor moments — something that stops the eye per section
+
+---
+
 ## UI Refinement
 
 - [ ] Typography — audit heading sizes and weights
