@@ -542,7 +542,7 @@ img { max-width: 100%; display: block; }
   justify-self: stretch;
   min-width: 0;
   overflow: hidden;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
 }
 
@@ -608,7 +608,7 @@ img { max-width: 100%; display: block; }
   justify-self: center;
   align-self: start;
   padding-top: 60px;
-  z-index: 2;
+  z-index: 1;
 }
 
 .hero-info {
