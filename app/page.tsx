@@ -128,6 +128,26 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Partners Bar */}
+      <section className="partners" style={{ padding: '40px 0', borderBottom: '1px solid #E6EBF0' }}>
+        <div className="container text-center">
+          <p style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '2px', color: 'rgba(4,16,45,0.5)', marginBottom: '24px' }}>TRUSTED BY LEADING ORGANIZATIONS</p>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '48px', flexWrap: 'wrap' }}>
+            {[
+              { src: '/images/clients/pho24.png', alt: 'PHO24' },
+              { src: '/images/clients/veracity.png', alt: 'Veracity' },
+              { src: '/images/clients/vespa.png', alt: 'Vespa Adventures' },
+              { src: '/images/clients/eo.png', alt: 'EO' },
+              { src: '/images/clients/unlock-venture.png', alt: 'Unlock Venture Partners' },
+              { src: '/images/clients/investmigrate.png', alt: 'InvestMigrate' },
+              { src: '/images/clients/abound-health.png', alt: 'Abound Health Group' },
+            ].map((partner, i) => (
+              <Image key={i} src={partner.src} alt={partner.alt} width={100} height={40} style={{ opacity: 0.6, filter: 'grayscale(100%)' }} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 3. PROBLEM */}
       <section className="section section-grey" id="about">
         <div className="section-inner">

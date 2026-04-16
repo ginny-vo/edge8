@@ -5,40 +5,40 @@ import { Marquee } from '@/components/ui/marquee';
 
 const testimonials = [
   {
-    name: 'Dao Nguyen',
-    title: 'Founder, DN Legal',
-    body: "Love the new look and branding. The brand interview really made me think about our positioning.",
-    img: 'https://randomuser.me/api/portraits/women/32.jpg',
+    name: 'Dato George Lim',
+    title: 'Founder & CEO — G&A GROUP & GA SPACE',
+    body: "I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved. We are looking forward to collaborating.",
+    img: '/images/testimonials/dato-george-lim.png',
   },
   {
-    name: 'Dato George Lim',
-    title: 'Founder and CEO, G&A GROUP',
-    body: "I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage.",
-    img: 'https://randomuser.me/api/portraits/men/51.jpg',
+    name: 'John VanNewkirk',
+    title: 'YPO Gold Seattle, Forum 6',
+    body: "We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks. He was able to greatly expand our general knowledge of AI.",
+    img: '/images/testimonials/john-vannewkirk.png',
   },
   {
     name: 'Dr. Brooks Holtom',
     title: 'Professor of Management, Georgetown',
-    body: "He was extremely knowledgeable and engaging. Real-world experiences complemented our class perfectly.",
-    img: 'https://randomuser.me/api/portraits/men/68.jpg',
+    body: "He was extremely knowledgeable and engaging. Real-world experiences complemented our class discussions perfectly.",
+    img: '/images/testimonials/brooks-holtom.jpg',
   },
   {
-    name: 'John VanNewkirk',
-    title: 'YPO Gold Seattle',
-    body: "He was able to greatly expand our general knowledge of AI and demystify implementation challenges.",
-    img: 'https://randomuser.me/api/portraits/men/22.jpg',
-  },
-  {
-    name: 'Dan Absher',
-    title: 'CEO, Absher Construction',
-    body: "Working with Edge8 has been a pleasure. They showed us how to leverage AI to streamline processes.",
-    img: 'https://randomuser.me/api/portraits/men/85.jpg',
+    name: 'Dao Nguyen',
+    title: 'Founder, DN Legal',
+    body: "Love the new look and branding. The brand interview really made me think about our positioning and business in ways I never expected.",
+    img: '/images/testimonials/dao-nguyen.jpg',
   },
   {
     name: 'Tuan Anh Le',
     title: 'Managing Partner, DN Legal',
-    body: "We're finally presenting ourselves the way we've always wanted.",
-    img: 'https://randomuser.me/api/portraits/women/44.jpg',
+    body: "With Edge8's help, we're finally presenting ourselves the way we've always wanted. The speed, the quality, and the care were all top-notch.",
+    img: '/images/testimonials/tuan-anh-le.jpg',
+  },
+  {
+    name: 'Dan Absher',
+    title: 'CEO, Absher Construction Company',
+    body: "Working with Edge8 has been a pleasure. They showed us how to leverage AI to streamline our processes.",
+    img: '/images/testimonials/dan-absher.jpg',
   },
 ];
 
