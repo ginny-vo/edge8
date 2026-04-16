@@ -11,16 +11,19 @@ export default function Footer() {
           </div>
           <div className="footer-col">
             <h4>Services</h4>
-            <Link href="/#services">AI Programs</Link>
-            <Link href="/#services">Global Talent</Link>
-            <Link href="/#services">Workshops</Link>
-            <Link href="/#services">AI Branding</Link>
+            <Link href="https://www.ai-officer.com/ai-in-business-events" target="_blank">AI in Business Workshop</Link>
+            <Link href="/services/your-first-ai-hire">Your First AI Hire</Link>
+            <Link href="/services/ai-capabilities-audit">AI Capabilities Audit</Link>
+            <Link href="/services/caio-leadership">CAIO Leadership</Link>
+            <Link href="/services/global-staffing">Global Staffing</Link>
+            <Link href="/services/training-certification">Training & Certification</Link>
           </div>
           <div className="footer-col">
-            <h4>Company</h4>
-            <Link href="/#about">About</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/#contact">Contact</Link>
+            <h4>Case Studies</h4>
+            <Link href="/case-studies">All Case Studies</Link>
+            <Link href="/case-studies/personal-brands">Personal Brands</Link>
+            <Link href="/case-studies/business-website">Business Website</Link>
+            <Link href="/case-studies/ai-programs">AI Programs</Link>
           </div>
           <div className="footer-col">
             <h4>Connect</h4>
