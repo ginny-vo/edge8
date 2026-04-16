@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import TestimonialsMarquee from '@/components/ui/testimonials-marquee';
 
 const clientLogos = [
   { src: '/images/clients/vespa.png', alt: 'Vespa Adventures' },
@@ -138,37 +139,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. TESTIMONIALS - Grid Style */}
+      {/* 3. TESTIMONIALS - Marquee */}
       <section className="section">
-        <div className="section-inner">
-          <div className="text-center">
-            <h2 className="section-heading">What Our Clients Say</h2>
-          </div>
-          <div className="testimonials-grid">
-            {[
-              { quote: "Love the new look and branding. The website looks so good. I'm deeply grateful. The brand interview really made me think about our positioning and business in ways I never expected.", name: "Dao Nguyen", title: "Founder, DN Legal" },
-              { quote: "I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved. We are looking forward to collaborating with the AI Officer Institute and Edge8 to bring their AI Certification Program to Malaysia.", name: "Dato George Lim", title: "Founder and CEO, G&A GROUP" },
-              { quote: "I am very grateful to Dave Hajdu, who spoke to graduate students in our international business and public policy program about Negotiations and AI. He was extremely knowledgeable and engaging.", name: "Dr. Brooks Holtom", title: "Professor of Management, Georgetown" },
-              { quote: "Working with Edge8 has been a pleasure. When I launched Fab Four Academy, I needed support to build a strong brand and digital presence. Dave and the team showed us how to leverage AI to streamline our processes.", name: "Dan Absher", title: "CEO, Absher Construction" },
-              { quote: "We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications. He was able to greatly expand our general knowledge of AI.", name: "John VanNewkirk", title: "YPO Gold Seattle" },
-            ].map((t, i) => (
-              <div key={i} className="testimonial-card">
-                <div className="testimonial-card-top">
-                  <div className="testimonial-quote-icon">"</div>
-                  <p className="testimonial-quote">{t.quote}</p>
-                </div>
-                <div className="testimonial-card-bottom">
-                  <div className="testimonial-avatar">
-                    <span>{t.name.split(' ').map(n => n[0]).join('')}</span>
-                  </div>
-                  <div className="testimonial-info">
-                    <div className="testimonial-name">{t.name}</div>
-                    <div className="testimonial-title">{t.title}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="section-inner text-center">
+          <h2 className="section-heading">What Our Clients Say</h2>
+          <TestimonialsMarquee />
         </div>
       </section>
 

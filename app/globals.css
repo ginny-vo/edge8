@@ -1,7 +1,43 @@
 @import "tailwindcss";
 
+/* ===== MARQUEE ANIMATIONS ===== */
+@theme inline {
+  --animate-marquee: marquee var(--duration, 40s) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration, 40s) linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap))); }
+}
+
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap))); }
+}
+
 /* ===== TAILWIND THEME v4 ===== */
 @theme {
+  /* Colors - shadcn-theme */
+  --color-background: #FFFFFF;
+  --color-foreground: #04102D;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #04102D;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #04102D;
+  --color-primary: #6FF2C1;
+  --color-primary-foreground: #04102D;
+  --color-secondary: #EAEEF2;
+  --color-secondary-foreground: #04102D;
+  --color-muted: #EAEEF2;
+  --color-muted-foreground: rgba(4, 16, 45, 0.5);
+  --color-accent: #EAEEF2;
+  --color-accent-foreground: #04102D;
+  --color-destructive: #D1458B;
+  --color-destructive-foreground: #FFFFFF;
+  --color-border: #E6EBF0;
+  --color-input: #E6EBF0;
+  --color-ring: #287BE8;
   /* Colors - From Brand Guidelines */
   --color-navy: #04102D;          /* Primary Canvas */
   --color-navy-light: #FFFFFF;     /* Primary Text */
