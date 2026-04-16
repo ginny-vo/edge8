@@ -2,28 +2,28 @@
 
 /* ===== TAILWIND THEME v4 ===== */
 @theme {
-  /* Colors */
-  --color-mint: rgb(111, 242, 193);
-  --color-mint-light: rgba(111, 242, 193, 0.1);
-  --color-mint-medium: rgba(111, 242, 193, 0.2);
-  
-  --color-navy: rgb(4, 16, 45);
-  --color-navy-light: rgba(4, 16, 45, 0.7);
+  /* Colors - From Brand Guidelines */
+  --color-navy: #04102D;          /* Primary Canvas */
+  --color-navy-light: #FFFFFF;     /* Primary Text */
   --color-navy-faint: rgba(4, 16, 45, 0.5);
   
-  --color-blue: rgb(40, 123, 232);
+  --color-blue: #287BE8;           /* Interactive/Neutral */
   --color-blue-light: rgba(40, 123, 232, 0.1);
   --color-blue-medium: rgba(40, 123, 232, 0.2);
   
-  --color-rose: rgb(209, 69, 139);
+  --color-mint: #6FF2C1;           /* Success/Growth */
+  --color-mint-light: rgba(111, 242, 193, 0.1);
+  --color-mint-medium: rgba(111, 242, 193, 0.2);
+  
+  --color-rose: #D1458B;          /* Alert/Negative Only */
   --color-rose-light: rgba(209, 69, 139, 0.1);
   
-  --color-gold: rgb(198, 142, 38);
+  --color-gold: #C68E26;           /* Premium Accent */
   --color-gold-light: rgba(198, 142, 38, 0.2);
   
-  --color-border: rgb(230, 235, 240);
-  --color-bg-grey: rgb(234, 238, 242);
-  --color-bg-white: rgb(248, 250, 252);
+  --color-border: #E6EBF0;
+  --color-bg-grey: #EAEEF2;
+  --color-bg-white: #F8FAFC;
   
   /* Typography */
   --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -103,18 +103,26 @@
 
 /* ===== CSS VARIABLES FOR LEGACY USAGE ===== */
 :root {
-  /* Brand Colors */
-  --color-mint: rgb(111, 242, 193);
-  --color-navy: rgb(4, 16, 45);
-  --color-blue: rgb(40, 123, 232);
-  --color-rose: rgb(209, 69, 139);
-  --color-gold: rgb(198, 142, 38);
+  /* Brand Colors - FROM BRAND GUIDELINES */
+  --color-navy: #04102D;      /* Primary Canvas */
+  --color-navy-light: #FFFFFF; /* Primary Text */
+  --color-blue: #287BE8;       /* Interactive */
+  --color-mint: #6FF2C1;      /* Success/Growth */
+  --color-rose: #D1458B;      /* Alert */
+  --color-gold: #C68E26;      /* Premium */
+  
+  /* Legacy RGB versions */
+  --color-mint-rgb: 111, 242, 193;
+  --color-navy-rgb: 4, 16, 45;
+  --color-blue-rgb: 40, 123, 232;
+  --color-rose-rgb: 209, 69, 139;
+  --color-gold-rgb: 198, 142, 38;
   
   /* HSL versions for gradients */
-  --color-1: 158 85% 69%;   /* mint   rgb(111,242,193) */
-  --color-2: 215 80% 53%;   /* blue   rgb(40,123,232)  */
-  --color-3: 260 68% 62%;   /* violet (bridge mint→rose) */
-  --color-4: 325 58% 55%;   /* rose   rgb(209,69,139)  */
+  --color-1: 158 85% 69%;
+  --color-2: 215 80% 53%;
+  --color-3: 260 68% 62%;
+  --color-4: 325 58% 55%;
 }
 
 @keyframes gradient-border {

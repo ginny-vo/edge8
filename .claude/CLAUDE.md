@@ -36,32 +36,25 @@ All page content is documented in `docs/pages/*.md` as the **source of truth**.
 
 ## Brand & Design System (Tailwind v4)
 
-Add colors to `@theme` in `globals.css`:
+**Exact hex codes from Brand Guidelines:**
 
-```css
-@theme {
-  /* Colors */
-  --color-mint: rgb(111, 242, 193);
-  --color-mint-light: rgba(111, 242, 193, 0.1);
-  --color-navy: rgb(4, 16, 45);
-  --color-navy-light: rgba(4, 16, 45, 0.7);
-  --color-blue: rgb(40, 123, 232);
-  --color-blue-light: rgba(40, 123, 232, 0.1);
-  --color-rose: rgb(209, 69, 139);
-  --color-gold: rgb(198, 142, 38);
-  --color-border: rgb(230, 235, 240);
-}
+| Role | Token | Hex | Usage |
+|---|---|---|---|
+| Primary Canvas | Navy | `#04102D` | Backgrounds |
+| Primary Text | White | `#FFFFFF` | Text on navy |
+| Interactive | Blue | `#287BE8` | Links, buttons, accents |
+| Success | Mint | `#6FF2C1` | CTAs, highlights |
+| Alert | Pink | `#D1458B` | Tags, badges only |
+| Premium | Gold | `#C68E26` | Special accents |
+| Border | Border | `#E6EBF0` | Dividers |
+| Background | BG Grey | `#EAEEF2` | Section backgrounds |
+
+Use in templates:
+```tsx
+<button className="bg-mint text-navy">CTA</button>
+<button className="bg-blue text-white">Secondary</button>
+<span className="text-rose">Alert</span>
 ```
-
-Then use in templates: `bg-mint`, `text-navy`, `border-blue`, etc.
-
-| Token | Value | Tailwind Class |
-|---|---|---|
-| Mint | `rgb(111, 242, 193)` | `bg-mint` or `bg-[rgb(111,242,193)]` |
-| Navy | `rgb(4, 16, 45)` | `bg-navy` or `text-navy` |
-| Blue | `rgb(40, 123, 232)` | `text-blue` or `bg-blue` |
-| Rose | `rgb(209, 69, 139)` | `text-rose` |
-| Font | Inter | (already loaded in layout) |
 
 ---
 
