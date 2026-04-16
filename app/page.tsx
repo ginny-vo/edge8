@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import ScrollReveal from '@/components/ScrollReveal';
+import Steps8 from '@/components/Steps8';
 
 export const metadata: Metadata = {
   title: 'Edge8 — Be Tech-Forward | AI Programs & Consulting',
@@ -28,57 +29,16 @@ const clientLogos = [
   { src: '/images/clients/veracity.png', alt: 'Veracity' },
   { src: '/images/clients/abound-health.png', alt: 'Abound Health Group' },
   { src: '/images/clients/unlock-venture.png', alt: 'Unlock Venture Partners' },
+  { src: '/images/clients/pho24.png', alt: 'PHO24' },
 ];
 
-const steps = [
-  {
-    n: '01',
-    title: 'AI Readiness Audit',
-    desc: 'Map your current workflows, tools, and pain points. No assumptions — just data. We find where AI delivers the highest leverage.',
-  },
-  {
-    n: '02',
-    title: 'Build Your AI Strategy',
-    desc: 'Define a custom AI roadmap tied to your business goals, not a generic playbook. Strategy before tools, always.',
-  },
-  {
-    n: '03',
-    title: 'Appoint an AI Officer',
-    desc: 'Install dedicated leadership to own the transformation — full-time or fractional. Someone accountable for AI strategy, governance, and results.',
-  },
-  {
-    n: '04',
-    title: 'Create Your Data Foundation',
-    desc: 'Build your company database starting with just the right amount of clean, centralized data for your first program.',
-  },
-  {
-    n: '05',
-    title: 'Launch Your First AI Program',
-    desc: 'Deploy AI agents and automation in your highest-impact workflow. Real implementation, not another pilot that never scales.',
-  },
-  {
-    n: '06',
-    title: 'Train Your Team',
-    desc: 'Upskill managers and every team member to work with AI, not around it. AI management is the new core competency.',
-  },
-  {
-    n: '07',
-    title: 'Govern & Measure',
-    desc: 'Establish governance frameworks to track ROI, manage ethics, and ensure compliance. Accountability at every level.',
-  },
-  {
-    n: '08',
-    title: 'Scale & Optimize',
-    desc: 'Expand successful programs across the organization. Compound your AI advantage every quarter — not in years.',
-  },
-];
 
 const caseStudies = [
   {
-    name: 'Vespa Adventures',
-    tag: 'AI Program',
-    image: '/images/case-studies/vespa.jpg',
-    result: 'Automated 80% of customer communications and itinerary workflows',
+    name: 'PHO24',
+    tag: 'AI Agents',
+    image: '/images/case-studies/pho24.jpg',
+    result: 'Deployed AI agents across 20+ franchise locations for operations management',
   },
   {
     name: 'InvestMigrate',
@@ -87,10 +47,10 @@ const caseStudies = [
     result: 'Eliminated manual data entry and accelerated investor onboarding by 3×',
   },
   {
-    name: 'PHO24',
-    tag: 'AI Agents',
-    image: '/images/case-studies/pho24.jpg',
-    result: 'Deployed AI agents across 20+ franchise locations for operations management',
+    name: 'Vespa Adventures',
+    tag: 'AI Program',
+    image: '/images/case-studies/vespa.jpg',
+    result: 'Automated 80% of customer communications and itinerary workflows',
   },
 ];
 
@@ -188,41 +148,11 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
 
-          <div className="steps-grid">
-            {steps.map((step, i) => (
-              <ScrollReveal key={step.n} direction="up" delay={i * 60}>
-                <div className="step-card">
-                  <div className="step-number">{step.n}</div>
-                  <h3 className="step-title">{step.title}</h3>
-                  <p className="step-desc">{step.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal direction="up" delay={200}>
-            <div className="steps-cta">
-              <p className="steps-cta-text">Book your free consultation today and take the first step toward an AI-driven future</p>
-              <Link href="#contact" className="btn-mint">Schedule A Consultation &rarr;</Link>
-            </div>
-          </ScrollReveal>
+          <Steps8 />
         </div>
       </section>
 
-      {/* 7. BLUE CTA */}
-      <section className="section section-blue text-center">
-        <div className="section-inner">
-          <ScrollReveal direction="up">
-            <h2 className="section-heading">Book Your Free Consultation</h2>
-            <p className="section-sub centered" style={{ color: 'rgba(255,255,255,0.85)' }}>Take the first step toward becoming Tech-Forward. Our experts will help you identify the right AI Programs for your organization and map a clear path to 8x impact.</p>
-            <div style={{ marginTop: '40px' }}>
-              <Link href="#contact" className="btn-mint">Schedule A Consultation &rarr;</Link>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* 8. RESULTS */}
+      {/* 7. RESULTS */}
       <section className="section">
         <div className="section-inner text-center">
           <ScrollReveal direction="up">
@@ -234,19 +164,19 @@ export default function HomePage() {
             {[
               {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
-                stat: '10+',
+                stat: 'x2',
                 title: 'AI Officer Leadership',
                 desc: 'Established the leadership needed to effectively run an AI Program within 10+ organizations',
               },
               {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
-                stat: '2×',
+                stat: 'x5',
                 title: 'Global Talent Staffing',
                 desc: 'Helping a leading healthcare provider build a tech-forward team, doubling productivity while cutting costs dramatically.',
               },
               {
                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
-                stat: '100%',
+                stat: 'x8',
                 title: 'AI Programs',
                 desc: 'Eliminated 100% of data entry tasks, enriched entrepreneur submissions, and enhanced deal flow analysis for a Venture Capital firm.',
               },
@@ -269,37 +199,69 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. SOLUTIONS */}
-      <section className="section section-grey" id="services">
+      {/* 8. AI-POWERED SOLUTIONS (6-card) */}
+      <section className="section ai-solutions-section" id="services">
         <div className="section-inner text-center">
           <ScrollReveal direction="up">
             <div className="section-label">What We Do</div>
-            <h2 className="section-heading">Our Solutions</h2>
+            <h2 className="section-heading">AI-Powered Solutions for a Tech-Forward Future</h2>
+            <p className="section-sub centered">AI Automation Designed to Elevate Your Business</p>
+            <p className="section-sub centered" style={{ marginTop: '8px' }}>Edge8 enables organizations to leverage AI automation and AI integration for enhanced productivity and efficiency.</p>
+          </ScrollReveal>
+          <div className="ai-solutions-grid">
+            {[
+              { title: 'Personal Branding with AI', desc: 'Build your brand similar to leaders like Rich Pham, Angi Hurt, and Steve Mueller.', cta: 'Schedule a Consultation', href: '#contact' },
+              { title: 'Private and Public Workshops', desc: 'Get your team aligned with an interactive session where we break down AI fundamentals, dive into real case studies, and leave you with practical tools you can put to work right away.', cta: 'Join a Workshop', href: 'https://www.ai-officer.com/ai-in-business-events' },
+              { title: 'AI in HR Workflows & Recruitment', desc: 'Optimize talent acquisition, onboarding, and coaching with intelligent AI Agents.', cta: 'Schedule a Consultation', href: '#contact' },
+              { title: 'Revolutionizing Sales with AI', desc: 'Transform your sales process with your own chat bot, CRM and nurture campaigns.', cta: 'Schedule a Consultation', href: '#contact' },
+              { title: 'AI for Social Media & Content Publishing', desc: 'Stay ahead with AI-driven content for improved engagement and visibility.', cta: 'Join a Workshop', href: 'https://www.ai-officer.com/ai-in-business-events' },
+              { title: 'Global Talent Solutions', desc: 'Find, train, and scale with AI-empowered professionals located in Vietnam.', cta: 'Schedule a Consultation', href: '#contact' },
+            ].map((s, i) => (
+              <ScrollReveal key={s.title} direction="up" delay={i * 60}>
+                <div className="ai-solution-card">
+                  <h3>{s.title}</h3>
+                  <p>{s.desc}</p>
+                  <Link href={s.href} className="btn-outline">{s.cta}</Link>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. SOLUTIONS (3-column) */}
+      <section className="section section-grey">
+        <div className="section-inner text-center">
+          <ScrollReveal direction="up">
+            <h2 className="section-heading">Solutions</h2>
+            <p className="section-sub centered">Empowering Organizations to use AI effectively through clear leadership, thoughtful implementation and strong global talent.</p>
           </ScrollReveal>
           <div className="solutions-grid">
             {[
               {
                 label: 'AI Programs',
-                title: 'From Strategy to Implementation — We Build, Not Pitch',
-                desc: "We don't just talk AI — we build with it. From CRM flows to marketing automation, our AI solutions power content creation, sales engagement, and customer journeys. You bring the ideas. We build the systems.",
-                icon: '⚡',
+                title: 'From Strategy to Implementation—We Build not Pitch',
+                desc: "We don't just talk AI—we build with it. From CRM flows to marketing automation, our AI solutions power content creation, sales engagement, and customer journeys. You bring the ideas. We build the systems.",
+                image: '/images/solutions/ai-programs.jpg',
               },
               {
                 label: 'Global Talent Network',
                 title: 'Scale Smarter with AI-Empowered Teams',
-                desc: "Access Vietnam's top AI-trained professionals to accelerate your initiatives — without compromising on quality or speed. We embed engineers, analysts, and operators directly into your team.",
-                icon: '🌏',
+                desc: "Access Vietnam's top AI-trained professionals to accelerate your initiatives—without compromising on quality or speed. We embed engineers, analysts, and operators directly into your team to turn workflows into intelligent systems.",
+                image: '/images/solutions/global-talent.jpg',
               },
               {
                 label: 'AI Officer Certification & Workshops',
                 title: 'Make Your Team AI-Literate and Leadership-Ready',
-                desc: 'We equip founders and teams to lead with confidence. Through our AI Officer certification and hands-on workshops, your organization gains the frameworks, tools, and language to scale with AI.',
-                icon: '🎓',
+                desc: 'We equip founders and teams to lead with confidence. Through our AI Officer certification and hands-on workshops, your organization will gain the frameworks, tools, and language to scale with AI—internally and externally.',
+                image: '/images/solutions/ai-certification.jpg',
               },
             ].map((s, i) => (
               <ScrollReveal key={s.label} direction="up" delay={i * 80}>
                 <div className="solution-card">
-                  <div className="sol-icon">{s.icon}</div>
+                  <div className="sol-img-wrap">
+                    <Image src={s.image} alt={s.label} width={520} height={293} className="sol-img" />
+                  </div>
                   <div className="sol-label">{s.label}</div>
                   <h3>{s.title}</h3>
                   <p>{s.desc}</p>
@@ -307,6 +269,11 @@ export default function HomePage() {
               </ScrollReveal>
             ))}
           </div>
+          <ScrollReveal direction="up" delay={200}>
+            <div className="results-btn">
+              <Link href="/services" className="btn-outline">Explore All Services &rarr;</Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -355,21 +322,39 @@ export default function HomePage() {
         <div className="section-inner text-center">
           <ScrollReveal direction="up">
             <div className="section-label">Insights</div>
-            <h2 className="section-heading">Discover the Latest Insights</h2>
-            <p className="section-sub centered">Stay up to date with the latest in AI Programs, Tech-Forward leadership, and digital transformation.</p>
+            <h2 className="section-heading">AI Is Driving Rapid Change Across The World</h2>
+            <p className="section-sub centered">Discover the latest insights on Global Talent, Artificial Intelligence Trends, and AI Agents</p>
           </ScrollReveal>
           <div className="blog-grid">
             {[
-              { tag: 'AI Programs', title: 'Why Every Business Needs an AI Program in 2025', desc: 'Learn how structured AI Programs are replacing ad-hoc AI usage and delivering measurable ROI across industries.' },
-              { tag: 'Leadership', title: 'The Rise of the AI Officer', desc: 'How forward-thinking organizations are appointing AI Officers to lead their digital transformation initiatives.' },
-              { tag: 'Case Study', title: "From Manual to Automated: A VC Firm's AI Journey", desc: 'How we eliminated 100% of data entry tasks and enhanced deal flow analysis for a leading Venture Capital firm.' },
+              { tag: 'AI in Business', slug: 'your-next-ai-hire', image: '/images/blog-ai-hire.jpg', title: "Your Next AI Hire Isn't a Person", desc: "Most companies don't fail at AI because of the tech. They fail because no one owns it. AI agents need managers, engineers, and real teams, just like people." },
+              { tag: 'AI in Business', slug: '2026-ai-trends', image: '/images/blog-ai-trends.jpg', title: '2026 AI Trends: 5 Game-Changing Shifts That Will Define Business Success', desc: 'Explore the five 2026 AI trends transforming business—from AI leadership to data discipline—and see why the winners will be defined by their data, not tools.' },
+              { tag: 'Technology', slug: null, image: '/images/blog-posts/meta-ray-ban.png', title: 'Why Smart Founders Are Already Planning for Meta Ray-Ban Glasses (Even When Demos Fail)', desc: 'Meta Ray-Ban glasses demos fail constantly, but smart founders plan ahead anyway. Technology always catches up—the question is whether you\'re truly ready when it does.' },
             ].map((b, i) => (
               <ScrollReveal key={b.title} direction="up" delay={i * 80}>
-                <div className="blog-card">
-                  <div className="blog-tag">{b.tag}</div>
-                  <h3>{b.title}</h3>
-                  <p>{b.desc}</p>
-                </div>
+                {b.slug ? (
+                  <Link href={`/blog/${b.slug}`} className="blog-card blog-card-linked">
+                    <div className="blog-card-img-wrap">
+                      <Image src={b.image} alt={b.title} width={400} height={220} className="blog-card-top-img" />
+                    </div>
+                    <div className="blog-card-inner">
+                      <div className="blog-tag">{b.tag}</div>
+                      <h3>{b.title}</h3>
+                      <p>{b.desc}</p>
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="blog-card">
+                    <div className="blog-card-img-wrap">
+                      <Image src={b.image} alt={b.title} width={400} height={220} className="blog-card-top-img" />
+                    </div>
+                    <div className="blog-card-inner">
+                      <div className="blog-tag">{b.tag}</div>
+                      <h3>{b.title}</h3>
+                      <p>{b.desc}</p>
+                    </div>
+                  </div>
+                )}
               </ScrollReveal>
             ))}
           </div>
@@ -381,7 +366,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 12. CONTACT */}
+      {/* 12. AI AUTOMATION REVIEW CTA */}
+      <section className="ai-review-section">
+        <ScrollReveal direction="up">
+          <h2>Ready to transform your business with AI automation?</h2>
+          <p className="ai-review-sub">Schedule a Free AI Automation Review</p>
+          <p>Schedule a free, no-obligation process review with our AI experts. We&rsquo;ll analyze your current AI-powered workflows, showcase AI agents&rsquo; capabilities, and show you how our solutions can enhance efficiency, optimize operations, and drive business growth.</p>
+          <Link href="/services/ai-capabilities-audit" className="btn-mint">Book Your AI Capabilities Audit &rarr;</Link>
+        </ScrollReveal>
+      </section>
+
+      {/* 13. CONTACT */}
       <section className="section contact-section" id="contact">
         <div className="section-inner">
           <ScrollReveal direction="up">

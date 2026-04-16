@@ -797,8 +797,46 @@ img { max-width: 100%; display: block; }
   color: rgb(40, 123, 232);
 }
 
-/* ===== SOLUTIONS ===== */
+/* ===== AI-POWERED SOLUTIONS (6-card grid) ===== */
+.ai-solutions-section { background: rgb(255, 255, 255); }
+
+.ai-solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.ai-solution-card {
+  background: rgb(248, 250, 252);
+  border: 1px solid rgb(230, 235, 240);
+  border-radius: 20px;
+  padding: 32px;
+  transition: border-color 0.3s, transform 0.3s;
+  text-align: left;
+}
+
+.ai-solution-card:hover { border-color: rgb(111, 242, 193); transform: translateY(-4px); }
+.ai-solution-card h3 { font-size: 17px; font-weight: 600; color: rgb(4, 16, 45); margin-bottom: 10px; line-height: 1.3; }
+.ai-solution-card p { font-size: 14px; color: rgba(76, 79, 86, 0.75); line-height: 1.6; margin-bottom: 20px; }
+.ai-solution-card .btn-outline { font-size: 13px; padding: 10px 18px; }
+
+/* ===== SOLUTIONS (3-column with images) ===== */
 .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.sol-img-wrap { width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+.sol-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.solution-card:hover .sol-img { transform: scale(1.04); }
+
+/* ===== AI AUTOMATION REVIEW CTA ===== */
+.ai-review-section {
+  background: rgb(4, 16, 45);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.ai-review-section h2 { font-size: 36px; font-weight: 700; color: rgb(255, 255, 255); margin-bottom: 12px; line-height: 1.2; }
+.ai-review-section .ai-review-sub { font-size: 18px; font-weight: 600; color: rgb(111, 242, 193); margin-bottom: 20px; }
+.ai-review-section p { font-size: 16px; color: rgba(255, 255, 255, 0.7); max-width: 640px; margin: 0 auto 40px; line-height: 1.7; }
 
 .solution-card {
   background: rgb(255, 255, 255);
@@ -885,14 +923,19 @@ img { max-width: 100%; display: block; }
   background: rgb(255, 255, 255);
   border: 1px solid rgb(230, 235, 240);
   border-radius: 20px;
-  padding: 32px;
+  overflow: hidden;
   transition: border-color 0.3s, transform 0.3s;
   text-align: left;
 }
 
+.blog-card-linked { text-decoration: none; color: inherit; display: block; }
 .blog-card:hover { border-color: rgb(40, 123, 232); transform: translateY(-4px); }
+.blog-card-img-wrap { width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+.blog-card-top-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.blog-card:hover .blog-card-top-img { transform: scale(1.04); }
+.blog-card-inner { padding: 24px; }
 .blog-card .blog-tag { font-size: 12px; font-weight: 600; color: rgb(209, 69, 139); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-.blog-card h3 { font-size: 18px; font-weight: 600; line-height: 1.3; color: rgb(4, 16, 45); margin-bottom: 12px; }
+.blog-card h3 { font-size: 17px; font-weight: 600; line-height: 1.3; color: rgb(4, 16, 45); margin-bottom: 10px; }
 .blog-card p { font-size: 14px; color: rgba(76, 79, 86, 0.8); line-height: 1.6em; }
 
 /* ===== CONTACT ===== */
@@ -1004,7 +1047,7 @@ img { max-width: 100%; display: block; }
   .section { padding: 80px 24px; }
   .section-heading { font-size: 36px; letter-spacing: -0.5px; }
 
-  .results-grid, .solutions-grid, .case-grid, .blog-grid { grid-template-columns: 1fr; }
+  .results-grid, .solutions-grid, .ai-solutions-grid, .case-grid, .blog-grid { grid-template-columns: 1fr; }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 

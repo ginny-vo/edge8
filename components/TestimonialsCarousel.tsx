@@ -31,13 +31,13 @@ const testimonials = [
   {
     quote: "We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications. He was able to greatly expand our general knowledge of AI and demystify the challenges of implementation.",
     name: "John VanNewkirk",
-    title: "YPO Gold Seattle",
-    photo: null,
+    title: "YPO Gold Seattle, Forum 6",
+    photo: "/images/testimonials/john-vannewkirk.png",
   },
   {
-    quote: "Edge8 transformed our approach to AI. Their structured programs helped us move from scattered experiments to a cohesive strategy that delivered measurable results within the first 90 days.",
+    quote: "I can't stop looking at the new website and brand book. With Edge8's help, we're finally presenting ourselves the way we've always wanted. The speed, the quality, and the care were all top-notch. Everything is just amazing. More than happy.",
     name: "Tuan Anh Le",
-    title: "CEO, Vietnam Tech Co.",
+    title: "Managing Partner, DN Legal",
     photo: "/images/testimonials/tuan-anh-le.jpg",
   },
 ];
