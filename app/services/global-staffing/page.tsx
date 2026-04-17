@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Global Staffing | Edge8',
-  description:
-    "Find, train, and scale with AI-empowered professionals who integrate into your workflows and extend your team's operating capacity.",
+  title: 'Global Staffing | Hire AI Officers, Engineers & Marketers',
+  description: "Find, train, and scale with AI-empowered professionals who integrate into your workflows and extend your team's operating capacity.",
 };
 
 const roles = [
@@ -18,6 +16,7 @@ const roles = [
       'Develop automation roadmaps tied to business results',
       'Mentor internal teams to increase AI fluency',
     ],
+    note: 'Perfect for organizations ready to move from experimentation to systemized AI programs.',
   },
   {
     title: 'AI Engineers',
@@ -28,217 +27,117 @@ const roles = [
       'Implement integrations across tools and departments',
       'Work alongside your CAIO or leadership team to scale adoption',
     ],
+    note: 'Ideal for mid-sized companies needing immediate hands-on technical execution.',
   },
   {
     title: 'Marketing Professionals',
-    subtitle: 'AI-trained marketers for the next era',
+    subtitle: 'AI-trained marketers for the next era of growth',
     bullets: [
       'Execute multi-channel digital campaigns powered by AI',
       'Automate reporting and analytics for clear ROI',
       'Build and manage content engines using AI tools',
       'Enhance personalization and audience engagement',
     ],
+    note: 'Designed for companies ready to blend creativity with AI-driven performance.',
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Working with Edge8 has been a pleasure. Dave and the team not only helped with the branding and digital presence but also showed us how to leverage AI to streamline our processes. With the help of Edge8, we have scaled from single posts to a full content engine while keeping true to our vision and voice. I am thrilled with the help they have provided.",
-    name: 'Henry Albrecht',
-    title: 'Founder & Former CEO, Limeade',
-  },
-  {
-    quote:
-      "Working with Edge8 has been a pleasure. When I launched Fab Four Academy, I needed support to build a strong brand and digital presence. Dave and the team stepped in and showed us how to leverage AI to streamline our processes. We scaled from single posts to a full content engine while keeping true to our vision and voice.",
-    name: 'David Niu',
-    title: 'Co-Founder & CEO, TINYpulse',
-  },
+const benefits = [
+  'Save up to 75% on global talent compared to local hires',
+  'Access professionals who are AI-trained, certified, and business fluent',
+  'Start in weeks, not months, with a proven onboarding process',
+  'Flexible models: contract, full-time, or fractional',
 ];
 
 export default function GlobalStaffingPage() {
   return (
-    <main className="service-page accent-blue">
-      {/* Hero */}
-      <section className="service-hero">
-        <div className="service-hero-orb service-hero-orb-a" />
-        <div className="service-hero-orb service-hero-orb-b" />
-        <div className="service-shell">
-          <div className="service-hero-copy fade-rise">
-            <span className="service-eyebrow">AI-Empowered Teams From Vietnam</span>
-            <h1>Let&apos;s Build Your AI-Ready Team.</h1>
-            <p className="service-summary">
-              Hiring AI-skilled talent is tough. Costs are high, skills are scarce, and growth slows. Edge8 makes it
-              easy.
-            </p>
-            <p className="service-intro">
-              Global staffing is not just about lower-cost labor. The right model gives you capable operators, analysts,
-              and builders who can work with AI-native systems and accelerate delivery without introducing chaos into
-              your process.
-            </p>
-            <div className="service-hero-actions">
-              <Link href="/#contact" className="btn-mint">
-                Book a 30-Minute Call
-              </Link>
-              <Link href="/services" className="btn-outline">
-                View All Services
-              </Link>
-            </div>
-          </div>
-          <div className="service-hero-visual fade-rise delay-1">
-            <div className="service-image-frame">
-              <Image
-                src="/images/services/global-staffing-hero.jpg"
-                alt="Global Staffing"
-                width={960}
-                height={720}
-              />
+    <main>
+      {/* HERO */}
+      <section className="relative bg-neutral overflow-hidden">
+        <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none -top-[200px] -right-[100px]" style={{ background: 'radial-gradient(circle, rgba(40,123,232,0.18) 0%, transparent 70%)' }} />
+        <div className="max-w-7xl mx-auto px-6 pt-20 pb-16">
+          <div className="max-w-3xl">
+            <span className="inline-block text-xs font-bold tracking-[3px] uppercase text-secondary bg-secondary/10 border border-secondary/25 px-3.5 py-1.5 rounded-full mb-6">AI-Empowered Teams From Vietnam</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-text-inverse leading-tight tracking-tight mb-6">Let&apos;s Build Your AI-Ready Team.</h1>
+            <p className="text-lg text-text-inverse/80 font-medium leading-relaxed mb-4">Hiring AI-skilled talent is tough. Costs are high, skills are scarce, and growth slows. Edge8 makes it easy.</p>
+            <p className="text-base text-text-inverse/50 leading-relaxed mb-9 max-w-[540px]">Global staffing is not just about lower-cost labor. The right model gives you capable operators, analysts, and builders who can work with AI-native systems and accelerate delivery without introducing chaos into your process.</p>
+            <div className="flex gap-3.5 flex-wrap">
+              <Link href="/#contact" className="inline-flex items-center gap-2 bg-secondary text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl no-underline transition-all hover:-translate-y-0.5 hover:shadow-secondary">Book a 30-Minute Call</Link>
+              <Link href="/services" className="inline-flex items-center gap-2 bg-transparent text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl border border-white/25 no-underline transition-all hover:border-white/70">View All Services</Link>
             </div>
           </div>
         </div>
-        <div className="service-shell service-stats-row fade-rise delay-2">
-          <div className="service-stat-card">
-            <div className="service-stat-label">Cost Savings</div>
-            <div className="service-stat-value">Up to 75%</div>
-          </div>
-          <div className="service-stat-card">
-            <div className="service-stat-label">Talent Market</div>
-            <div className="service-stat-value">Vietnam</div>
-          </div>
-          <div className="service-stat-card">
-            <div className="service-stat-label">Engagement Models</div>
-            <div className="service-stat-value">Contract · Full-Time · Fractional</div>
-          </div>
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-3 border-t border-white/10">
+          {[
+            { label: 'Cost Savings', value: 'Up to 75%' },
+            { label: 'Talent Market', value: 'Vietnam' },
+            { label: 'Engagement Models', value: 'Contract · Full-Time · Fractional' },
+          ].map((stat) => (
+            <div key={stat.label} className="p-6 border-r border-white/10 last:border-none">
+              <div className="text-xs font-bold tracking-[2px] uppercase text-text-inverse/40 mb-1.5">{stat.label}</div>
+              <div className="text-base font-bold text-text-inverse">{stat.value}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Roles */}
-      <section className="service-section">
-        <div className="service-shell">
-          <div className="service-section-heading">
-            <span>Roles</span>
-            <h2>Three types of AI-empowered talent.</h2>
+      {/* ROLES */}
+      <section className="py-24 bg-surface-overlay">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-14">
+            <span className="block text-xs font-bold tracking-[2.5px] uppercase text-secondary mb-3">Roles</span>
+            <h2 className="text-3xl font-bold text-text-primary tracking-tight leading-snug max-w-[640px]">Three types of AI-empowered talent.</h2>
           </div>
-          <div className="service-roles-grid">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {roles.map((role) => (
-              <article key={role.title} className="service-role-card">
-                <div>
-                  <div className="role-subtitle">{role.subtitle}</div>
-                  <h3>{role.title}</h3>
-                </div>
-                <div className="service-bullet-list">
-                  {role.bullets.map((b) => (
-                    <p key={b}>{b}</p>
+              <div key={role.title} className="bg-white rounded-2xl p-8 shadow-sm hover:-translate-y-1 transition-all relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-secondary" />
+                <div className="text-xs font-bold tracking-[2px] uppercase text-secondary mb-2">{role.subtitle}</div>
+                <h3 className="text-xl font-bold text-text-primary mb-4">{role.title}</h3>
+                <ul className="space-y-2.5 mb-5">
+                  {role.bullets.map((bullet) => (
+                    <li key={bullet} className="text-sm text-text-secondary leading-relaxed flex items-start gap-2">
+                      <span className="text-secondary mt-1 shrink-0">›</span>
+                      {bullet}
+                    </li>
                   ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="service-section service-section-alt">
-        <div className="service-shell">
-          <div className="service-section-heading">
-            <span>What people say</span>
-            <h2>Trusted by founders and executives.</h2>
-          </div>
-          <div className="testimonials-row">
-            {testimonials.map((t) => (
-              <div key={t.name} className="testimonial-card">
-                <p className="quote">{t.quote}</p>
-                <div className="testimonial-author">
-                  <div className="name">{t.name}</div>
-                  <div className="title">{t.title}</div>
-                </div>
+                </ul>
+                <p className="text-xs text-text-tertiary italic border-t border-border pt-4">{role.note}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="service-section">
-        <div className="service-shell service-process-layout">
-          <div className="service-section-heading">
-            <span>Process</span>
-            <h2>How the engagement moves from need to embedded team.</h2>
+      {/* WHY EDGE8 */}
+      <section className="py-24 bg-base-100">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="mb-14">
+            <h2 className="text-3xl font-bold text-text-primary tracking-tight leading-snug">Why Edge8 Global Staffing</h2>
           </div>
-          <div className="service-process-list">
-            <article className="service-process-card">
-              <div className="service-process-phase">Step 1</div>
-              <h3>Role Definition</h3>
-              <p>
-                We define the right blend of skills, ownership, and communication cadence for the work you actually
-                need to move.
-              </p>
-            </article>
-            <article className="service-process-card">
-              <div className="service-process-phase">Step 2</div>
-              <h3>Matching and Vetting</h3>
-              <p>
-                Candidates are filtered for capability, fit, and AI fluency so they can work inside modern,
-                tool-assisted workflows from day one.
-              </p>
-            </article>
-            <article className="service-process-card">
-              <div className="service-process-phase">Step 3</div>
-              <h3>Embed and Scale</h3>
-              <p>
-                We help your new team members integrate into your operating rhythm and expand the model as you gain
-                confidence and capacity.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* Who It's For + Deliverables */}
-      <section className="service-section service-section-alt">
-        <div className="service-shell service-fit-layout">
-          <div className="service-fit-card">
-            <span className="service-mini-label">Best fit</span>
-            <h2>Who this is for.</h2>
-            <div className="service-bullet-list">
-              <p>Companies that need more delivery capacity without bloating local headcount</p>
-              <p>Teams building AI-powered workflows and operations</p>
-              <p>Organizations that want a tighter model than traditional outsourcing</p>
-              <p>Leaders looking for execution support across build and operations roles</p>
-            </div>
-          </div>
-          <div className="service-fit-card">
-            <span className="service-mini-label">Deliverables</span>
-            <h2>What your team walks away with.</h2>
-            <div className="service-bullet-list">
-              <p>Role design and staffing plan</p>
-              <p>Vetted candidate shortlist matched to your needs</p>
-              <p>Embedded onboarding support</p>
-              <p>Scale-up path for future roles</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {benefits.map((item, i) => (
+              <div key={item} className="bg-white rounded-2xl p-7 shadow-sm flex items-start gap-4">
+                <span className="text-secondary font-bold text-lg shrink-0">✓</span>
+                <p className="text-sm text-text-secondary leading-relaxed">{item}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="service-section">
-        <div className="service-shell">
-          <div className="service-cta-panel">
+      <section className="py-24 bg-neutral">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div>
-              <span className="service-mini-label">Next step</span>
-              <h2>Build a stronger execution bench.</h2>
-              <p>
-                Use AI-empowered global talent to increase throughput, support implementation work, and create a more
-                durable operating team.
-              </p>
+              <span className="block text-xs font-bold tracking-[2.5px] uppercase text-secondary mb-3">Next step</span>
+              <h2 className="text-2xl font-bold text-text-inverse mb-3 leading-snug max-w-[500px]">Build a stronger execution bench.</h2>
+              <p className="text-sm text-text-inverse/60 leading-relaxed max-w-[460px]">Use AI-empowered global talent to increase throughput, support implementation work, and create a more durable operating team.</p>
             </div>
-            <div className="service-cta-actions">
-              <Link href="/#contact" className="btn-mint">
-                Book a Meeting
-              </Link>
-              <Link href="/services" className="btn-outline">
-                Back to Services
-              </Link>
+            <div className="flex gap-3 shrink-0 flex-wrap">
+              <Link href="/#contact" className="inline-flex items-center gap-2 bg-secondary text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl no-underline transition-all hover:-translate-y-0.5 hover:shadow-secondary">Book a Meeting</Link>
+              <Link href="/services" className="inline-flex items-center gap-2 bg-transparent text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl border border-white/25 no-underline transition-all hover:border-white/70">Back to Services</Link>
             </div>
           </div>
         </div>

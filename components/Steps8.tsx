@@ -53,7 +53,7 @@ export default function Steps8() {
 
   return (
     <div ref={containerRef} style={{ height: `calc(${STEP_COUNT * 70}vh + 100vh)` }}>
-      <div className="sticky top-0 h-screen flex flex-col justify-center bg-neutral-50">
+      <div className="sticky top-0 h-screen flex flex-col justify-center bg-surface-overlay">
         <div className="max-w-7xl mx-auto px-6 text-center pt-16 pb-2">
           <div className="max-w-[860px] mx-auto">
             <div className="text-xs font-bold tracking-[3px] uppercase text-secondary mb-3">The Roadmap</div>
@@ -100,7 +100,7 @@ export default function Steps8() {
                       isActive && !isFinalDot && 'bg-secondary text-text-inverse border-secondary shadow-lg shadow-secondary/20 scale-110',
                       isActive && isFinalDot && 'bg-secondary text-secondary-contrast border-secondary shadow-lg shadow-secondary/25 scale-110',
                       isCompleted && !isActive && 'bg-secondary text-text-inverse border-secondary',
-                      !isActive && !isCompleted && 'bg-neutral-50 text-text-tertiary border-border',
+                      !isActive && !isCompleted && 'bg-surface-overlay text-text-tertiary border-border',
                     )}>
                       {String(i + 1).padStart(2, '0')}
                     </div>

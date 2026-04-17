@@ -121,12 +121,12 @@ export default function Nav() {
                 onMouseEnter={() => menuOpen('services')}
                 onMouseLeave={menuClose}
               >
-                <Link href="https://www.ai-officer.com/ai-in-business-events" target="_blank" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">AI in Business Workshop</Link>
-                <Link href="/services/your-first-ai-hire" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Your First AI Hire</Link>
-                <Link href="/services/ai-capabilities-audit" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">AI Capabilities Audit</Link>
-                <Link href="/services/caio-leadership" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">CAIO Leadership</Link>
-                <Link href="/services/global-staffing" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Global Staffing</Link>
-                <Link href="/services/training-certification" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Training &amp; Certification</Link>
+                <Link href="https://www.ai-officer.com/ai-in-business-events" target="_blank" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">AI in Business Workshop</Link>
+                <Link href="/services/your-first-ai-hire" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">Your First AI Hire</Link>
+                <Link href="/services/ai-capabilities-audit" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">AI Capabilities Audit</Link>
+                <Link href="/services/caio-leadership" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">CAIO Leadership</Link>
+                <Link href="/services/global-staffing" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">Global Staffing</Link>
+                <Link href="/services/training-certification" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">Training &amp; Certification</Link>
               </div>
             </div>
 
@@ -147,10 +147,10 @@ export default function Nav() {
                 onMouseEnter={() => menuOpen('cases')}
                 onMouseLeave={menuClose}
               >
-                <Link href="/case-studies" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">All Case Studies</Link>
-                <Link href="/case-studies/personal-brands" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Personal Brands</Link>
-                <Link href="/case-studies/business-website" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Business Website</Link>
-                <Link href="/case-studies/ai-programs" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">AI Programs</Link>
+                <Link href="/case-studies" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">All Case Studies</Link>
+                <Link href="/case-studies/personal-brands" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">Personal Brands</Link>
+                <Link href="/case-studies/business-website" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">Business Website</Link>
+                <Link href="/case-studies/ai-programs" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">AI Programs</Link>
               </div>
             </div>
 

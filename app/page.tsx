@@ -129,7 +129,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. TESTIMONIALS — tinted */}
-      <section className="py-16 bg-neutral-50">
+      <section className="py-16 bg-surface-overlay">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal direction="up">
             <div className="text-center mb-6">
@@ -156,7 +156,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. 8 STEPS — tinted */}
-      <section className="bg-neutral-50" id="steps">
+      <section className="bg-surface-overlay" id="steps">
         <Steps8 />
       </section>
 
@@ -184,19 +184,19 @@ export default function HomePage() {
                 <Link href="#case-studies" className="inline-flex items-center gap-2 bg-secondary text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-secondary">View Case Studies &rarr;</Link>
               </div>
             </ScrollReveal>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-4">
               {[
-                { stat: 'x2', colorClass: 'text-secondary', borderClass: 'border-l-secondary', microcopy: 'for 10+ organizations', title: 'AI Officer Leadership', desc: '10+ organizations running structured AI Programs with dedicated in-house leadership.' },
-                { stat: 'x5', colorClass: 'text-accent', borderClass: 'border-l-accent', microcopy: 'productivity gain in 90 days', title: 'Global Talent Staffing', desc: 'Doubled output for a healthcare provider — while cutting talent costs in half.' },
-                { stat: 'x8', colorClass: 'text-primary', borderClass: 'border-l-primary', microcopy: 'efficiency for SME clients', title: 'AI Programs', desc: '100% of manual data entry eliminated for a Venture Capital firm, accelerating deal flow.' },
+                { stat: 'x2', colorClass: 'text-secondary', bgClass: 'bg-secondary/5', microcopy: 'for 10+ organizations', title: 'AI Officer Leadership', desc: '10+ organizations running structured AI Programs with dedicated in-house leadership.' },
+                { stat: 'x5', colorClass: 'text-accent',    bgClass: 'bg-accent/5',    microcopy: 'productivity gain in 90 days', title: 'Global Talent Staffing', desc: 'Doubled output for a healthcare provider — while cutting talent costs in half.' },
+                { stat: 'x8', colorClass: 'text-secondary', bgClass: 'bg-secondary/5', microcopy: 'efficiency for SME clients',   title: 'AI Programs',           desc: '100% of manual data entry eliminated for a Venture Capital firm, accelerating deal flow.' },
               ].map((r, i) => (
                 <ScrollReveal key={r.title} direction="right" delay={i * 100}>
-                  <div className={`flex gap-6 bg-surface-raised border border-border border-l-3 rounded-r-2xl p-6 transition-all hover:shadow-md hover:translate-x-1 ${r.borderClass}`}>
+                  <div className={`flex gap-6 ${r.bgClass} rounded-2xl p-6 transition-all hover:shadow-md hover:translate-x-1`}>
                     <div className="flex flex-col items-center w-[108px] flex-shrink-0 pt-1">
                       <div className={`text-[72px] leading-none tracking-tight mb-1 ${r.colorClass}`}>{r.stat}</div>
                       <span className="text-[10px] font-bold uppercase tracking-wide text-center leading-tight text-text-tertiary">{r.microcopy}</span>
                     </div>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 justify-center">
                       <h3 className="text-base font-semibold text-text-primary leading-tight">{r.title}</h3>
                       <p className="text-sm text-text-secondary leading-relaxed">{r.desc}</p>
                     </div>
@@ -209,7 +209,7 @@ export default function HomePage() {
       </section>
 
       {/* 8. AI-POWERED SOLUTIONS (6-card) — tinted */}
-      <section className="py-24 bg-neutral-50" id="services">
+      <section className="py-24 bg-surface-overlay" id="services">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <ScrollReveal direction="up">
             <div className="text-xs font-bold tracking-[3px] uppercase text-secondary mb-3">What We Do</div>
@@ -227,7 +227,7 @@ export default function HomePage() {
               { title: 'Scale with Global AI Talent', desc: 'Hire top-tier AI-trained professionals from Vietnam in weeks, not months.', href: '#contact', colorClass: 'text-accent hover:text-accent-600', borderColor: 'var(--accent)' },
             ].map((s, i) => (
               <ScrollReveal key={s.title} direction="up" delay={i * 60}>
-                <div className="bg-surface-raised border border-border border-t-2 rounded-xl p-6 flex flex-col h-full transition-all hover:-translate-y-1 hover:shadow-lg" style={{ borderTopColor: s.borderColor }}>
+                <div className="bg-white rounded-2xl p-6 flex flex-col h-full shadow-sm transition-all hover:-translate-y-1 hover:shadow-md" style={{ borderTop: `3px solid ${s.borderColor}` }}>
                   <h3 className="text-base font-bold text-text-primary mb-2 leading-snug">{s.title}</h3>
                   <p className="text-sm text-text-secondary leading-relaxed flex-1 mb-4 line-clamp-2">{s.desc}</p>
                   <Link href={s.href} className={`inline-flex items-center gap-1.5 text-xs font-semibold transition-all hover:gap-2.5 mt-auto ${s.colorClass}`}>Learn more &rarr;</Link>
@@ -256,7 +256,7 @@ export default function HomePage() {
               { label: 'AI Officer Certification', subtitle: 'Make Your Team AI-Literate and Leadership-Ready', desc: "We equip founders and teams to lead with confidence. Through our AI Officer certification and hands-on workshops, your organization will gain the frameworks, tools, and language to scale with AI.", image: '/images/solutions/sol-workshop.jpg' },
             ].map((s, i) => (
               <ScrollReveal key={s.label} direction="up" delay={i * 80}>
-                <div className="group bg-surface-raised border border-border rounded-xl overflow-hidden transition-all hover:shadow-lg h-full flex flex-col">
+                <div className="group bg-surface-overlay rounded-2xl overflow-hidden transition-all hover:shadow-lg h-full flex flex-col">
                   <div className="overflow-hidden">
                     <Image src={s.image} alt={s.label} width={400} height={240} className="w-full h-[160px] object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
@@ -281,7 +281,7 @@ export default function HomePage() {
       </section>
 
       {/* 10. CASE STUDIES — tinted */}
-      <section className="py-24 bg-neutral-50" id="case-studies">
+      <section className="py-24 bg-surface-overlay" id="case-studies">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <ScrollReveal direction="up">
             <div className="mb-12">
@@ -293,7 +293,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {caseStudies.map((c, i) => (
               <ScrollReveal key={c.name} direction="up" delay={i * 80}>
-                <div className="group rounded-2xl overflow-hidden bg-surface-raised border border-border transition-all hover:-translate-y-1.5 hover:shadow-xl">
+                <div className="group rounded-2xl overflow-hidden transition-all hover:-translate-y-1.5 hover:shadow-xl">
                   <div className="relative w-full aspect-[4/3] overflow-hidden block">
                     <Image src={c.image} alt={c.name} width={600} height={450} className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral/72 via-neutral/20 to-transparent transition-all group-hover:from-neutral/82 group-hover:via-neutral/55" />
@@ -301,7 +301,7 @@ export default function HomePage() {
                       <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-text-inverse bg-neutral px-5 py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-all -translate-y-2 group-hover:translate-y-0">View Website &rarr;</span>
                     </a>
                     <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                      <div className="text-xs font-bold uppercase tracking-[1.5px] text-primary mb-1.5">{c.tag}</div>
+                      <div className="text-xs font-bold uppercase tracking-[1.5px] text-secondary mb-1.5">{c.tag}</div>
                       <h3 className="text-lg font-bold text-text-inverse leading-tight">{c.name}</h3>
                     </div>
                   </div>
@@ -311,7 +311,7 @@ export default function HomePage() {
           </div>
           <ScrollReveal direction="up" delay={200}>
             <div className="mt-12">
-              <Link href="/case-studies" className="inline-flex items-center gap-2 bg-primary text-primary-contrast text-sm font-semibold px-6 py-3.5 rounded-xl no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary">Full List of Case Studies &rarr;</Link>
+              <Link href="/case-studies" className="inline-flex items-center gap-2 bg-secondary text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-secondary">Full List of Case Studies &rarr;</Link>
             </div>
           </ScrollReveal>
         </div>
@@ -329,7 +329,7 @@ export default function HomePage() {
           </ScrollReveal>
           <div className="blog-grid-hero max-w-6xl mx-auto">
             <ScrollReveal direction="left">
-              <Link href="/blog/your-next-ai-hire" className="blog-featured group bg-surface-raised border border-border rounded-2xl overflow-hidden flex flex-col transition-all hover:border-secondary hover:-translate-y-1 hover:shadow-lg">
+              <Link href="/blog/your-next-ai-hire" className="blog-featured group bg-surface-overlay rounded-2xl overflow-hidden flex flex-col transition-all hover:-translate-y-1 hover:shadow-lg">
                 <div className="w-full aspect-[16/10] overflow-hidden flex-shrink-0">
                   <Image src="/images/blog-ai-hire.jpg" alt="Your Next AI Hire Isn't a Person" width={600} height={450} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
@@ -343,11 +343,11 @@ export default function HomePage() {
             <div className="blog-stack">
               {[
                 { href: '/blog/2026-ai-trends', img: '/images/blog-ai-trends.jpg', tag: 'AI in Business', tagClass: 'text-accent', title: '2026 AI Trends: 5 Game-Changing Shifts That Will Define Business Success', desc: 'Explore the five 2026 AI trends transforming business—from AI leadership to data discipline.' },
-                { href: '#', img: '/images/blog-posts/meta-ray-ban.png', tag: 'Technology', tagClass: 'text-secondary', title: 'Why Smart Founders Are Already Planning for Meta Ray-Ban Glasses', desc: "Technology always catches up—the question is whether you're ready when it does." },
-                { href: '#', img: '/images/blog-posts/ai-data-migration.png', tag: 'AI Strategy', tagClass: 'text-primary', title: 'How to Organise Your Data Before You Build an AI Program', desc: "Clean data is the foundation of every successful AI rollout. Here's where to start." },
+                { href: '/blog/meta-ray-ban-glasses', img: '/images/blog-posts/meta-ray-ban.png', tag: 'Technology', tagClass: 'text-secondary', title: 'Why Smart Founders Are Already Planning for Meta Ray-Ban Glasses', desc: "Technology always catches up—the question is whether you're ready when it does." },
+                { href: '/blog/ai-data-migration', img: '/images/blog-posts/ai-data-migration.png', tag: 'AI Strategy', tagClass: 'text-primary', title: 'AI in Data Migration: Why Your AI Program Is Really a Data Problem', desc: "Clean data is the foundation of every successful AI rollout. Here's where to start." },
               ].map((post, i) => (
                 <ScrollReveal key={post.title} direction="right" delay={80 + i * 80}>
-                  <Link href={post.href} className="group blog-stack-card bg-surface-raised border border-border rounded-xl overflow-hidden flex flex-1 transition-all hover:border-secondary hover:-translate-y-0.5 hover:shadow-md">
+                  <Link href={post.href} className="group blog-stack-card bg-surface-overlay rounded-xl overflow-hidden flex flex-1 transition-all hover:-translate-y-0.5 hover:shadow-md">
                     <div className="w-[130px] h-auto overflow-hidden flex-shrink-0">
                       <Image src={post.img} alt={post.title} width={130} height={130} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
@@ -370,7 +370,7 @@ export default function HomePage() {
       </section>
 
       {/* 12. AI AUTOMATION REVIEW CTA — tinted */}
-      <section className="py-24 bg-neutral-50">
+      <section className="py-24 bg-surface-overlay">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative">
