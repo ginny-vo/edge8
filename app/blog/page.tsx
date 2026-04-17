@@ -43,33 +43,35 @@ const posts = [
 export default function BlogPage() {
   return (
     <>
-      <section className="blog-hero">
-        <div className="container">
-          <h1>Insights at the Speed of AI</h1>
-          <p className="blog-hero-sub">Discover how leaders, innovators, and businesses are using AI to transform strategy, branding, and growth. From data-driven decision-making to personalization, agentic leadership, and AI-powered branding, Edge8&apos;s blog brings you practical insights, authority frameworks, and real-world case studies, designed to help you Be Tech-Forward.</p>
+      <section className="py-25 pb-20 text-center bg-base-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <h1 className="text-5xl md:text-4xl font-bold text-text-primary mb-6 leading-tight">Insights at the Speed of AI</h1>
+          <p className="text-base text-text-secondary max-w-[720px] mx-auto leading-relaxed">
+            Discover how leaders, innovators, and businesses are using AI to transform strategy, branding, and growth. From data-driven decision-making to personalization, agentic leadership, and AI-powered branding, Edge8&apos;s blog brings you practical insights, authority frameworks, and real-world case studies, designed to help you Be Tech-Forward.
+          </p>
         </div>
       </section>
 
-      <section className="blog-section">
-        <div className="blog-section-inner">
-          <div className="blog-grid-2col">
+      <section className="py-0 px-6 pb-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {posts.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-card-full">
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="group bg-base-100 border border-border rounded-xl overflow-hidden transition-all hover:border-secondary hover:-translate-y-1 no-underline color-inherit flex flex-col">
                 <Image
                   src={post.image}
                   alt={post.alt}
                   width={800}
                   height={520}
-                  className="blog-card-image"
+                  className="w-full h-[260px] object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="blog-card-body">
-                  <div className="blog-card-meta">
-                    <span className="blog-card-tag">{post.tag}</span>
-                    <span className="blog-card-date">{post.date}</span>
+                <div className="p-7 pb-8 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-xs font-bold uppercase tracking-wide text-secondary">{post.tag}</span>
+                    <span className="text-sm text-text-tertiary">{post.date}</span>
                   </div>
-                  <h3>{post.title}</h3>
-                  <p>{post.excerpt}</p>
-                  <span className="blog-card-link">Read More &rarr;</span>
+                  <h3 className="text-xl font-semibold text-text-primary mb-3 leading-snug flex-1">{post.title}</h3>
+                  <p className="text-base text-text-secondary leading-relaxed mb-5">{post.excerpt}</p>
+                  <span className="text-sm font-semibold text-secondary inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">Read More &rarr;</span>
                 </div>
               </Link>
             ))}

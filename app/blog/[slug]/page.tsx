@@ -228,23 +228,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <section className="post-header">
-        <div className="container">
-          <div className="post-category">{post.category}</div>
-          <h1>{post.title}</h1>
-          <div className="post-date">{post.date}</div>
+      <section className="py-20 pb-10 text-center bg-base-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-sm font-bold uppercase tracking-[3px] text-secondary mb-4">{post.category}</div>
+          <h1 className="text-4xl font-bold text-text-primary max-w-[900px] mx-auto leading-tight mb-4">{post.title}</h1>
+          <div className="text-base text-text-tertiary">{post.date}</div>
         </div>
       </section>
 
-      <div className="post-hero-image">
-        <Image src={post.image} alt={post.imageAlt} width={900} height={506} style={{ borderRadius: '16px' }} />
+      <div className="max-w-3xl mx-auto px-6">
+        <Image src={post.image} alt={post.imageAlt} width={900} height={506} className="w-full rounded-2xl mb-10" />
       </div>
 
-      <Content />
+      <article className="max-w-2xl mx-auto px-6 pb-24">
+        <Content />
+      </article>
 
-      <div className="post-content">
-        <div className="author-bio">
-          <p>{post.author}</p>
+      <div className="max-w-2xl mx-auto px-6 pb-24">
+        <div className="mt-16 pt-8 border-t border-border-subtle">
+          <p className="text-sm text-text-tertiary italic leading-relaxed">{post.author}</p>
         </div>
       </div>
     </>
