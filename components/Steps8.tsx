@@ -10,7 +10,7 @@ const stepsData = [
   { pct: '50%',  title: 'Hire AI-Driven Talent',   desc: 'Leverage local and global talent and onboard AI-empowered people to enhance your workforce' },
   { pct: '60%',  title: 'Scale AI-Orchestration',  desc: 'Implement AI Programs across your organization and start generating revenue, increasing operational efficiency, and developing your talent' },
   { pct: '80%',  title: 'Full System Integration', desc: 'Replace antiquated systems and processes with a new AI-Driven approach, led by AI Officers who understand your business and your technology' },
-  { pct: '100%', title: 'Tech-Forward ✦',          desc: 'Reclaim Your Time. With AI automating repetitive work, focus on what truly matters—growing your business while achieving 8x efficiency.' },
+  { pct: '100%', title: 'Tech-Forward',          desc: 'Reclaim Your Time. With AI automating repetitive work, focus on what truly matters—growing your business while achieving 8x efficiency.' },
 ];
 
 const STEP_COUNT = stepsData.length;
@@ -78,7 +78,7 @@ export default function Steps8() {
                   style={{
                     width: `${progressPct}%`,
                     background: isFinal
-                      ? 'linear-gradient(90deg, var(--secondary), var(--primary))'
+                      ? 'linear-gradient(90deg, var(--secondary), var(--secondary-dark))'
                       : 'linear-gradient(90deg, var(--secondary), #22d3ee)',
                   }}
                 />
@@ -98,15 +98,15 @@ export default function Steps8() {
                     <div className={cn(
                       'w-6.5 h-6.5 rounded-full flex items-center justify-center text-[9px] font-bold border-2 transition-all duration-300',
                       isActive && !isFinalDot && 'bg-secondary text-text-inverse border-secondary shadow-lg shadow-secondary/20 scale-110',
-                      isActive && isFinalDot && 'bg-primary text-primary-contrast border-primary shadow-lg shadow-primary/25 scale-110',
+                      isActive && isFinalDot && 'bg-secondary text-secondary-contrast border-secondary shadow-lg shadow-secondary/25 scale-110',
                       isCompleted && !isActive && 'bg-secondary text-text-inverse border-secondary',
                       !isActive && !isCompleted && 'bg-neutral-50 text-text-tertiary border-border',
                     )}>
                       {String(i + 1).padStart(2, '0')}
                     </div>
-                    <span className="text-[10px] text-text-tertiary text-center max-w-[60px] truncate transition-colors duration-300">
-                      {s.title.replace(' ✦', '')}
-                    </span>
+<span className="text-[10px] text-text-tertiary text-center max-w-[60px] transition-colors duration-300 leading-tight">
+                       {s.title}
+                     </span>
                   </button>
                 );
               })}
@@ -117,12 +117,12 @@ export default function Steps8() {
             <div
               className={cn(
                 'flex items-center gap-10 p-9 rounded-xl border min-h-[140px]',
-                isFinal ? 'border-primary/45 bg-primary/8' : 'border-border bg-surface-raised',
+                isFinal ? 'border-secondary/45 bg-secondary/8' : 'border-border bg-surface-raised',
               )}
             >
               <div className={cn(
                 'text-6xl font-extrabold tracking-tight text-text-tertiary min-w-[110px] text-center flex-shrink-0 tabular-nums transition-colors duration-300',
-                isFinal && 'text-primary/55',
+                isFinal && 'text-secondary/55',
               )}>
                 {step.pct}
               </div>
