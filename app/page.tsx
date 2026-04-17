@@ -5,6 +5,8 @@ import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import ScrollReveal from '@/components/ScrollReveal';
 import Steps8 from '@/components/Steps8';
 import ContactForm from '@/components/ContactForm';
+import { DotPattern } from '@/components/ui/dot-pattern';
+import { Quote } from '@/components/ui/quote';
 
 export const metadata: Metadata = {
   title: 'Edge8 — Be Tech-Forward | AI Programs & Consulting',
@@ -114,7 +116,7 @@ export default function HomePage() {
                   ].map((text) => (
                     <li key={text} className="flex items-start gap-3.5 text-sm text-text-secondary">
                       <span className="flex-shrink-0 w-5.5 h-5.5 mt-0.5 bg-secondary/12 border border-secondary/35 rounded-full flex items-center justify-center text-secondary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-3 h-3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-3 h-3"><polyline points="20 6 9 17 4 12" /></svg>
                       </span>
                       {text}
                     </li>
@@ -141,16 +143,16 @@ export default function HomePage() {
 
       {/* 5. TECH-FORWARD DEFINITION — white */}
       <section className="py-24 bg-base-100 text-center">
-        <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal direction="up">
-            <h2 className="text-4xl md:text-3xl font-bold text-text-primary mb-4">What does it mean to be Tech-Forward?</h2>
-            <p className="text-lg text-text-secondary italic mb-2">Tech-Forward /&#x2C8;t&#x25B;k &#x2C8;f&#x254;rw&#x259;rd/</p>
+        <Quote variant="secondary" className='w-full items-center text-center justify-center my-0'>
+          <div className="flex flex-col w-fit items-center max-w-7xl p-12 py-16 text-center">
+            <h2 className="w-fit text-4xl md:text-3xl font-bold text-text-primary mb-4">What does it mean to be <span className='text-secondary'>Tech-Forward</span>?</h2>
+            <p className="w-fit text-lg text-text-secondary italic mb-2">Tech-Forward /&#x2C8;t&#x25B;k &#x2C8;f&#x254;rw&#x259;rd/</p>
             <p className="text-sm text-text-tertiary italic mb-6">(adjective)</p>
-            <p className="text-lg text-text-secondary max-w-[700px] mx-auto leading-relaxed">
+            <p className="w-fit text-lg text-text-secondary max-w-[700px] mx-auto leading-relaxed">
               Describing an organization or individual with the capability to strategically orchestrate AI resources to drive measurable value within their department or business.
             </p>
-          </ScrollReveal>
-        </div>
+          </div>
+        </Quote>
       </section>
 
       {/* 6. 8 STEPS — tinted */}
@@ -184,9 +186,9 @@ export default function HomePage() {
             </ScrollReveal>
             <div className="flex flex-col gap-5">
               {[
-                { stat: 'x2', colorClass: 'text-secondary', borderClass: 'border-l-secondary', microcopy: 'for 10+ organizations',       title: 'AI Officer Leadership',  desc: '10+ organizations running structured AI Programs with dedicated in-house leadership.' },
-                { stat: 'x5', colorClass: 'text-accent',   borderClass: 'border-l-accent',    microcopy: 'productivity gain in 90 days', title: 'Global Talent Staffing', desc: 'Doubled output for a healthcare provider — while cutting talent costs in half.' },
-                { stat: 'x8', colorClass: 'text-primary',  borderClass: 'border-l-primary',    microcopy: 'efficiency for SME clients',   title: 'AI Programs',           desc: '100% of manual data entry eliminated for a Venture Capital firm, accelerating deal flow.' },
+                { stat: 'x2', colorClass: 'text-secondary', borderClass: 'border-l-secondary', microcopy: 'for 10+ organizations', title: 'AI Officer Leadership', desc: '10+ organizations running structured AI Programs with dedicated in-house leadership.' },
+                { stat: 'x5', colorClass: 'text-accent', borderClass: 'border-l-accent', microcopy: 'productivity gain in 90 days', title: 'Global Talent Staffing', desc: 'Doubled output for a healthcare provider — while cutting talent costs in half.' },
+                { stat: 'x8', colorClass: 'text-primary', borderClass: 'border-l-primary', microcopy: 'efficiency for SME clients', title: 'AI Programs', desc: '100% of manual data entry eliminated for a Venture Capital firm, accelerating deal flow.' },
               ].map((r, i) => (
                 <ScrollReveal key={r.title} direction="right" delay={i * 100}>
                   <div className={`flex gap-6 bg-surface-raised border border-border border-l-3 rounded-r-2xl p-6 transition-all hover:shadow-md hover:translate-x-1 ${r.borderClass}`}>
@@ -217,12 +219,12 @@ export default function HomePage() {
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {[
-              { title: 'Build Your AI-Powered Brand',       desc: 'Go from unknown to industry leader — using AI content, positioning, and authority building.', href: '#contact', colorClass: 'text-secondary hover:text-secondary-600', borderColor: 'var(--secondary)' },
-              { title: 'Train Your Team to Lead with AI',  desc: 'Hands-on workshops that turn AI confusion into confident, rapid execution.', href: 'https://www.ai-officer.com/ai-in-business-events', colorClass: 'text-accent hover:text-accent-600', borderColor: 'var(--accent)' },
-              { title: 'Automate Hiring & HR',             desc: 'Find, screen, and onboard talent faster with intelligent AI recruitment agents.', href: '#contact', colorClass: 'text-secondary hover:text-secondary-600', borderColor: 'var(--secondary)' },
-              { title: 'Accelerate Sales with AI',         desc: 'Deploy AI chatbots and CRM automations that nurture leads and close deals faster.', href: '#contact', colorClass: 'text-accent hover:text-accent-600', borderColor: 'var(--accent)' },
-              { title: 'Dominate Social Media with AI',    desc: 'Create and publish high-performing content at scale — without burning out your team.', href: 'https://www.ai-officer.com/ai-in-business-events', colorClass: 'text-secondary hover:text-secondary-600', borderColor: 'var(--secondary)' },
-              { title: 'Scale with Global AI Talent',      desc: 'Hire top-tier AI-trained professionals from Vietnam in weeks, not months.', href: '#contact', colorClass: 'text-accent hover:text-accent-600', borderColor: 'var(--accent)' },
+              { title: 'Build Your AI-Powered Brand', desc: 'Go from unknown to industry leader — using AI content, positioning, and authority building.', href: '#contact', colorClass: 'text-secondary hover:text-secondary-600', borderColor: 'var(--secondary)' },
+              { title: 'Train Your Team to Lead with AI', desc: 'Hands-on workshops that turn AI confusion into confident, rapid execution.', href: 'https://www.ai-officer.com/ai-in-business-events', colorClass: 'text-accent hover:text-accent-600', borderColor: 'var(--accent)' },
+              { title: 'Automate Hiring & HR', desc: 'Find, screen, and onboard talent faster with intelligent AI recruitment agents.', href: '#contact', colorClass: 'text-secondary hover:text-secondary-600', borderColor: 'var(--secondary)' },
+              { title: 'Accelerate Sales with AI', desc: 'Deploy AI chatbots and CRM automations that nurture leads and close deals faster.', href: '#contact', colorClass: 'text-accent hover:text-accent-600', borderColor: 'var(--accent)' },
+              { title: 'Dominate Social Media with AI', desc: 'Create and publish high-performing content at scale — without burning out your team.', href: 'https://www.ai-officer.com/ai-in-business-events', colorClass: 'text-secondary hover:text-secondary-600', borderColor: 'var(--secondary)' },
+              { title: 'Scale with Global AI Talent', desc: 'Hire top-tier AI-trained professionals from Vietnam in weeks, not months.', href: '#contact', colorClass: 'text-accent hover:text-accent-600', borderColor: 'var(--accent)' },
             ].map((s, i) => (
               <ScrollReveal key={s.title} direction="up" delay={i * 60}>
                 <div className="bg-surface-raised border border-border border-t-2 rounded-xl p-6 flex flex-col h-full transition-all hover:-translate-y-1 hover:shadow-lg" style={{ borderTopColor: s.borderColor }}>
@@ -380,7 +382,7 @@ export default function HomePage() {
                 <Link href="/services/ai-capabilities-audit" className="inline-flex items-center gap-2 bg-primary text-primary-contrast text-sm font-bold px-6 py-3.5 rounded-xl no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary">Book Your AI Capabilities Audit &rarr;</Link>
               </div>
             </div>
-              <div className="relative overflow-hidden rounded-2xl">
+            <div className="relative overflow-hidden rounded-2xl">
               <Image src="/images/ai-workplace.jpg" alt="AI in the workplace" width={800} height={500} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-r from-neutral-50/50 to-transparent" />
             </div>
