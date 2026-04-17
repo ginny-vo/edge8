@@ -4,23 +4,24 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import ThemeToggle from './ThemeToggle';
 
 type OpenMenu = 'services' | 'cases' | null;
 
 export default function Nav() {
-  const hamburgerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const [servicesOpen,    setServicesOpen]    = useState(false);
   const [caseStudiesOpen, setCaseStudiesOpen] = useState(false);
   const [atTop,  setAtTop]  = useState(true);
   const [hidden, setHidden] = useState(false);
   const [openMenu, setOpenMenu] = useState<OpenMenu>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastScrollY = useRef(0);
   const pathname   = usePathname();
   const isHomepage = pathname === '/';
 
-  /* ── Scroll ── */
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
@@ -34,7 +35,6 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  /* ── Dropdown: delayed close so cursor can travel to menu ── */
   const menuOpen = useCallback((id: OpenMenu) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenMenu(id);
@@ -44,10 +44,9 @@ export default function Nav() {
     closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
   }, []);
 
-  /* ── Mobile menu ── */
   function toggleMenu() {
-    const h = hamburgerRef.current, m = mobileMenuRef.current, b = document.body;
-    if (!h || !m) return;
+    const m = mobileMenuRef.current, b = document.body;
+    if (!m) return;
     if (b.classList.contains('menu-open')) {
       const sy = parseInt(b.style.top || '0', 10);
       b.classList.remove('menu-open'); b.style.top = '';
@@ -55,134 +54,164 @@ export default function Nav() {
     } else {
       b.style.top = `-${window.scrollY}px`; b.classList.add('menu-open');
     }
-    h.classList.toggle('active'); m.classList.toggle('open');
+    setMobileOpen(prev => !prev);
   }
 
   function closeMenu() {
-    const h = hamburgerRef.current, m = mobileMenuRef.current, b = document.body;
-    if (!h || !m) return;
+    const m = mobileMenuRef.current, b = document.body;
+    if (!m) return;
     const sy = parseInt(b.style.top || '0', 10);
     b.classList.remove('menu-open'); b.style.top = '';
     window.scrollTo(0, -sy);
-    h.classList.remove('active'); m.classList.remove('open');
+    setMobileOpen(false);
   }
 
   useEffect(() => { return () => closeMenu(); }, []);
 
-  /* ── Derived ── */
-  const dark = isHomepage && atTop;
-
-  const navClass = ['nav', dark ? 'nav-at-top' : '', hidden ? 'nav-hidden' : '']
-    .filter(Boolean).join(' ');
+  const heroMode = isHomepage && atTop;
 
   const linkClass = (href: string) => {
     const active = href === '/'
       ? pathname === '/'
       : pathname === href || pathname.startsWith(href + '/');
-    return `nav-link${active ? ' nav-link-active' : ''}`;
+    return cn(
+      'relative text-sm font-medium transition-colors duration-200',
+      active
+        ? 'font-semibold text-text-primary dark:font-semibold'
+        : 'text-text-secondary hover:text-text-primary',
+    );
   };
 
-  const logoSrc = dark
-    ? '/images/edge8-logo-white.png'
-    : '/images/edge8-logo.png';
+  const logoSrc = heroMode ? '/images/edge8-logo-white.png' : '/images/edge8-logo.png';
 
   return (
     <>
-      <nav className={navClass}>
-        <div className="nav-inner">
-          <Link href="/" className="nav-logo">
+      <nav
+        className={cn(
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          heroMode
+            ? 'bg-neutral/10 dark:bg-neutral/5 backdrop-blur-md border-b border-white/10'
+            : 'bg-surface-raised dark:bg-surface-inverse border-b border-border',
+          hidden && '-translate-y-full',
+        )}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-[72px]">
+          <Link href="/" className="flex items-center gap-2.5 text-[22px] font-extrabold tracking-tight">
             <Image src={logoSrc} alt="Edge8" width={100} height={32} priority />
           </Link>
 
-          <div className="nav-links">
+          <div className="hidden md:flex items-center gap-9">
             <Link href="/" className={linkClass('/')}>Home</Link>
 
-            {/* Services dropdown */}
             <div
-              className={`nav-dropdown${openMenu === 'services' ? ' open' : ''}`}
+              className="relative"
               onMouseEnter={() => menuOpen('services')}
               onMouseLeave={menuClose}
             >
-              <Link href="/services" className={`nav-dropdown-trigger ${linkClass('/services')}`}>
-                Services <span className="dropdown-arrow">▾</span>
+              <Link href="/services" className="flex items-center gap-1 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
+                Services <span className="text-xs">▾</span>
               </Link>
               <div
-                className="nav-dropdown-menu"
+                className={cn(
+                  'absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-xl p-2 min-w-[220px] shadow-xl transition-all duration-200 z-10',
+                  'bg-surface-raised dark:bg-surface-overlay border border-border',
+                  openMenu === 'services' ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-1',
+                )}
                 onMouseEnter={() => menuOpen('services')}
                 onMouseLeave={menuClose}
               >
-                <Link href="https://www.ai-officer.com/ai-in-business-events" target="_blank">AI in Business Workshop</Link>
-                <Link href="/services/your-first-ai-hire">Your First AI Hire</Link>
-                <Link href="/services/ai-capabilities-audit">AI Capabilities Audit</Link>
-                <Link href="/services/caio-leadership">CAIO Leadership</Link>
-                <Link href="/services/global-staffing">Global Staffing</Link>
-                <Link href="/services/training-certification">Training &amp; Certification</Link>
+                <Link href="https://www.ai-officer.com/ai-in-business-events" target="_blank" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">AI in Business Workshop</Link>
+                <Link href="/services/your-first-ai-hire" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Your First AI Hire</Link>
+                <Link href="/services/ai-capabilities-audit" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">AI Capabilities Audit</Link>
+                <Link href="/services/caio-leadership" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">CAIO Leadership</Link>
+                <Link href="/services/global-staffing" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Global Staffing</Link>
+                <Link href="/services/training-certification" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Training &amp; Certification</Link>
               </div>
             </div>
 
-            {/* Case Studies dropdown */}
             <div
-              className={`nav-dropdown${openMenu === 'cases' ? ' open' : ''}`}
+              className="relative"
               onMouseEnter={() => menuOpen('cases')}
               onMouseLeave={menuClose}
             >
-              <Link href="/case-studies" className={`nav-dropdown-trigger ${linkClass('/case-studies')}`}>
-                Case Studies <span className="dropdown-arrow">▾</span>
+              <Link href="/case-studies" className="flex items-center gap-1 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
+                Case Studies <span className="text-xs">▾</span>
               </Link>
               <div
-                className="nav-dropdown-menu"
+                className={cn(
+                  'absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-xl p-2 min-w-[220px] shadow-xl transition-all duration-200 z-10',
+                  'bg-surface-raised dark:bg-surface-overlay border border-border',
+                  openMenu === 'cases' ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-1',
+                )}
                 onMouseEnter={() => menuOpen('cases')}
                 onMouseLeave={menuClose}
               >
-                <Link href="/case-studies">All Case Studies</Link>
-                <Link href="/case-studies/personal-brands">Personal Brands</Link>
-                <Link href="/case-studies/business-website">Business Website</Link>
-                <Link href="/case-studies/ai-programs">AI Programs</Link>
+                <Link href="/case-studies" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">All Case Studies</Link>
+                <Link href="/case-studies/personal-brands" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Personal Brands</Link>
+                <Link href="/case-studies/business-website" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">Business Website</Link>
+                <Link href="/case-studies/ai-programs" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-text-primary hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors">AI Programs</Link>
               </div>
             </div>
 
             <Link href="/blog"  className={linkClass('/blog')}>Blog</Link>
             <Link href="/about" className={linkClass('/about')}>About</Link>
+
+            <ThemeToggle />
+
+            <Link
+              href="/services/ai-capabilities-audit"
+              className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap bg-primary text-primary-contrast hover:bg-primary-400 shadow-sm hover:shadow-primary hover:-translate-y-0.5"
+            >
+              Get Started
+            </Link>
           </div>
 
-          <button ref={hamburgerRef} className="hamburger" onClick={toggleMenu} aria-label="Menu">
-            <span></span><span></span><span></span>
+          <button className="md:hidden flex flex-col justify-center items-center gap-1.5 w-7 h-5 bg-transparent border-none cursor-pointer z-[1001] relative" onClick={toggleMenu} aria-label="Menu">
+            <span className={cn('block w-full h-0.5 rounded transition-all duration-300 origin-center', 'bg-neutral dark:bg-text-inverse', mobileOpen && 'rotate-45 translate-y-[9px]')} />
+            <span className={cn('block w-full h-0.5 rounded transition-all duration-300', 'bg-neutral dark:bg-text-inverse', mobileOpen && 'opacity-0')} />
+            <span className={cn('block w-full h-0.5 rounded transition-all duration-300 origin-center', 'bg-neutral dark:bg-text-inverse', mobileOpen && '-rotate-45 -translate-y-[9px]')} />
           </button>
         </div>
       </nav>
 
-      <div ref={mobileMenuRef} className="mobile-menu">
-        <div className="mobile-menu-section">
-          <button className="mobile-menu-toggle" onClick={() => setServicesOpen(!servicesOpen)}>
+      <div
+        ref={mobileMenuRef}
+        className={cn(
+          'md:hidden fixed inset-0 z-40 bg-surface dark:bg-surface-inverse flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-300',
+          mobileOpen && 'opacity-100 pointer-events-auto',
+        )}
+      >
+        <div className="flex flex-col items-center gap-6">
+          <button className="text-lg font-semibold text-text-primary" onClick={() => setServicesOpen(!servicesOpen)}>
             Services <span>{servicesOpen ? '−' : '+'}</span>
           </button>
           {servicesOpen && (
-            <div className="mobile-menu-sub">
-              <Link href="https://www.ai-officer.com/ai-in-business-events" target="_blank" onClick={closeMenu}>AI in Business Workshop</Link>
-              <Link href="/services/your-first-ai-hire" onClick={closeMenu}>Your First AI Hire</Link>
-              <Link href="/services/ai-capabilities-audit" onClick={closeMenu}>AI Capabilities Audit</Link>
-              <Link href="/services/caio-leadership" onClick={closeMenu}>CAIO Leadership</Link>
-              <Link href="/services/global-staffing" onClick={closeMenu}>Global Staffing</Link>
-              <Link href="/services/training-certification" onClick={closeMenu}>Training &amp; Certification</Link>
+            <div className="flex flex-col items-center gap-4">
+              <Link href="https://www.ai-officer.com/ai-in-business-events" target="_blank" onClick={closeMenu} className="text-text-secondary">AI in Business Workshop</Link>
+              <Link href="/services/your-first-ai-hire" onClick={closeMenu} className="text-text-secondary">Your First AI Hire</Link>
+              <Link href="/services/ai-capabilities-audit" onClick={closeMenu} className="text-text-secondary">AI Capabilities Audit</Link>
+              <Link href="/services/caio-leadership" onClick={closeMenu} className="text-text-secondary">CAIO Leadership</Link>
+              <Link href="/services/global-staffing" onClick={closeMenu} className="text-text-secondary">Global Staffing</Link>
+              <Link href="/services/training-certification" onClick={closeMenu} className="text-text-secondary">Training &amp; Certification</Link>
             </div>
           )}
         </div>
-        <div className="mobile-menu-section">
-          <button className="mobile-menu-toggle" onClick={() => setCaseStudiesOpen(!caseStudiesOpen)}>
+        <div className="flex flex-col items-center gap-6">
+          <button className="text-lg font-semibold text-text-primary" onClick={() => setCaseStudiesOpen(!caseStudiesOpen)}>
             Case Studies <span>{caseStudiesOpen ? '−' : '+'}</span>
           </button>
           {caseStudiesOpen && (
-            <div className="mobile-menu-sub">
-              <Link href="/case-studies" onClick={closeMenu}>All Case Studies</Link>
-              <Link href="/case-studies/personal-brands" onClick={closeMenu}>Personal Brands</Link>
-              <Link href="/case-studies/business-website" onClick={closeMenu}>Business Website</Link>
-              <Link href="/case-studies/ai-programs" onClick={closeMenu}>AI Programs</Link>
+            <div className="flex flex-col items-center gap-4">
+              <Link href="/case-studies" onClick={closeMenu} className="text-text-secondary">All Case Studies</Link>
+              <Link href="/case-studies/personal-brands" onClick={closeMenu} className="text-text-secondary">Personal Brands</Link>
+              <Link href="/case-studies/business-website" onClick={closeMenu} className="text-text-secondary">Business Website</Link>
+              <Link href="/case-studies/ai-programs" onClick={closeMenu} className="text-text-secondary">AI Programs</Link>
             </div>
           )}
         </div>
-        <Link href="/"     onClick={closeMenu} className={linkClass('/')}>Home</Link>
-        <Link href="/blog"  onClick={closeMenu} className={linkClass('/blog')}>Blog</Link>
-        <Link href="/about" onClick={closeMenu} className={linkClass('/about')}>About</Link>
+        <Link href="/" onClick={closeMenu} className="text-lg font-semibold text-text-primary">Home</Link>
+        <Link href="/blog" onClick={closeMenu} className="text-lg font-semibold text-text-primary">Blog</Link>
+        <Link href="/about" onClick={closeMenu} className="text-lg font-semibold text-text-primary">About</Link>
       </div>
     </>
   );

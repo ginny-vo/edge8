@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Preloader from '@/components/Preloader';
+import ThemeProvider from '@/components/ThemeProvider';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'] });
@@ -20,21 +21,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Preloader />
-        <div className="body-lines">
-          <div className="body-line left"></div>
-          <div className="body-line left-middle"></div>
-          <div className="body-line center"></div>
-          <div className="body-line right-middle"></div>
-          <div className="body-line right"></div>
-        </div>
-        <Nav />
-        <div id="layout-content" style={{ paddingTop: '72px' }}>
-          {children}
-        </div>
-        <Footer />
+        <ThemeProvider>
+          <Preloader />
+          <Nav />
+          <main className="pt-[72px]">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
