@@ -3,7 +3,7 @@
 import { useTheme } from './ThemeProvider';
 import { cn } from '@/lib/utils';
 
-export default function ThemeToggle({ className }: { className?: string }) {
+export default function ThemeToggle({ className, heroMode }: { className?: string; heroMode?: boolean }) {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -11,9 +11,11 @@ export default function ThemeToggle({ className }: { className?: string }) {
       onClick={toggleTheme}
       className={cn(
         'relative flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-semibold transition-all duration-200 cursor-pointer bg-transparent',
-        theme === 'light'
-          ? 'border-neutral-200 text-neutral-600 hover:border-neutral-400 hover:text-neutral-800'
-          : 'border-neutral-700 text-neutral-300 hover:border-neutral-500 hover:text-neutral-100',
+        heroMode
+          ? 'border-white/30 text-white/80 hover:border-white/70 hover:text-white'
+          : theme === 'light'
+            ? 'border-neutral-200 text-neutral-600 hover:border-neutral-400 hover:text-neutral-800'
+            : 'border-neutral-700 text-neutral-300 hover:border-neutral-500 hover:text-neutral-100',
         className,
       )}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}

@@ -53,73 +53,87 @@ export default function Steps8() {
 
   return (
     <div ref={containerRef} style={{ height: `calc(${STEP_COUNT * 70}vh + 100vh)` }}>
-      <div className="sticky top-0 h-screen flex flex-col justify-center py-8 px-12 max-w-7xl mx-auto gap-5">
+      <div className="sticky top-0 h-screen flex flex-col justify-center bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 text-center pt-16 pb-2">
+          <div className="max-w-[860px] mx-auto">
+            <div className="text-xs font-bold tracking-[3px] uppercase text-secondary mb-3">The Roadmap</div>
+            <h2 className="text-4xl md:text-3xl font-bold text-text-primary mb-4">8 Steps to Becoming Tech-Forward</h2>
+            <p className="text-base text-text-secondary max-w-[700px] mx-auto leading-relaxed">
+              Orchestrate AI Resources for Maximum Impact, and you will unlock new levels of efficiency, automation, and decision-making in your business.
+            </p>
+          </div>
+        </div>
+        <div className="max-w-[860px] mx-auto px-6 py-8 flex flex-col gap-5 w-full">
 
-        <div className="relative pb-11">
-          <div className="h-0.75 bg-border rounded relative overflow-hidden">
+          <div className="relative pb-11">
+            {/* dot row — line is positioned relative to this */}
+            <div className="flex justify-between relative">
+              {/* track line: from center of first dot to center of last dot */}
+              <div
+                className="absolute top-[13px] h-0.75 bg-border"
+                style={{ left: 13, right: 13 }}
+              >
+                <div
+                  className="absolute left-0 top-0 h-full transition-all duration-500"
+                  style={{
+                    width: `${progressPct}%`,
+                    background: isFinal
+                      ? 'linear-gradient(90deg, var(--secondary), var(--primary))'
+                      : 'linear-gradient(90deg, var(--secondary), #22d3ee)',
+                  }}
+                />
+              </div>
+
+              {stepsData.map((s, i) => {
+                const isActive    = i === active;
+                const isCompleted = i < active;
+                const isFinalDot  = i === STEP_COUNT - 1;
+                return (
+                  <button
+                    key={i}
+                    className="flex flex-col items-center gap-2 bg-none border-none cursor-pointer p-0 relative z-10"
+                    onClick={() => goTo(i)}
+                    aria-label={`Go to step ${i + 1}: ${s.title}`}
+                  >
+                    <div className={cn(
+                      'w-6.5 h-6.5 rounded-full flex items-center justify-center text-[9px] font-bold border-2 transition-all duration-300',
+                      isActive && !isFinalDot && 'bg-secondary text-text-inverse border-secondary shadow-lg shadow-secondary/20 scale-110',
+                      isActive && isFinalDot && 'bg-primary text-primary-contrast border-primary shadow-lg shadow-primary/25 scale-110',
+                      isCompleted && !isActive && 'bg-secondary text-text-inverse border-secondary',
+                      !isActive && !isCompleted && 'bg-neutral-50 text-text-tertiary border-border',
+                    )}>
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    <span className="text-[10px] text-text-tertiary text-center max-w-[60px] truncate transition-colors duration-300">
+                      {s.title.replace(' ✦', '')}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div>
             <div
-              className="absolute left-0 top-0 h-full rounded transition-all duration-500"
-              style={{
-                width: `${progressPct}%`,
-                background: isFinal
-                  ? 'linear-gradient(90deg,#287BE8,#6FF2C1)'
-                  : 'linear-gradient(90deg,#287BE8,#22d3ee)',
-              }}
-            />
-          </div>
-
-          <div className="flex justify-between -mt-3.5 relative">
-            {stepsData.map((s, i) => {
-              const isActive    = i === active;
-              const isCompleted = i < active;
-              const isFinalDot  = i === STEP_COUNT - 1;
-              return (
-                <button
-                  key={i}
-                  className="flex flex-col items-center gap-2 bg-none border-none cursor-pointer p-0"
-                  onClick={() => goTo(i)}
-                  aria-label={`Go to step ${i + 1}: ${s.title}`}
-                >
-                  <div className={cn(
-                    'w-6.5 h-6.5 rounded-full flex items-center justify-center text-[9px] font-bold bg-surface-inverse border-2 transition-all duration-300',
-                    isActive && !isFinalDot && 'bg-secondary text-text-inverse border-secondary shadow-lg shadow-secondary/20 scale-110',
-                    isActive && isFinalDot && 'bg-primary text-primary-contrast border-primary shadow-lg shadow-primary/25 scale-110',
-                    isCompleted && !isActive && 'bg-secondary text-text-inverse border-secondary',
-                    !isActive && !isCompleted && 'text-text-tertiary border-border',
-                  )}>
-                    {String(i + 1).padStart(2, '0')}
-                  </div>
-                  <span className="text-[10px] text-text-tertiary text-center max-w-[60px] truncate transition-colors duration-300">
-                    {s.title.replace(' ✦', '')}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="perspective-1100">
-          <div
-            key={active}
-            className={cn(
-              'flex items-center gap-10 p-9 rounded-xl border bg-surface-inverse transition-all duration-300',
-              isFinal ? 'border-primary/45 bg-primary/4' : 'border-border',
-            )}
-            style={{ animation: 'step-flip 0.42s cubic-bezier(0.25, 1, 0.5, 1) both', transformOrigin: 'left center' }}
-          >
-            <div className={cn(
-              'text-6xl font-extrabold tracking-tight text-border min-w-[110px] text-center flex-shrink-0 tabular-nums transition-colors duration-300',
-              isFinal && 'text-primary/55',
-            )}>
-              {step.pct}
-            </div>
-            <div>
-              <div className="text-xl font-bold text-text-primary mb-2.5 leading-snug">{step.title}</div>
-              <div className="text-sm text-text-secondary leading-relaxed max-w-[580px]">{step.desc}</div>
+              className={cn(
+                'flex items-center gap-10 p-9 rounded-xl border min-h-[140px]',
+                isFinal ? 'border-primary/45 bg-primary/8' : 'border-border bg-surface-raised',
+              )}
+            >
+              <div className={cn(
+                'text-6xl font-extrabold tracking-tight text-text-tertiary min-w-[110px] text-center flex-shrink-0 tabular-nums transition-colors duration-300',
+                isFinal && 'text-primary/55',
+              )}>
+                {step.pct}
+              </div>
+              <div className="min-w-0">
+                <div className="text-xl font-bold text-text-primary mb-2.5 leading-snug">{step.title}</div>
+                <div className="text-sm text-text-secondary leading-relaxed">{step.desc}</div>
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   );

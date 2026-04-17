@@ -739,3 +739,79 @@ img {
     transform: translateY(0);
   }
 }
+
+/* ============================================================
+   9. BLOG GRID HERO (featured + stacked)
+   ============================================================ */
+.blog-grid-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  text-align: left;
+}
+
+.blog-featured {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.blog-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.blog-stack > * {
+  flex: 1;
+}
+
+.blog-stack-card {
+  display: flex;
+  text-decoration: none;
+}
+
+/* ============================================================
+   10. RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .blog-grid-hero {
+    grid-template-columns: 1fr;
+  }
+  .blog-stack {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .steps8-dots { display: none; }
+  .steps8-bar-bg { display: none; }
+  .steps8-sticky { height: auto; position: relative; }
+}
+
+.steps8-sticky-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/* ============================================================
+   11. RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .blog-grid-hero {
+    grid-template-columns: 1fr;
+  }
+  .blog-stack {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .steps-section-header {
+    padding-top: 32px;
+  }
+  .steps8-dots { display: none; }
+  .steps8-bar-bg { display: none; }
+  .steps8-sticky { height: auto; position: relative; }
+}
