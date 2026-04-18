@@ -126,6 +126,38 @@ export default function GlobalStaffingPage() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className="py-24 bg-surface-overlay">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-14">
+            <span className="block text-xs font-bold tracking-[2.5px] uppercase text-secondary mb-3">What our partners say</span>
+            <h2 className="text-3xl font-bold text-text-primary tracking-tight leading-snug">Trusted by leaders building AI-forward teams.</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                quote: 'Working with Edge8 has been a pleasure. Dave and the team stepped in and not only helped with the branding and digital presence but showed us how to leverage AI to streamline our processes. With the help of Edge8 we have scaled from single posts to a full content engine.',
+                name: 'Henry Albrecht',
+                title: 'Founder & Former CEO, Limeade',
+              },
+              {
+                quote: 'Edge8 helped us build a strong brand and digital presence while showing us how to leverage AI to streamline our processes. We have scaled from single posts to a full content engine while keeping true to our vision and voice.',
+                name: 'David Niu',
+                title: 'Co-Founder & CEO, TINYpulse',
+              },
+            ].map((t) => (
+              <div key={t.name} className="bg-white rounded-2xl p-8 shadow-sm flex flex-col gap-4">
+                <p className="text-sm text-text-secondary leading-relaxed flex-1 italic">&ldquo;{t.quote}&rdquo;</p>
+                <div>
+                  <div className="text-sm font-bold text-text-primary">{t.name}</div>
+                  <div className="text-xs text-text-tertiary">{t.title}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 bg-neutral">
         <div className="max-w-7xl mx-auto px-6">
