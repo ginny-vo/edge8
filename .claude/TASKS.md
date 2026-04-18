@@ -8,7 +8,7 @@
 
 ## 🏠 HOMEPAGE (`app/page.tsx`)
 
-### HP-1 🔥 Rebuild homepage in Tailwind design system
+### HP-1 ✅ Rebuild homepage in Tailwind design system
 The current homepage still uses the OLD CSS class system (`hero`, `section-grey`,
 `btn-mint`, `solution-card`, etc.). Every other page has been migrated. This is
 the most urgent visual fix — the page is frozen/unscrollable in some states and
@@ -17,7 +17,7 @@ looks like a completely different site from the service pages.
 - Follow the section rhythm: `bg-neutral` hero → alternating `bg-surface-overlay` / `bg-base-100`
 - Keep all existing content (problem, steps, testimonials, solutions, case studies, blog, contact)
 
-### HP-2 🔥 Add hero video or replace with image
+### HP-2 ✅ Add hero video or replace with image
 The hero video (`/images/edge8-hero.mp4`) should play behind the 8x IMPACT headline,
 or swap in a high-quality full-width hero image if video isn't working.
 - Confirm video loads and autoplays correctly

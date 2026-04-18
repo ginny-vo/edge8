@@ -68,7 +68,7 @@ export default function Nav() {
 
   useEffect(() => { return () => closeMenu(); }, []);
 
-  const heroMode = false;
+  const heroMode = isHomepage && atTop;
 
   const linkClass = (href: string) => {
     const active = href === '/'
@@ -77,8 +77,8 @@ export default function Nav() {
     return cn(
       'relative text-sm font-medium transition-colors duration-200',
       active
-        ? 'font-semibold text-black'
-        : 'text-black/70 hover:text-black',
+        ? heroMode ? 'font-semibold text-text-inverse' : 'font-semibold text-text-primary'
+        : heroMode ? 'text-text-inverse/80 hover:text-text-inverse' : 'text-text-secondary hover:text-text-primary',
     );
   };
 
@@ -87,13 +87,16 @@ export default function Nav() {
       <nav
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          'bg-white border-b border-black/8',
+          heroMode
+            ? 'bg-neutral/40 backdrop-blur-md border-b border-white/10'
+            : 'bg-white border-b border-black/8',
           hidden && '-translate-y-full',
         )}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-[72px]">
           <Link href="/" className="flex items-center gap-2.5 text-[22px] font-extrabold tracking-tight">
-            <Image src="/images/edge8-logo-white.png" alt="Edge8" width={100} height={32} priority style={{ filter: 'brightness(0) saturate(100%) invert(7%) sepia(40%) saturate(800%) hue-rotate(195deg) brightness(95%)' }} />
+            <Image src="/images/edge8-logo-white.png" alt="Edge8" width={100} height={32} priority className={heroMode ? 'block' : 'hidden'} />
+            <Image src="/images/edge8-logo-white.png" alt="Edge8" width={100} height={32} priority className={heroMode ? 'hidden' : 'block'} style={{ filter: 'brightness(0) saturate(100%) invert(7%) sepia(40%) saturate(800%) hue-rotate(195deg) brightness(95%)' }} />
           </Link>
 
           <div className="hidden md:flex items-center gap-9">
@@ -104,7 +107,7 @@ export default function Nav() {
               onMouseEnter={() => menuOpen('services')}
               onMouseLeave={menuClose}
             >
-              <Link href="/services" className="flex items-center gap-1 text-sm font-medium transition-colors text-black/70 hover:text-black">
+              <Link href="/services" className={cn('flex items-center gap-1 text-sm font-medium transition-colors', heroMode ? 'text-text-inverse/80 hover:text-text-inverse' : 'text-text-secondary hover:text-text-primary')}>
                 Services <span className="text-xs">▾</span>
               </Link>
               <div
@@ -130,7 +133,7 @@ export default function Nav() {
               onMouseEnter={() => menuOpen('cases')}
               onMouseLeave={menuClose}
             >
-              <Link href="/case-studies" className="flex items-center gap-1 text-sm font-medium transition-colors text-black/70 hover:text-black">
+              <Link href="/case-studies" className={cn('flex items-center gap-1 text-sm font-medium transition-colors', heroMode ? 'text-text-inverse/80 hover:text-text-inverse' : 'text-text-secondary hover:text-text-primary')}>
                 Case Studies <span className="text-xs">▾</span>
               </Link>
               <div
@@ -156,9 +159,9 @@ export default function Nav() {
           </div>
 
           <button className="md:hidden flex flex-col justify-center items-center gap-1.5 w-7 h-5 bg-transparent border-none cursor-pointer z-[1001] relative" onClick={toggleMenu} aria-label="Menu">
-            <span className={cn('block w-full h-0.5 rounded transition-all duration-300 origin-center bg-black', mobileOpen && 'rotate-45 translate-y-[9px]')} />
-            <span className={cn('block w-full h-0.5 rounded transition-all duration-300 bg-black', mobileOpen && 'opacity-0')} />
-            <span className={cn('block w-full h-0.5 rounded transition-all duration-300 origin-center bg-black', mobileOpen && '-rotate-45 -translate-y-[9px]')} />
+            <span className={cn('block w-full h-0.5 rounded transition-all duration-300 origin-center', heroMode ? 'bg-text-inverse' : 'bg-text-primary', mobileOpen && 'rotate-45 translate-y-[9px]')} />
+            <span className={cn('block w-full h-0.5 rounded transition-all duration-300', heroMode ? 'bg-text-inverse' : 'bg-text-primary', mobileOpen && 'opacity-0')} />
+            <span className={cn('block w-full h-0.5 rounded transition-all duration-300 origin-center', heroMode ? 'bg-text-inverse' : 'bg-text-primary', mobileOpen && '-rotate-45 -translate-y-[9px]')} />
           </button>
         </div>
       </nav>
