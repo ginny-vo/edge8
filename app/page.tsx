@@ -44,41 +44,38 @@ const caseStudies = [
 export default function HomePage() {
   return (
     <>
-      {/* 1. HERO — always dark in both themes */}
-      <section className="relative bg-neutral overflow-hidden min-h-[88vh] flex items-center -mt-[72px]">
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-20">
-            <source src="/images/edge8-hero.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral/90 via-neutral/60 to-neutral/85" />
+      {/* 1. HERO — light/white */}
+      <section className="relative overflow-hidden min-h-[88vh] flex items-center -mt-[72px] bg-white">
+        {/* BE TECH-FORWARD watermark */}
+        <div className="absolute inset-0 flex flex-col justify-center overflow-hidden select-none pointer-events-none z-[1] px-[5%]" aria-hidden="true">
+          {['BE TECH-FORWARD', 'BE TECH-FORWARD'].map((t, i) => (
+            <span key={i} className="block font-black uppercase overflow-hidden" style={{ fontSize: 'clamp(32px, 7vw, 96px)', color: 'rgba(4,16,45,0.05)', letterSpacing: '0.04em', lineHeight: 1.15 }}>{t}</span>
+          ))}
         </div>
-        <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none -top-[200px] -right-[150px] z-0" style={{ background: 'radial-gradient(circle, rgba(111,242,193,0.28) 0%, transparent 70%)' }} />
-        <div className="absolute w-[500px] h-[500px] rounded-full pointer-events-none bottom-[100px] -left-[100px] z-0" style={{ background: 'radial-gradient(circle, rgba(40,123,232,0.22) 0%, transparent 70%)' }} />
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-[152px] pb-24">
+        {/* Main centered content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-[120px] pb-28">
           <div className="text-center max-w-[820px] mx-auto">
             <ScrollReveal direction="up">
-              <span className="inline-block text-sm font-bold tracking-[3px] uppercase text-primary bg-primary/10 border border-primary/25 px-5 py-2 rounded-full mb-7">Be Tech-Forward</span>
-              <h1 className="text-7xl md:text-6xl font-bold leading-none tracking-tight text-text-inverse mb-6">
-                8x <span className="bg-gradient-to-r from-secondary via-primary to-primary bg-[length:200%_100%] animate-pulse bg-clip-text text-transparent">IMPACT</span>
-              </h1>
-              <p className="text-xl text-text-inverse/70 max-w-[520px] mx-auto mb-10 leading-relaxed">
+              <p className="font-bold leading-none tracking-tight mb-6 animate-gradient-shift" style={{ fontSize: '5.4rem', background: 'linear-gradient(90deg, #287BE8, #6FF2C1, #287BE8)', backgroundSize: '200% 200%', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                8x IMPACT
+              </p>
+              <p className="text-xl mb-10 leading-relaxed whitespace-nowrap" style={{ color: 'rgba(4,16,45,0.6)' }}>
                 Stop overthinking AI&mdash;Start implementing your AI Programs
               </p>
-              <div className="flex gap-4 justify-center flex-wrap mb-[72px]">
-                <Link href="#contact" className="inline-flex items-center gap-2 bg-primary text-primary-contrast text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary">Schedule A Consultation &rarr;</Link>
-                <Link href="#services" className="inline-flex items-center gap-2 bg-transparent text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl border border-text-inverse/35 no-underline transition-all hover:border-text-inverse/80 hover:bg-text-inverse/7">Our Solutions</Link>
+              <div className="flex gap-4 justify-center flex-wrap">
+                <Link href="#contact" className="inline-flex items-center gap-2 text-sm font-bold px-8 py-4 no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg" style={{ backgroundColor: '#287BE8', color: '#fff', borderRadius: '8px' }}>Schedule A Consultation</Link>
+                <Link href="#services" className="inline-flex items-center gap-2 text-sm font-semibold px-8 py-4 border no-underline transition-all hover:bg-black/5" style={{ backgroundColor: 'transparent', color: '#04102D', borderColor: 'rgba(4,16,45,0.25)', borderRadius: '8px' }}>Our Solutions</Link>
               </div>
             </ScrollReveal>
           </div>
         </div>
+        {/* Bottom slope edge */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 leading-[0] pointer-events-none">
+          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="block w-full h-[60px]" style={{ color: 'var(--surface-overlay)' }}>
+            <polygon points="0,60 1440,0 1440,60" fill="currentColor" />
+          </svg>
+        </div>
       </section>
-
-      {/* Divider: hero dark → logo strip light */}
-      <div className="bg-neutral leading-0" aria-hidden="true">
-        <svg viewBox="0 0 1440 52" preserveAspectRatio="none" className="block w-full h-[52px]" style={{ color: 'var(--base-100)' }}>
-          <polygon points="1440,0 0,52 1440,52" fill="currentColor" />
-        </svg>
-      </div>
 
       {/* 2. LOGO STRIP — light */}
       <section className="py-10 border-b border-border bg-base-100 overflow-hidden">
