@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -42,6 +43,33 @@ const fitItems = [
   'Growth-stage startups (Series B/C) where every hire matters',
   "Companies burned by previous AI hires that didn't work out",
   "Organizations where a $300K salary isn't stage-appropriate yet",
+];
+
+const testimonials = [
+  {
+    quote: 'I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved.',
+    name: 'Dato George Lim',
+    title: 'Founder and CEO, G&A GROUP & GA SPACE',
+    image: '/images/testimonials/dato-george-lim.png',
+  },
+  {
+    quote: 'We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications.',
+    name: 'John VanNewkirk',
+    title: 'YPO Gold Seattle, Forum 6',
+    image: '/images/testimonials/john-vannewkirk.jpg',
+  },
+  {
+    quote: 'Dave was extremely knowledgeable and engaging. Real-world experiences complemented our class discussions perfectly.',
+    name: 'Dr. Brooks Holtom',
+    title: 'Professor of Management, Georgetown',
+    image: '/images/testimonials/brooks-holtom.jpg',
+  },
+  {
+    quote: 'Working with Edge8 has been a pleasure. Dave and the team showed us how to leverage AI to streamline our processes.',
+    name: 'Dan Absher',
+    title: 'CEO, Absher Construction Company',
+    image: '/images/testimonials/dan-absher.jpg',
+  },
 ];
 
 export default function CAILeadershipPage() {
@@ -194,6 +222,32 @@ export default function CAILeadershipPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-24 bg-base-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-14">
+            <span className="block text-xs font-bold tracking-[2.5px] uppercase text-primary mb-3">What people say</span>
+            <h2 className="text-3xl font-bold text-text-primary tracking-tight leading-snug">Trusted by leaders across industries.</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map((t) => (
+              <div key={t.name} className="bg-white rounded-2xl p-8 shadow-sm">
+                <p className="text-sm text-text-secondary leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full overflow-hidden bg-neutral-50 flex-shrink-0">
+                    <Image src={t.image} alt={t.name} width={48} height={48} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-text-primary">{t.name}</p>
+                    <p className="text-xs text-text-tertiary">{t.title}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

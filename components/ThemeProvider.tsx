@@ -2,18 +2,20 @@
 
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark';
+type ThemeMode = 'system' | 'light' | 'dark';
 
 interface ThemeContextValue {
-  theme: Theme;
-  toggleTheme: () => void;
-  setTheme: (t: Theme) => void;
+  mode: ThemeMode;
+  theme: 'light' | 'dark';
+  cycleTheme: () => void;
+  setMode: (m: ThemeMode) => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
+  mode: 'system',
   theme: 'light',
-  toggleTheme: () => {},
-  setTheme: () => {},
+  cycleTheme: () => {},
+  setMode: () => {},
 });
 
 export function useTheme() {
@@ -22,34 +24,61 @@ export function useTheme() {
 
 const STORAGE_KEY = 'edge8-theme';
 
-function getInitialTheme(): Theme {
+function getSystemTheme(): 'light' | 'dark' {
   if (typeof window === 'undefined') return 'light';
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === 'dark' || stored === 'light') return stored;
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
+function getInitialMode(): ThemeMode {
+  if (typeof window === 'undefined') return 'system';
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored === 'dark' || stored === 'light' || stored === 'system') return stored;
+  return 'system';
+}
+
+function applyMode(mode: ThemeMode): 'light' | 'dark' {
+  const resolved = mode === 'system' ? getSystemTheme() : mode;
+  if (typeof document !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', resolved);
+  }
+  return resolved;
+}
+
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('light');
+  const [mode, setModeState] = useState<ThemeMode>(getInitialMode);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => applyMode(getInitialMode()));
 
   useEffect(() => {
-    const initial = getInitialTheme();
-    setThemeState(initial);
-    document.documentElement.setAttribute('data-theme', initial);
+    const stored = localStorage.getItem(STORAGE_KEY);
+    const initialMode: ThemeMode = (stored === 'dark' || stored === 'light' || stored === 'system') ? stored : 'system';
+    setModeState(initialMode);
+    setTheme(applyMode(initialMode));
+
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = () => {
+      if (mode === 'system') {
+        setTheme(applyMode('system'));
+      }
+    };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, [mode]);
+
+  const setMode = useCallback((m: ThemeMode) => {
+    setModeState(m);
+    const resolved = applyMode(m);
+    setTheme(resolved);
+    localStorage.setItem(STORAGE_KEY, m);
   }, []);
 
-  const setTheme = useCallback((t: Theme) => {
-    setThemeState(t);
-    document.documentElement.setAttribute('data-theme', t);
-    localStorage.setItem(STORAGE_KEY, t);
-  }, []);
-
-  const toggleTheme = useCallback(() => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  }, [theme, setTheme]);
+  const cycleTheme = useCallback(() => {
+    const order: ThemeMode[] = ['system', 'light', 'dark'];
+    const idx = order.indexOf(mode);
+    setMode(order[(idx + 1) % order.length]);
+  }, [mode, setMode]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
+    <ThemeContext.Provider value={{ mode, theme, cycleTheme, setMode }}>
       {children}
     </ThemeContext.Provider>
   );

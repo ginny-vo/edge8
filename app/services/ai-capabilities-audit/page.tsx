@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -42,6 +43,45 @@ const pricingTiers = [
     amount: '$24,999',
     desc: 'Enterprise Scale — For leaders ready to operationalize AI',
     highlighted: false,
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved. We are looking forward to collaborating with the AI Officer Institute and Edge8 to bring their AI Certification Program to Malaysia.',
+    name: 'Dato George Lim',
+    title: 'Founder and CEO, G&A GROUP & GA SPACE',
+    image: '/images/testimonials/dato-george-lim.png',
+  },
+  {
+    quote: 'We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications. I highly recommend Edge8.ai as a YPO resource.',
+    name: 'John VanNewkirk',
+    title: 'YPO Gold Seattle, Forum 6',
+    image: '/images/testimonials/john-vannewkirk.jpg',
+  },
+  {
+    quote: 'I am very grateful to Dave Hajdu, who spoke to graduate students in our international business and public policy program during our visit to Vietnam about Negotiations and AI. He was extremely knowledgeable and engaging.',
+    name: 'Dr. Brooks Holtom',
+    title: 'Professor of Management, Georgetown',
+    image: '/images/testimonials/brooks-holtom.jpg',
+  },
+  {
+    quote: 'Love the new look and branding. The website looks so good. I\'m deeply grateful. The brand interview really made me think about our positioning and business in ways I never expected.',
+    name: 'Dao Nguyen',
+    title: 'Founder, DN Legal',
+    image: '/images/testimonials/dao-nguyen.jpg',
+  },
+  {
+    quote: 'I can\'t stop looking at the new website and brand book. With Edge8\'s help, we\'re finally presenting ourselves the way we\'ve always wanted. The speed, the quality, and the care were all top-notch.',
+    name: 'Tuan Anh Le',
+    title: 'Managing Partner, DN Legal',
+    image: '/images/testimonials/tuan-anh-le.jpg',
+  },
+  {
+    quote: 'Working with Edge8 has been a pleasure. Dave and the team showed us how to leverage AI to streamline our processes. With the help of Edge8 we have scaled from single posts to a full content engine.',
+    name: 'Dan Absher',
+    title: 'CEO, Absher Construction Company',
+    image: '/images/testimonials/dan-absher.jpg',
   },
 ];
 
@@ -138,6 +178,32 @@ export default function AICapabilitiesAuditPage() {
           <h2 className="text-3xl font-bold text-text-inverse tracking-tight leading-snug mb-6">The Bottom Line</h2>
           <p className="text-lg text-text-inverse/60 leading-relaxed mb-8">AI success depends on readiness, strategy, and execution. The AI Capabilities Audit gives you the clarity, structure, and momentum to scale AI that works. Align your team. Fix your data gaps. Capture your next 12 months of AI opportunity.</p>
           <Link href="/#contact" className="inline-flex items-center gap-2 bg-secondary text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl no-underline transition-all hover:-translate-y-0.5 hover:shadow-secondary">Get Your Audit</Link>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-24 bg-surface-overlay">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-14">
+            <span className="block text-xs font-bold tracking-[2.5px] uppercase text-secondary mb-3">What people say</span>
+            <h2 className="text-3xl font-bold text-text-primary tracking-tight leading-snug">Trusted by leaders across industries.</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {testimonials.map((t) => (
+              <div key={t.name} className="bg-white rounded-2xl p-8 shadow-sm">
+                <p className="text-sm text-text-secondary leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full overflow-hidden bg-neutral-50 flex-shrink-0">
+                    <Image src={t.image} alt={t.name} width={48} height={48} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-text-primary">{t.name}</p>
+                    <p className="text-xs text-text-tertiary">{t.title}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </main>

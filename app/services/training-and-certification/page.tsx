@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -47,6 +48,33 @@ const trackRecord = [
   { num: '8+', label: 'Years of deep AI production experience across real business environments.' },
   { num: '1K+', label: 'Professionals trained through the certification program across industries and regions.' },
   { num: '2025', label: 'Active launches with F&B, distribution, and logistics companies across Southeast Asia.' },
+];
+
+const testimonials = [
+  {
+    quote: 'I invited Dave to speak at the AI Summit in Sabah, and he was a natural on stage, bringing a fresh style the audience loved.',
+    name: 'Dato George Lim',
+    title: 'Founder and CEO, G&A GROUP & GA SPACE',
+    image: '/images/testimonials/dato-george-lim.png',
+  },
+  {
+    quote: 'We were lucky enough to have Dave Hajdu work with our forum to help understand how AI is automating tasks and exploding output across a wide range of applications.',
+    name: 'John VanNewkirk',
+    title: 'YPO Gold Seattle, Forum 6',
+    image: '/images/testimonials/john-vannewkirk.jpg',
+  },
+  {
+    quote: 'Dave was extremely knowledgeable and engaging. Real-world experiences complemented our class discussions perfectly.',
+    name: 'Dr. Brooks Holtom',
+    title: 'Professor of Management, Georgetown',
+    image: '/images/testimonials/brooks-holtom.jpg',
+  },
+  {
+    quote: 'Working with Edge8 has been a pleasure. Dave and the team showed us how to leverage AI to streamline our processes.',
+    name: 'Dan Absher',
+    title: 'CEO, Absher Construction Company',
+    image: '/images/testimonials/dan-absher.jpg',
+  },
 ];
 
 export default function TrainingAndCertificationPage() {
@@ -216,12 +244,43 @@ export default function TrainingAndCertificationPage() {
       </section>
 
       {/* FOUNDER */}
-      <section className="py-24 bg-base-100">
+      <section className="py-24 bg-surface-overlay">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white rounded-2xl p-10 shadow-sm">
-            <div className="text-xs font-bold tracking-[2px] uppercase text-warning mb-3">About the Instructor</div>
-            <h3 className="text-xl font-bold text-text-primary mb-2">Dave Hajdu</h3>
-            <p className="text-sm text-text-secondary leading-relaxed">Founder of Edge8 AI & AI Officer Institute. Co-founder of TINYpulse (acquired by WebMD). Microsoft alum and EO Leader for 500+ SEA businesses. Dave leads the AI Officer Certification and helps organizations worldwide move from AI awareness to implementation success.</p>
+          <div className="bg-white rounded-2xl p-10 shadow-sm flex flex-col md:flex-row gap-8 items-start">
+            <div className="w-32 h-40 rounded-xl overflow-hidden bg-neutral-50 flex-shrink-0">
+              <Image src="/images/dave-hajdu.jpg" alt="Dave Hajdu" width={128} height={160} className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <div className="text-xs font-bold tracking-[2px] uppercase text-warning mb-3">About the Instructor</div>
+              <h3 className="text-xl font-bold text-text-primary mb-2">Dave Hajdu</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">Founder of Edge8 AI & AI Officer Institute. Co-founder of TINYpulse (acquired by WebMD). Microsoft alum and EO Leader for 500+ SEA businesses. Dave leads the AI Officer Certification and helps organizations worldwide move from AI awareness to implementation success.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-24 bg-base-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-14">
+            <span className="block text-xs font-bold tracking-[2.5px] uppercase text-warning mb-3">What people say</span>
+            <h2 className="text-3xl font-bold text-text-primary tracking-tight leading-snug">Trusted by leaders across industries.</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map((t) => (
+              <div key={t.name} className="bg-white rounded-2xl p-8 shadow-sm">
+                <p className="text-sm text-text-secondary leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full overflow-hidden bg-neutral-50 flex-shrink-0">
+                    <Image src={t.image} alt={t.name} width={48} height={48} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-text-primary">{t.name}</p>
+                    <p className="text-xs text-text-tertiary">{t.title}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

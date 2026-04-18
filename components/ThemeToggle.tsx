@@ -4,11 +4,13 @@ import { useTheme } from './ThemeProvider';
 import { cn } from '@/lib/utils';
 
 export default function ThemeToggle({ className, heroMode }: { className?: string; heroMode?: boolean }) {
-  const { theme, toggleTheme } = useTheme();
+  const { mode, theme, cycleTheme } = useTheme();
+
+  const labels: Record<string, string> = { system: 'Auto', light: 'Light', dark: 'Dark' };
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={cycleTheme}
       className={cn(
         'relative flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-semibold transition-all duration-200 cursor-pointer bg-transparent',
         heroMode
@@ -18,10 +20,15 @@ export default function ThemeToggle({ className, heroMode }: { className?: strin
             : 'border-neutral-700 text-neutral-300 hover:border-neutral-500 hover:text-neutral-100',
         className,
       )}
-      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      aria-label={`Theme: ${labels[mode]}. Click to cycle.`}
     >
       <span className="relative w-4 h-4">
-        {theme === 'light' ? (
+        {mode === 'system' ? (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+        ) : theme === 'light' ? (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
             <circle cx="12" cy="12" r="4"/>
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
@@ -32,7 +39,7 @@ export default function ThemeToggle({ className, heroMode }: { className?: strin
           </svg>
         )}
       </span>
-      <span className="hidden sm:inline">{theme === 'light' ? 'Light' : 'Dark'}</span>
+      <span className="hidden sm:inline">{labels[mode]}</span>
     </button>
   );
 }

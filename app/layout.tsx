@@ -21,7 +21,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function(){
+              var t = localStorage.getItem('edge8-theme');
+              if (!t || t === 'system') t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+              document.documentElement.setAttribute('data-theme', t);
+            })();
+          `,
+        }} />
+      </head>
       <body className={inter.className}>
         <ThemeProvider>
           <Preloader />
