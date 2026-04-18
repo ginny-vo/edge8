@@ -2,251 +2,248 @@
 
 ## Project Overview
 Marketing website for **Edge8**, an AI programs consulting and staffing company.
-Next.js migration from static HTML is complete. All core pages are built and live.
+Built with Next.js App Router + Tailwind CSS v4. All core pages are live on Vercel.
 
 ## Tech Stack
-- **Framework:** Next.js 16 (App Router, TypeScript)
-- **Styling:** Tailwind CSS + custom CSS in `app/globals.css`
+- **Framework:** Next.js (App Router, TypeScript)
+- **Styling:** Tailwind CSS v4 + design tokens in `app/globals.css`
 - **Deployment:** Vercel (`https://edge8.vercel.app`)
-- **Language:** TypeScript
+- **Animation:** `ScrollReveal` component for entrance animations
 
 ## Folder Structure
 ```
 edge8/
 ├── .claude/              # Claude Code environment
-│   ├── CLAUDE.md         # This file
-│   └── settings.json     # Claude Code settings
-├── public/               # Static assets (served by Next.js & Vercel)
-│   └── images/           # Media: hero, services, case studies
-├── docs/                 # Content documentation (source of truth)
-│   ├── edge8-website-content.md
-│   └── pages/           # Individual page content docs
-├── app/                  # Next.js App Router pages
+├── public/images/        # Static assets (logos, hero, services, blog, clients)
+├── docs/pages/           # Content source of truth (*.md per page)
+├── app/                  # Next.js App Router
 │   ├── page.tsx          # Homepage
+│   ├── globals.css       # Design tokens + keyframes
 │   ├── about/
-│   ├── services/         # Service pages
+│   ├── blog/
 │   ├── case-studies/
-│   └── blog/
-├── components/          # Reusable components
-└── app/globals.css      # Global styles + component classes
-```
-
-## Content Management
-All page content is documented in `docs/pages/*.md` as the **source of truth**.
-
-## Brand & Design System (Tailwind v4)
-
-**Exact hex codes from Brand Guidelines:**
-
-| Role | Token | Hex | Usage |
-|---|---|---|---|
-| Primary Canvas | Navy | `#04102D` | Backgrounds |
-| Primary Text | White | `#FFFFFF` | Text on navy |
-| Interactive | Blue | `#287BE8` | Links, buttons, accents |
-| Success | Mint | `#6FF2C1` | CTAs, highlights |
-| Alert | Pink | `#D1458B` | Tags, badges only |
-| Premium | Gold | `#C68E26` | Special accents |
-| Border | Border | `#E6EBF0` | Dividers |
-| Background | BG Grey | `#EAEEF2` | Section backgrounds |
-
-Use in templates:
-```tsx
-<button className="bg-mint text-navy">CTA</button>
-<button className="bg-blue text-white">Secondary</button>
-<span className="text-rose">Alert</span>
+│   └── services/         # One folder per service page
+└── components/           # Shared components
+    ├── Nav.tsx            # Fixed nav, heroMode-aware
+    ├── Footer.tsx
+    ├── ThemeToggle.tsx    # Accepts heroMode prop
+    ├── ContactForm.tsx
+    ├── Steps8.tsx         # Scroll-driven 8-step stepper
+    ├── TestimonialsCarousel.tsx
+    ├── ScrollReveal.tsx
+    └── ui/
+        └── unique-testimonial.tsx
 ```
 
 ---
 
-# Page Building Guide
+## Design System
 
-## Required Sections for Every Page
+### Color Tokens (Tailwind v4 CSS variables)
+All colors are defined as CSS variables in `app/globals.css` and registered as Tailwind utilities.
 
-Every Edge8 page MUST have these elements in order:
+| Token | Value | Usage |
+|---|---|---|
+| `bg-neutral` / `text-neutral` | Navy `#04102D` | Always-dark sections (Hero, Contact) |
+| `bg-secondary` / `text-secondary` | Blue `#287BE8` | Primary CTAs, links, accents |
+| `bg-primary` / `text-primary` | Mint `#6FF2C1` | **Light color — only use on dark backgrounds** |
+| `text-warning` / `bg-warning` | Gold | Workshop/Training accent |
+| `text-accent` / `bg-accent` | Rose/Pink | Tags, badges |
+| `bg-base-100` | White | Main page background |
+| `bg-surface-raised` | Near-white | Card fills |
+| `bg-surface-overlay` | Neutral gray | Alternating section tint (no blue cast) |
+| `text-text-primary` | Navy | Body headings |
+| `text-text-secondary` | Mid gray | Body copy |
+| `text-text-tertiary` | Light gray | Labels, captions |
+| `text-text-inverse` | White | Text on dark sections |
+| `border-border` | Light gray | Dividers |
 
-### 1. Metadata
+### ⚠️ Critical Color Rules
+- **Never use `text-primary` or `bg-primary` (mint) on light backgrounds** — it's near-white and invisible.
+- On dark sections (`bg-neutral`): use `text-text-inverse`, `text-primary`, `text-secondary` freely.
+- On light sections: use `text-secondary` (blue) for accents, never mint.
+- **Primary CTA buttons on light bg**: `bg-secondary text-text-inverse` (blue).
+- **Primary CTA buttons on dark bg**: `bg-secondary text-text-inverse` or `bg-primary text-primary-contrast`.
+- **Warning-accent pages** (workshop, training): use `bg-warning text-neutral` for CTAs.
+
+---
+
+## Section Background Rhythm
+
+Alternate between these two for visual separation. Never use `bg-neutral-50` (blue-tinted).
+
+| Token | Color | Use for |
+|---|---|---|
+| `bg-base-100` | Pure white | Primary sections |
+| `bg-surface-overlay` | Neutral gray (no blue) | Alternate sections |
+| `bg-neutral` | Navy | Hero, Contact, dark CTAs — always dark |
+
+---
+
+## Card Patterns (No Border Boxes)
+
+Cards should use **shadow + background**, not `border border-border`.
+
 ```tsx
-import type { Metadata } from 'next';
+{/* Standard card on tinted section */}
+<div className="bg-white rounded-2xl p-8 shadow-sm hover:-translate-y-1 transition-all">
 
-export const metadata: Metadata = {
-  title: 'Page Title | Edge8',
-  description: 'Meta description for SEO',
-};
+{/* Card with accent top bar */}
+<div className="bg-white rounded-2xl p-8 shadow-sm relative overflow-hidden">
+  <div className="absolute top-0 left-0 right-0 h-1 bg-secondary" />
+  ...
+</div>
+
+{/* Highlighted pricing card */}
+<div className="bg-secondary rounded-2xl p-10 text-white shadow-lg shadow-secondary/25">
 ```
 
-### 2. Nav + Footer
-Use components `<Nav />` and `<Footer />` from `components/`.
+---
 
-### 3. Hero Section
+## Page Structure
+
+### Every page needs:
+1. `export const metadata` with title + description
+2. `<Nav />` and `<Footer />` (from `app/layout.tsx` — already included globally)
+3. `<main>` wrapper with sections
+
+### Hero Section (dark, always `bg-neutral`)
 ```tsx
-<section className="section" style={{ padding: '120px 48px 80px' }}>
-  <div className="container">
-    <span style={{ color: 'rgb(40, 123, 232)', fontWeight: 700, letterSpacing: '2px' }}>
-      EYEBROW TEXT
-    </span>
-    <h1 style={{ fontSize: '72px', fontWeight: 700, marginBottom: '20px' }}>
-      Headline
-    </h1>
-    <p style={{ fontSize: '20px', color: 'rgba(4, 16, 45, 0.7)', maxWidth: '640px' }}>
-      Subtitle description
-    </p>
-    <div style={{ display: 'flex', gap: '16px', marginTop: '32px' }}>
-      <Link href="/..." className="btn-mint">CTA</Link>
-      <Link href="/..." className="btn-outline">Secondary</Link>
+<section className="relative bg-neutral overflow-hidden">
+  <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none -top-[200px] -right-[100px]"
+    style={{ background: 'radial-gradient(circle, rgba(40,123,232,0.18) 0%, transparent 70%)' }} />
+  <div className="max-w-7xl mx-auto px-6 pt-20 pb-16">
+    <div className="max-w-3xl">
+      <span className="inline-block text-xs font-bold tracking-[3px] uppercase text-secondary bg-secondary/10 border border-secondary/25 px-3.5 py-1.5 rounded-full mb-6">Eyebrow</span>
+      <h1 className="text-4xl md:text-5xl font-bold text-text-inverse leading-tight tracking-tight mb-6">Headline</h1>
+      <p className="text-lg text-text-inverse/80 font-medium leading-relaxed mb-4">Subtitle</p>
+      <p className="text-base text-text-inverse/50 leading-relaxed mb-9 max-w-[540px]">Body</p>
+      <div className="flex gap-3.5 flex-wrap">
+        <Link href="/#contact" className="inline-flex items-center gap-2 bg-secondary text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl no-underline transition-all hover:-translate-y-0.5 hover:shadow-secondary">Primary CTA</Link>
+        <Link href="/services" className="inline-flex items-center gap-2 bg-transparent text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl border border-white/25 no-underline transition-all hover:border-white/70">Secondary</Link>
+      </div>
+    </div>
+  </div>
+  {/* Optional hero stat bar */}
+  <div className="max-w-7xl mx-auto px-6 grid grid-cols-3 border-t border-white/10">
+    {stats.map(stat => (
+      <div key={stat.label} className="p-6 border-r border-white/10 last:border-none">
+        <div className="text-xs font-bold tracking-[2px] uppercase text-text-inverse/40 mb-1.5">{stat.label}</div>
+        <div className="text-base font-bold text-text-inverse">{stat.value}</div>
+      </div>
+    ))}
+  </div>
+</section>
+```
+
+### Service Page Section Pattern
+```tsx
+{/* Alternating sections */}
+<section className="py-24 bg-surface-overlay">   {/* tinted */}
+<section className="py-24 bg-base-100">           {/* white */}
+
+{/* Section header */}
+<div className="mb-14">
+  <span className="block text-xs font-bold tracking-[2.5px] uppercase text-secondary mb-3">Eyebrow</span>
+  <h2 className="text-3xl font-bold text-text-primary tracking-tight leading-snug max-w-[640px]">Heading</h2>
+</div>
+```
+
+### CTA Section (dark)
+```tsx
+<section className="py-24 bg-neutral">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+      <div>
+        <span className="block text-xs font-bold tracking-[2.5px] uppercase text-secondary mb-3">Next step</span>
+        <h2 className="text-2xl font-bold text-text-inverse mb-3 leading-snug max-w-[500px]">Heading</h2>
+        <p className="text-sm text-text-inverse/60 leading-relaxed max-w-[460px]">Body</p>
+      </div>
+      <div className="flex gap-3 shrink-0 flex-wrap">
+        <Link href="/#contact" className="inline-flex items-center gap-2 bg-secondary text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl no-underline transition-all hover:-translate-y-0.5 hover:shadow-secondary">Book a Call</Link>
+        <Link href="/services" className="inline-flex items-center gap-2 bg-transparent text-text-inverse text-sm font-semibold px-6 py-3.5 rounded-xl border border-white/25 no-underline transition-all hover:border-white/70">Back to Services</Link>
+      </div>
     </div>
   </div>
 </section>
 ```
 
-### 4. Problem/Benefit Sections
-Use `.problem-card` class or custom styling:
+---
+
+## Service Pages — Accent Colors
+
+Each service has a color accent. Apply to eyebrow, bullet markers, card top bar, and CTA button.
+
+| Service | Accent Token | CTA Button |
+|---|---|---|
+| AI Capabilities Audit | `text-secondary` / `bg-secondary` | `bg-secondary text-text-inverse` |
+| Fractional CAIO | `text-secondary` / `bg-secondary` | `bg-secondary text-text-inverse` |
+| Global Staffing | `text-secondary` / `bg-secondary` | `bg-secondary text-text-inverse` |
+| AI Workshop | `text-warning` / `bg-warning` | `bg-warning text-neutral` |
+| Training & Certification | `text-warning` / `bg-warning` | `bg-warning text-neutral` |
+| Your First AI Hire | `text-warning` / `bg-warning` | `bg-warning text-neutral` |
+
+---
+
+## Nav Component
+
+`Nav.tsx` has two states:
+- **heroMode** (`isHomepage && atTop`): `bg-neutral/40 backdrop-blur`, white text/links, white logo, ThemeToggle in white
+- **Scrolled**: `bg-surface-raised border-b border-border`, dark text, dark logo (white logo with `invert brightness-70`)
+
+`ThemeToggle` accepts `heroMode?: boolean` — pass it when rendering inside Nav.
+
+---
+
+## Key Components
+
+### ScrollReveal
+Wrap content for entrance animation:
 ```tsx
-<div className="problem-card">
-  <h2>Section Heading</h2>
-  <p className="subtext" style={{ color: 'rgb(40, 123, 232)', fontWeight: 600 }}>
-    Eyebrow
-  </p>
-  <p>Body description...</p>
-</div>
+<ScrollReveal direction="up" delay={100}>
+  <div>...</div>
+</ScrollReveal>
+```
+Directions: `up` | `left` | `right`. `delay` in ms.
+
+### Steps8
+Scroll-driven interactive stepper. Used on homepage. Self-contained — just drop in:
+```tsx
+<section className="bg-surface-overlay" id="steps">
+  <Steps8 />
+</section>
 ```
 
-### 5. Feature/Content Sections
-Use grid layouts:
+### TestimonialsCarousel
+Re-exports `UniqueTestimonials` from `components/ui/unique-testimonial.tsx`.
 ```tsx
-<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-  {/* 3-column grid */}
-</div>
-```
-
-### 6. Testimonial Cards
-```tsx
-<article className="testimonial-card">
-  <div className="testimonial-quote">"{quote}"</div>
-  <div className="testimonial-card-bottom">
-    <div className="testimonial-avatar">
-      <span>{initials}</span>
-    </div>
-    <div className="testimonial-info">
-      <div className="testimonial-name">{name}</div>
-      <div className="testimonial-title">{title}</div>
-    </div>
-  </div>
-</article>
-```
-
-### 7. Pricing/Process Cards
-```tsx
-<div className="service-pricing-card">
-  <div className="service-pricing-tier">Tier Name</div>
-  <div className="service-pricing-amount">$X,XXX</div>
-  <div className="service-pricing-desc">Description</div>
-</div>
-```
-
-### 8. CTA Section (Before Footer)
-```tsx
-<div className="service-cta-panel">
-  <div>
-    <h2>Heading</h2>
-    <p>Description</p>
-  </div>
-  <div>
-    <Link href="/#contact" className="btn-mint">CTA Button</Link>
-  </div>
-</div>
+<TestimonialsCarousel />
 ```
 
 ---
 
-# Key Reusable CSS Classes
-
-| Class | Usage |
-|-------|-------|
-| `.section` | Main section wrapper, padding 100px 48px |
-| `.container` | Max-width 1280px, centered |
-| `.btn-mint` | Primary CTA button (mint background, navy text) |
-| `.btn-outline` | Secondary CTA button (transparent, navy border) |
-| `.problem-card` | White card with border, 20px radius |
-| `.testimonial-card` | Testimonial grid card |
-| `.service-pricing-card` | Pricing tier card |
-| `.service-cta-panel` | CTA banner with split layout |
-| `.service-bullet-list` | Bullet list with mint dots |
-| `.service-proof-card` | Feature card with number index |
-| `.fade-rise` | Entry animation |
-
----
-
-# Service Page Template
-
-When building a service page, follow this structure:
-
-```tsx
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-
-export const metadata: Metadata = {
-  title: 'Service Name | Edge8',
-  description: 'Description',
-};
-
-// 1. Hero Section
-// 2. Problem Section  
-// 3. Solution/Process Section
-// 4. Pricing Section
-// 5. Who It's For Section
-// 6. Why Edge8 / Track Record Section
-// 7. Testimonials Section
-// 8. CTA Section
-
-export default function ServicePage() {
-  return (
-    <main className="service-page">
-      {/* Hero */}
-      <section className="service-hero">...</section>
-      
-      {/* Problem */}
-      <section className="service-section">...</section>
-      
-      {/* Solution */}
-      <section className="service-section service-section-alt">...</section>
-      
-      {/* Pricing */}
-      <section className="service-section">...</section>
-      
-      {/* CTA */}
-      <section className="service-section">
-        <div className="service-cta-panel">...</div>
-      </section>
-    </main>
-  );
-}
-```
-
----
-
-# Development Commands
+## Development Commands
 ```bash
-npm run dev       # Start dev server (localhost:3000)
-npm run build    # Production build
+npm run dev      # Start dev server (localhost:3000)
+npm run build    # Production build — always verify before pushing
 npm run lint     # ESLint check
 ```
 
+## Git Workflow
+- Branch: feature branches off `main`
+- Always run `npm run build` before committing
+- Use `git pull origin main` before starting new work
+
 ## Conventions
-- **Git workflow:** Run `git pull origin main` before starting any new task
-- **Components:** PascalCase filenames (`HeroSection.tsx`)
-- **CSS classes:** Use existing `.class-name` patterns from `globals.css`
-- **Images:** Use `next/image` for all images
-- **Links:** Use `next/link` for internal navigation
-- **Routing:** App Router (`app/` directory)
+- **No inline styles** — use Tailwind utilities only
+- **No `border border-border` cards** — use `shadow-sm` + `bg-white` instead
+- **No `text-primary` on light backgrounds** — use `text-secondary`
+- **No `bg-neutral-50`** — use `bg-surface-overlay`
+- **Images:** `next/image` always
+- **Links:** `next/link` for internal, `<a target="_blank">` for external
+- **Rounded cards:** `rounded-2xl` preferred over `rounded-xl` for main cards
 
 ---
 
-# Content Source
-Always reference `docs/pages/*.md` for page content. These markdown files contain the complete content structure including:
-- Headlines and subheadlines
-- Section content
-- Testimonials with quotes and names
-- Pricing information
-- Process steps
-- CTA buttons
+## Content Source
+Reference `docs/pages/*.md` for page content — headlines, body copy, testimonials, pricing, CTAs.
