@@ -126,7 +126,7 @@ export default function Nav() {
                 <Link href="/services/ai-capabilities-audit" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">AI Capabilities Audit</Link>
                 <Link href="/services/caio-leadership" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">CAIO Leadership</Link>
                 <Link href="/services/global-staffing" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">Global Staffing</Link>
-                <Link href="/services/training-certification" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">Training &amp; Certification</Link>
+                <Link href="/services/training-and-certification" className="block px-3.5 py-2.5 text-sm rounded-lg text-text-secondary hover:text-secondary hover:bg-secondary-50 transition-colors">Training &amp; Certification</Link>
               </div>
             </div>
 
@@ -186,7 +186,7 @@ export default function Nav() {
               <Link href="/services/ai-capabilities-audit" onClick={closeMenu} className="text-text-secondary">AI Capabilities Audit</Link>
               <Link href="/services/caio-leadership" onClick={closeMenu} className="text-text-secondary">CAIO Leadership</Link>
               <Link href="/services/global-staffing" onClick={closeMenu} className="text-text-secondary">Global Staffing</Link>
-              <Link href="/services/training-certification" onClick={closeMenu} className="text-text-secondary">Training &amp; Certification</Link>
+              <Link href="/services/training-and-certification" onClick={closeMenu} className="text-text-secondary">Training &amp; Certification</Link>
             </div>
           )}
         </div>
